@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
+
+.header
+{
+	height: 65px;
+	padding: 10px;
+	border-bottom: 1px solid lightgray;
+	background-color: grey;
+	position: relative;
+}
+
+#menu
+{
+	float: right;
+	font-size: 18px;
+}
+
+#menu ul li
+{
+	display: inline;
+	padding: 2px 40px;
+	text-decoration: none;
+	color: rgb(160,217,61);
+	font-family: 'Roboto', monospace;
+}
+
+#menu ul li:hover
+{
+	text-decoration: underline;
+}
+
+#titulo
+{
+	font-family: 'VT323', monospace;
+	font-size: 60px;
+	color: white;
+	float: left;
+}
