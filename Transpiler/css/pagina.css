@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
-
 
 html
 {
@@ -28,16 +26,9 @@ a
 	color:blue;
 }
 
-label
-{
-	font-family: 'VT323', monospace;
-	font-size: 20px;
-}
-
 .select
 {
 	width: 300px;
-	height: 30px;
 	padding: 5px 0px 5px 0px;
 	background-color: white;
 }
@@ -45,7 +36,7 @@ label
 .text
 {
 	width: 400px;
-	height: 200px;
+	height: 150px;
 }
 
 .button
@@ -55,11 +46,8 @@ label
 	color: white;
 	width: 400px;
 	padding: 12px;
-	/*font-family: 'Roboto', monospace;
-	font-size: 14px;*/
-
-	font-family: 'VT323', monospace;
-	font-size: 20px;
+	font-family: 'Roboto', monospace;
+	font-size: 14px;
 	text-decoration: bold;
 }
 

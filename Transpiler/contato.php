@@ -5,7 +5,6 @@
 <body class="body">
 
 	<p>Isabela Carvalho</p>
-	<p>Email: isabelasc@id.uff.br</p>
 	<p>
 		<a href="https://github.com/isaCarvalho">
 			<img src="images/github1.png" class="logos">

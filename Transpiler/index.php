@@ -4,17 +4,10 @@
 
 <body class="body">
 	<nav id="form">
-		<form method="post" action="control/controler.php?action=enviarFonte">
+		<form>
 			<p>
-				<label for="fonte">Origem</label>
-				<select class="select" name="fonte">
-					<option>Python</option>
-					<option>Java</option>
-					<option>Kotlin</option>
-				</select>
-
-				<label for="destino">Destino</label>
-				<select class="select" name="destino">
+				<label for="linguagem">Linguagem de destino</label>
+				<select class="select" name="linguagem">
 					<option>Python</option>
 					<option>Java</option>
 					<option>Kotlin</option>

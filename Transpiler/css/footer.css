@@ -1,0 +1,17 @@
+.imgFooter 
+{
+	width: 10px; 
+	height: 10px;
+}
+
+.footer 
+{
+	padding-top: 10px;
+	border-top: 1px solid lightgray;
+	font-size: 10px;
+	text-align: center; 
+	height: 50px;
+	float: bottom;
+	background-color: grey;
+	color: white; 
+}
