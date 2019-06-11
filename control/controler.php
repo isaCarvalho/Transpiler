@@ -1,10 +1,14 @@
 <?php
-
 extract($_GET);
 
-switch ($action) {
+extract($_POST);
+
+switch ($action) 
+{
 	case 'enviarFonte':
-		# code...
+		include "../model/analise.php";
+
+		$result = analisar($cfonte, $lfonte, $ldestino);
 		break;
 	
 	default:

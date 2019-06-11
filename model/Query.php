@@ -1,5 +1,6 @@
 <?php
 
+// Classe de conexão do PHP com o MySQL;
 class Query
 {
 	private static $conn;
@@ -8,22 +9,22 @@ class Query
 	{
 		try
 		{
-			self::conn = new PDO('mysql:host=localhost;dbname=transpiler', 'root', '');
-			self::conn->setAtribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			self::$conn = new PDO('mysql:host=localhost;dbname=transpiler', 'root', '');
+			self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-			return self::conn;
+			return self::$conn;
 		}
-		catch(\PDOException $err)
+		catch (\PDOException $err)
 		{
 			die('Erro: '.$err->getMessage());
 		}
 	}
 
-	public static function select($table, $values, $condition, $array = [])
+	public static function select($values, $table, $condition, $array = [])
 	{
-		$quey = "SELECT $values FROM $table WHERE $condition";
+		$query = "SELECT $values FROM $table WHERE $condition";
 
-		$stmt = self::conn->prepare($query);
+		$stmt = self::conn()->prepare($query);
 		$stmt->execute($array);
 
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
