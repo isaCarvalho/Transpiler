@@ -7,10 +7,14 @@ html
 	position: relative;
 }
 
+/* HEADER */
+
 a
 {
 	text-decoration: none;
 }
+
+/* HOME */
 
 .body
 {
@@ -25,13 +29,13 @@ a
 	text-align: center;
 	height: 380px;
 	padding: 50px;
-	color:blue;
 }
 
 label
 {
 	font-family: 'VT323', monospace;
 	font-size: 20px;
+	color:blue;
 }
 
 .select
@@ -72,4 +76,33 @@ label
 {
 	width: 20px;
 	height: 20px;
+}
+
+/* TUTORIAIS */
+
+.selecao 
+{
+	padding-top: 180px;
+	height: 300px;
+}
+
+.selectT 
+{
+	width: 450px;
+	height: 50px;
+	padding: 5px 0px 5px 0px;
+	background-color: white;	
+}
+
+.search
+{
+	height: 50px;
+	width: 90px;
+	border: none;
+	border-radius: 2px;
+	color: white;
+	font-family: 'VT323', monospace;
+	font-weight: bold;
+	font-size: 17px;
+	background-color: black;
 }
