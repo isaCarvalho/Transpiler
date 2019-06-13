@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Faster+One&display=swap');
 
 .header
 {
-	height: 65px;
+	height: 60px;
 	padding: 10px;
 	border-bottom: 1px solid lightgray;
-	background-color: grey;
+	background-color: /*black*/ rgb(8,12,15);
 	position: relative;
 }
 
@@ -32,8 +32,8 @@
 
 #titulo
 {
-	font-family: 'VT323', monospace;
-	font-size: 70px;
+	font-family: 'Faster One', cursive;
+	font-size: 65px;
 	color: white;
 	float: left;
 }

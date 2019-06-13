@@ -158,9 +158,9 @@ insert into legendas (nome, descricao) values
 ('<incr>', 'Incremento'),
 ('<decr>', 'Decremento'),
 ('<cond>', 'Condição'),
-('<inicio>', 'Limite inferior - inicio de um loop'),
-('<fim>', 'Limite superior - fim de um loop'),
-('<nome>', 'Nome de função/variável');
+('<inicio>', 'Limite inferior ou inicio de um loop'),
+('<fim>', 'Limite superior ou fim de um loop'),
+('<nome>', 'Nome de função ou variável');
 
 -- Inserção de loops 
 

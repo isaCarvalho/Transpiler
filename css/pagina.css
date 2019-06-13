@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 
 html
 {
@@ -18,24 +17,19 @@ a
 
 .body
 {
+	background-image: url(../images/fundo2.jpeg);
 	max-height: 700px;
 	width: 100%;
 	margin: 0 auto;
 	text-align: center;
 }
 
-#form
-{
-	text-align: center;
-	height: 380px;
-	padding: 50px;
-}
-
 label
 {
-	font-family: 'VT323', monospace;
-	font-size: 20px;
-	color:blue;
+	font-family: 'Roboto Mono', monospace;
+	font-weight: bold;
+	font-size: 18px;
+	color:#2058FF;
 }
 
 .select
@@ -44,32 +38,15 @@ label
 	height: 30px;
 	padding: 5px 0px 5px 0px;
 	background-color: white;
+	border: 1px solid white;
 }
 
 .text
 {
 	width: 400px;
 	height: 200px;
-}
-
-.button
-{
-	border-radius: 5px;
-	background-color: black;
-	color: white;
-	width: 400px;
-	padding: 12px;
-	/*font-family: 'Roboto', monospace;
-	font-size: 14px;*/
-
-	font-family: 'VT323', monospace;
-	font-size: 20px;
-	text-decoration: bold;
-}
-
-.button:hover
-{
-	background-color: rgba(0, 0, 0, 0.95);
+	border: 1px solid white;
+	border-radius: 3px;
 }
 
 .logos 
@@ -78,31 +55,107 @@ label
 	height: 20px;
 }
 
+.button
+{
+	background-color: #630529;
+	width: 405px;
+	height: 40px;
+	border: 1px solid #630529;
+	border-radius: 3px;
+	border-collapse: collapse;
+	color: white;
+	font-weight: bold;
+	font-family: 'Roboto', monospace;
+	font-size: 18px;
+}
+
 /* TUTORIAIS */
 
 .selecao 
 {
-	padding-top: 180px;
-	height: 300px;
+	padding-top: 40px;
+	margin: 0 auto;
+	height: 445px;
+	overflow: auto scroll;
+	background-color: rgba(255, 255, 255, 0.2);
 }
 
 .selectT 
 {
 	width: 450px;
-	height: 50px;
+	height: 40px;
 	padding: 5px 0px 5px 0px;
-	background-color: white;	
+	border: 1px solid white;
+	border-radius: 2px;
+	background-color: white;
+	font-family: 'Roboto Mono', monospace;
+	font-size: 16px;
 }
 
-.search
+table 
 {
-	height: 50px;
-	width: 90px;
-	border: none;
-	border-radius: 2px;
+	background-color: rgba(255, 255, 255, 0.8);
+	margin: 0 auto;
+	margin-top: 15px;
+	border-collapse: collapse;
+	border: 1px solid white;
+	width: 685px;
+	font-family: 'Roboto', monospace;
+}
+
+table tr 
+{
+	height: 30px;
+}
+
+table tr th
+{
+	background-color: #630529;
 	color: white;
-	font-family: 'VT323', monospace;
-	font-weight: bold;
-	font-size: 17px;
-	background-color: black;
+	border: 1px solid #630529;
+	font-size: 18px;
+}
+
+table tr td
+{
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	font-size: 16px;
+}
+
+table tr:hover
+{
+	background-color: rgba(0, 255, 0, 0.1);
+}
+
+/* CONTATO */
+
+.foto
+{
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}
+
+h1
+{
+	font-family: 'Roboto', monospace;
+	font-size: 25px;
+	color: white;
+}
+
+.equipe
+{
+	width: 270px;
+	height: 340px;
+	background-color: white;
+	margin: 0 auto;
+	padding-top: 20px;
+	border-radius: 10px;
+	position: relative;
+}
+
+ul li 
+{
+	display: inline;
 }

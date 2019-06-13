@@ -12,6 +12,6 @@
 	text-align: center; 
 	height: 50px;
 	float: bottom;
-	background-color: grey;
+	background-color: /*black*/ rgb(8,12,15);
 	color: white; 
 }

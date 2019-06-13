@@ -3,7 +3,7 @@
 ?>
 
 <body class="body">
-	<nav id="form">
+	<nav class="selecao">
 		<form method="post" action="control/controler.php?action=enviarFonte">
 			<p>
 				<label for="fonte">Origem</label>

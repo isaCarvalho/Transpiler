@@ -1,17 +1,18 @@
 <?php
 
-include_once "header.html";
+include "header.html";
 
 ?>
+
+<script src="js/carregarTutorials.js"></script>
 
 <body class="body" id="body" onload="carregarSelect()">
 	
 </body>
 
-<script src="js/carregarTutorials.js"></script>
 
 <?php
 
-include_once "footer.html";
+include "footer.html";
 
 ?>
