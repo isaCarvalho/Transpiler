@@ -38,5 +38,7 @@
 	
 </body>
 
+<script src="js/carregarCodigo.js"></script>>
+
 <?php
 	include_once "footer.html";

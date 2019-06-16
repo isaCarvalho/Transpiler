@@ -18,10 +18,11 @@ a
 .body
 {
 	background-image: url(../images/fundo2.jpeg);
-	max-height: 700px;
+	max-height: 100%;
 	width: 100%;
 	margin: 0 auto;
 	text-align: center;
+	position: relative;
 }
 
 label
@@ -78,6 +79,7 @@ label
 	height: 445px;
 	overflow: auto scroll;
 	background-color: rgba(255, 255, 255, 0.2);
+	position: relative;
 }
 
 .selectT 
@@ -155,7 +157,10 @@ h1
 	position: relative;
 }
 
-ul li 
+#contato
 {
-	display: inline;
+	width: 640px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
 }

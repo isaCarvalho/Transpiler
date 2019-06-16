@@ -5,57 +5,54 @@
 <body class="body">
 
 	<nav class="selecao"> 
-		<h1>Equipe</h1>
 
-		<ul>
-			<li>
-				<nav class="equipe">
-					<p>
-						<img src="images/membro1.jpg" class="foto">
-					</p>
+		<nav id="contato">
 
-					<p>Isabela Carvalho</p>
-					<p>Email: isabelasc@id.uff.br</p>
-					<p>
-						<a href="https://github.com/isaCarvalho">
-							<img src="images/github1.png" class="logos">
-						</a>
+			<nav class="equipe">
+				<p>
+					<img src="images/membro1.jpg" class="foto">
+				</p>
 
-						<a href="https://www.facebook.com/isabelacarvalhocf">
-							<img src="images/facebook.png" class="logos">
-						</a>
+				<p>Isabela Carvalho</p>
+				<p>Email: isabelasc@id.uff.br</p>
+				<p>
+					<a href="https://github.com/isaCarvalho">
+						<img src="images/github1.png" class="logos">
+					</a>
 
-						<a href="https://www.linkedin.com/in/isabela-carvalho-69a1b0136/">
-							<img src="images/linkedin.png" class="logos">
-						</a>
-					</p>
-				</nav>
-			</li>
+					<a href="https://www.facebook.com/isabelacarvalhocf">
+						<img src="images/facebook.png" class="logos">
+					</a>
 
-			<li>
-				<nav class="equipe">
-					<p>
-						<img src="images/membro2.jpg" class="foto">
-					</p>
+					<a href="https://www.linkedin.com/in/isabela-carvalho-69a1b0136/">
+						<img src="images/linkedin.png" class="logos">
+					</a>
+				</p>
+			</nav>
 
-					<p>Prof. Carlos Bazilio</p>
-					<p>Email: carlosbazilio@id.uff.br</p>
-					<p>
-						<a href="">
-							<img src="images/github1.png" class="logos">
-						</a>
+			<nav class="equipe">
+				<p>
+					<img src="images/membro2.jpg" class="foto">
+				</p>
 
-						<a href="">
-							<img src="images/facebook.png" class="logos">
-						</a>
+				<p>Prof. Carlos Bazilio</p>
+				<p>Email: carlosbazilio@id.uff.br</p>
+				<p>
+					<a href="https://github.com/CarlosBazilio">
+						<img src="images/github1.png" class="logos">
+					</a>
 
-						<a href="/">
-							<img src="images/linkedin.png" class="logos">
-						</a>
-					</p>
-				</nav>	
-			</li>
-		</ul>
+					<a href="https://www.facebook.com/carlos.bazilio.9">
+						<img src="images/facebook.png" class="logos">
+					</a>
+
+					<a href="https://www.linkedin.com/in/carlos-bazilio-090ba750/">
+						<img src="images/linkedin.png" class="logos">
+					</a>
+				</p>
+			</nav>
+		</nav>	
+
 	</nav>
 </body>
 

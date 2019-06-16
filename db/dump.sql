@@ -7,6 +7,8 @@ Banco de dados do GoTo Transpiler
 
 create database transpiler;
 
+alter database transpiler CHARSET = UTF8 COLLATE = utf8_general_ci;
+
 use transpiler;
 
 /* Criação das Tabelas */

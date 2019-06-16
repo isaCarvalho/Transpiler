@@ -1,5 +1,3 @@
-//LEMBRAR DE CARREGAR OS ELEMENTOS DO ARQUIVO info_linguagens.php
-
 // cria o elemento body
 let body = document.querySelector("body");
 
@@ -7,6 +5,8 @@ let body = document.querySelector("body");
 let nav = document.createElement('nav');
 nav.className = 'selecao';
 nav.name = 'selecao';
+
+let navLing = document.createElement('nav');
 
 // adiciona nav ao body
 body.appendChild(nav);
@@ -33,7 +33,7 @@ function carregarSelect()
 			});
 
 			select.addEventListener('click', event => {
-				carregarTexto(select.selectedIndex);
+				carregarTexto(select.selectedIndex+1);
 			})
 
 			p.appendChild(select);		
@@ -45,12 +45,14 @@ function carregarSelect()
 // Vai chamar a funcao de acordo com o texto de cada linguagem de acordo com o id da linguagem
 function carregarTexto(id)
 {
-	// console.log(id);
+	navLing.innerHTML = '';
 
 	carregarFunctions(id);
 	carregarTipos(id);
 	carregarIfs(id);
 	carregarLoops(id);
+
+	nav.appendChild(navLing);
 }
 
 // carrega o BNF das funcoes em cada linguagem
@@ -73,7 +75,7 @@ function carregarFunctions(id)
 				tableFunctions.appendChild(tr);
 			});
 
-			nav.appendChild(tableFunctions);
+			navLing.appendChild(tableFunctions);
 		})
 }
 
@@ -92,14 +94,21 @@ function carregarTipos(id)
 
 			tipos.forEach(tipo => {
 				var tr = document.createElement('tr');
+
+				var tamanho;
+				if (tipo.tamanho == 0)
+					tamanho = 'não informado';
+				else
+					tamanho = `${tipos.tamanho}`;
+
 				tr.innerHTML = `<td>${tipo.descricao}</td>
-								<td>${tipo.tamanho}</td>
+								<td>${tamanho}</td>
 								`;
 
 				tableTipos.appendChild(tr);
 			});
 
-			nav.appendChild(tableTipos);
+			navLing.appendChild(tableTipos);
 		})
 }
 
@@ -122,7 +131,7 @@ function carregarIfs(id)
 				tableIfs.appendChild(tr);
 			});		
 
-			nav.appendChild(tableIfs);
+			navLing.appendChild(tableIfs);
 		})
 }
 
@@ -145,6 +154,6 @@ function carregarLoops(id)
 				tableLoops.appendChild(tr)
 			});
 
-			nav.appendChild(tableLoops);
+			navLing.appendChild(tableLoops);
 		})
 }

@@ -2,7 +2,9 @@
 
 let body = document.querySelector('body')
 
-let nav = document.querySelector('nav')
+let nav = document.getElementById('ajuda')
+
+console.log(nav)
 
 function carregarLegendas()
 {
@@ -16,7 +18,7 @@ function carregarLegendas()
 								</tr>`;
 
 			legendas.forEach(legenda => {
-				let tr = createElement('tr');
+				let tr = document.createElement('tr');
 				tr.innerHTML = `<td>${legenda.nome}</td>
 								<td>${legenda.descricao}</td>`;
 			

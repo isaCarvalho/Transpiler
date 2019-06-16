@@ -1,14 +1,11 @@
 <?php 
-
-// LEMBRAR DE CORRIGIR OS DADINHOS QUE ESTÃO VINDO ERRADOS DO BANCO
-
 require_once "Query.php";
 
 function encode_results($values, $table, $conditions, $array = [])
 {
 	$results = Query::select($values, $table, $conditions, $array);
 
-	echo json_encode($results);
+	echo str_replace(['<', '>'], ['&lt', '&gt'], json_encode($results));
 }
 
 function preencherLinguagens()
