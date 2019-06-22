@@ -18,7 +18,7 @@ function carregarSelect()
 		.then(response => response.json())
 		.then(linguagens => {
 			let p = document.createElement('p');
-			 p.innerHTML = `<label for="linguagem">Selecione a linguagem </label>`;
+			 p.innerHTML = `<label for="linguagem" class="label">Selecione a linguagem </label>`;
 
 			let select = document.createElement('select');
 			select.className = "selectT";

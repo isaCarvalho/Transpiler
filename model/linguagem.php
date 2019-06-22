@@ -10,7 +10,7 @@ function encode_results($values, $table, $conditions, $array = [])
 
 function preencherLinguagens()
 {
-	encode_results("id, nome", "linguagens", "1", []);
+	encode_results("id, nome", "linguagens", "true", []);
 }
 
 function preencherFunctions($id_linguagem)
@@ -35,5 +35,5 @@ function preencherLoops($id_linguagem)
 
 function preencherLegendas()
 {
-	encode_results("nome, descricao", "legendas", "1", []);
+	encode_results("nome, descricao", "legendas", "true", []);
 }

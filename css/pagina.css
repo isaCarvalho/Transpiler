@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 
 html
 {
@@ -25,29 +24,39 @@ a
 	position: relative;
 }
 
-label
+.label
 {
-	font-family: 'Roboto Mono', monospace;
+	font-family: 'Share Tech Mono', monospace;
 	font-weight: bold;
-	font-size: 18px;
-	color:#2058FF;
+	font-size: 20px;
+	color:rgb(70, 129, 168);
+	padding-right: 10px;
 }
 
 .select
 {
 	width: 300px;
 	height: 30px;
-	padding: 5px 0px 5px 0px;
+	margin: 0 auto;
 	background-color: white;
 	border: 1px solid white;
+	border-radius: 1px;
+	margin-bottom: 5px;
 }
 
 .text
 {
 	width: 400px;
 	height: 200px;
-	border: 1px solid white;
-	border-radius: 3px;
+	border: 0px solid white;
+	border-radius: 2px;
+}
+
+.ling
+{
+	width: 400px;
+	margin: 0 auto;
+	position: relative;
 }
 
 .logos 
@@ -61,7 +70,7 @@ label
 	background-color: #630529;
 	width: 405px;
 	height: 40px;
-	border: 1px solid #630529;
+	border: 1px solid #79133aee;
 	border-radius: 3px;
 	border-collapse: collapse;
 	color: white;
@@ -70,15 +79,16 @@ label
 	font-size: 18px;
 }
 
+
 /* TUTORIAIS */
 
 .selecao 
 {
 	padding-top: 40px;
 	margin: 0 auto;
-	height: 445px;
+	height: 465px;
+	width: 100%;
 	overflow: auto scroll;
-	background-color: rgba(255, 255, 255, 0.2);
 	position: relative;
 }
 
@@ -96,9 +106,10 @@ label
 
 table 
 {
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: rgba(255, 255, 255, 0.9);
 	margin: 0 auto;
 	margin-top: 15px;
+	margin-bottom: 15px;
 	border-collapse: collapse;
 	border: 1px solid white;
 	width: 685px;
@@ -120,8 +131,8 @@ table tr th
 
 table tr td
 {
-	border-left: 1px solid black;
-	border-right: 1px solid black;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
 	font-size: 16px;
 }
 
@@ -137,13 +148,6 @@ table tr:hover
 	width: 200px;
 	height: 200px;
 	border-radius: 50%;
-}
-
-h1
-{
-	font-family: 'Roboto', monospace;
-	font-size: 25px;
-	color: white;
 }
 
 .equipe

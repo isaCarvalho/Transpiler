@@ -6,13 +6,10 @@
 
 .footer 
 {
-	padding-top: 10px;
-	border-top: 1px solid lightgray;
-	font-size: 10px;
+	padding-top: 0px;
+	font-size: 11px;
 	text-align: center; 
-	height: 50px;
 	float: bottom;
-	background-color: rgb(8,12,15);
 	color: white; 
 	position: relative;
 }

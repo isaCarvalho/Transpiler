@@ -4,9 +4,10 @@
 
 <body class="body">
 	<nav class="selecao">
-		<form method="post" action="control/controler.php?action=enviarFonte">
+		<form method="post" action="control/controler.php?action=enviarFonte">			
+			
 			<p>
-				<label for="fonte">Origem</label>
+				<label for="fonte" class="label">Origem</label>
 				<select class="select" name="lfonte">
 					<option value="1">C</option>
 					<option value="2">Java</option>
@@ -14,8 +15,9 @@
 					<option value="4">Python</option>
 					<option value="5">Haskell</option>
 				</select>
-
-				<label for="destino">Destino</label>
+				
+	
+				<label for="destino" class="label">Destino</label>
 				<select class="select" name="ldestino">
 					<option value="1">C</option>
 					<option value="2">Java</option>

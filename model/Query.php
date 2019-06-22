@@ -1,6 +1,6 @@
 <?php
 
-// Classe de conexão do PHP com o MySQL;
+// Classe de conexão do PHP com o PostgreSQL;
 class Query
 {
 	private static $conn;
@@ -9,7 +9,8 @@ class Query
 	{
 		try
 		{
-			self::$conn = new PDO('mysql:host=localhost;dbname=transpiler;charset=utf8', 'root', '', [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
+			self::$conn = new PDO("pgsql:host=localhost;dbname=transpiler;user=postgres;password=123456");	
+			
 			self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 			return self::$conn;

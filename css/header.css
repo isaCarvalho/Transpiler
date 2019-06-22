@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Faster+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Gochi+Hand&display=swap');
 
 .header
 {
-	height: 60px;
+	height: 50px;
 	padding: 10px;
 	border-bottom: 1px solid lightgray;
-	background-color: rgb(8,12,15);
+	background-color:  rgb(18,22,25);
 	position: relative;
 }
 
 #menu
 {
 	float: right;
-	font-size: 18px;
+	font-size: 16px;
 	position: relative;
 }
 
@@ -22,8 +24,9 @@
 	display: inline;
 	padding: 2px 40px;
 	text-decoration: none;
-	color: rgb(160,217,61);
-	font-family: 'Roboto', monospace;
+	font-family: 'Share Tech Mono', monospace;
+	font-size: 18px;
+	/*font-family: 'Roboto', monospace;*/
 }
 
 #menu ul li:hover
@@ -31,10 +34,21 @@
 	text-decoration: underline;
 }
 
+.links
+{
+	color: rgb(255, 255, 255);
+}
+
+.git
+{
+	color: rgb(116, 30, 185);	
+}
+
 #titulo
 {
-	font-family: 'Faster One', cursive;
-	font-size: 65px;
-	color: white;
+	font-family: 'Gochi Hand', cursive;
+	/*font-family: 'Faster One', cursive;*/
+	font-size: 45px;
+	color: rgb(247, 164, 10);
 	float: left;
 }

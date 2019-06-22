@@ -1,72 +1,94 @@
 /** 
 Isabela S. de Carvalho
-Banco de dados do GoTo Transpiler
-*/
+Script para a base de dados */
+-- USE COLLATE = UTF8
 
-/* Criação da Base de dados */
+-- DROP DATABASE transpiler;
 
-create database transpiler;
+CREATE DATABASE transpiler
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'pt_BR.UTF-8'
+    LC_CTYPE = 'pt_BR.UTF-8'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
 
-alter database transpiler CHARSET = UTF8 COLLATE = utf8_general_ci;
+COMMENT ON DATABASE transpiler
+    IS 'Base de Dados para o GoTo Transpiler';
 
-use transpiler;
+/* Criação das tabelas */
 
-/* Criação das Tabelas */
-
--- Tabela que guarda os paradigmas das linguagens de programação
+-- Tabela paradigmas
 create table paradigmas (
-id int primary key auto_increment,
+id serial primary key,
 nome varchar(255) not null
 );
 
--- Tabela que guarda as linguagens e possui chave estrangeira para seu respectivo paradigma
+create sequence paradigmas_seq increment 1 minvalue 1 start 1;
+alter table paradigmas alter column id set default nextval('paradigmas_seq');
+
+-- Tabela linguagens
 create table linguagens (
-id int primary key auto_increment,
+id int primary key,
 nome varchar(255) not null,
-id_paradigma int,
-constraint fk_linguagens_id_paradigma foreign key (id_paradigma) references paradigmas(id) on delete cascade on update cascade
+id_paradigma int references paradigmas(id) on delete cascade on update cascade
 );
 
--- Tabela que guarda o BNF dos ifs e suas respectivas linguagens
+create sequence linguagens_seq increment 1 minvalue 1 start 1;
+alter table linguagens alter column id set default nextval('linguagens_seq');
+
+-- Tabela ifs
 create table ifs ( 
-id int primary key auto_increment,
+id int primary key,
 descricao varchar(255) not null,
-id_linguagem int not null,
-constraint fk_ifs_id_linguagens foreign key (id_linguagem) references linguagens(id) on delete cascade on update cascade
+id_linguagem int not null references linguagens(id) on delete cascade on update cascade
 );
 
--- Tabela que guarda o BNF de funções e suas respectivas linguagens
+create sequence ifs_seq increment 1 minvalue 1 start 1;
+alter table ifs alter column id set default nextval('ifs_seq');
+
+-- Tabela functions
 create table functions (
-id int primary key auto_increment, 
+id int primary key, 
 descricao varchar(255) not null,
-id_linguagem int not null, 
-constraint fk_functions_id_linguagens foreign key (id_linguagem) references linguagens(id) on delete cascade on update cascade
+id_linguagem int not null references linguagens(id) on delete cascade on update cascade
 );
 
--- Tabela que guarda informações sobre os tipos primitivos e suas respectivas linguagens
+create sequence functions_seq increment 1 minvalue 1 start 1;
+alter table functions alter column id set default nextval('functions_seq');
+
+-- Tabela tipos
 create table tipos (
-id int primary key auto_increment,
+id int primary key,
 tipo varchar(255) not null, 
 descricao varchar(255) default 'não informado',
 tamanho int default 0,
-id_linguagem int not null,
-constraint fk_tipos_id_linguagens foreign key (id_linguagem) references linguagens(id) on delete cascade on update cascade
+id_linguagem int not null references linguagens(id) on delete cascade on update cascade
 );
 
--- Tabela que guarda o BNF de loops e suas respectivas linguagens
+create sequence tipos_seq increment 1 minvalue 1 start 1;
+alter table tipos alter column id set default nextval('tipos_seq');
+
+-- Tabela loops
 create table loops (
-id int primary key auto_increment,
+id int primary key,
 descricao varchar(500) not null, 
-id_linguagem int not null,
-constraint fk_loops_id_linguagens foreign key (id_linguagem) references linguagens(id) on delete cascade on update cascade
+id_linguagem int not null references linguagens(id) on delete cascade on update cascade
 );
 
--- Tabela de legendas
+create sequence loops_seq increment 1 minvalue 1 start 1;
+alter table loops alter column id set default nextval('loops_seq');
+
+-- Tabela legendas
 create table legendas (
-id int primary key auto_increment,
+id int primary key,
 nome varchar(255) not null,
 descricao varchar(500)
 );
+
+create sequence legendas_seq increment 1 minvalue 1 start 1;
+alter table legendas alter column id set default nextval('legendas_seq');
 
 /* Inserção de dados nas tabelas */
 

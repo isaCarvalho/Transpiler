@@ -10,7 +10,7 @@
 
 			<nav class="equipe">
 				<p>
-					<img src="images/membro1.jpg" class="foto">
+					<img src="images/membro1.jpg" class="foto" style="transform: rotate(90deg);">
 				</p>
 
 				<p>Isabela Carvalho</p>
