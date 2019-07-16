@@ -108,19 +108,19 @@ insert into linguagens (nome, id_paradigma) values
 
 -- Inserção de IFs
 insert into ifs (descricao, id_linguagem) values 
-('if (<exp>) { <commands> }', 1), 
-('if (<exp>) { <commands> }', 2), 
-('if (<exp>) { <commands> }', 3), 
-('if <exp>: <commands>', 4), 
-('<exp> = <commands>', 5);
+('if (<exp>)', 1), 
+('if (<exp>)', 2), 
+('if (<exp>)', 3), 
+('if <exp>:', 4), 
+('<exp> =', 5);
 
 -- Inserção de Funções
 insert into functions (descricao, id_linguagem) values  
-('<tipo> <nome> (<tipo> <param>, ...) { <commands> }', 1), 
-('public <tipo> <nome> (<tipo> <param>, ...) { <commands> }', 2), 
-('fun <nome> (<param> : <tipo>, ...) : <tipo> { <commands> }', 3), 
-('def <nome>(<param>, ...): <commands>', 4), 
-('<nome> <param> ... = <commands>', 5);
+('<tipo> <nome> (<param>)', 1), 
+('public <tipo> <nome> (<param>)', 2), 
+('fun <nome> (<param>) : <tipo>', 3), 
+('def <nome>(<param>):', 4), 
+('<nome> <param> =', 5);
 
 -- Inserção de tipos primitivos
 insert into tipos (tipo, descricao, tamanho, id_linguagem) values
@@ -130,12 +130,8 @@ insert into tipos (tipo, descricao, tamanho, id_linguagem) values
 ('int', 'Inteiro', 32, 1),
 ('long int', 'Inteiro', 64, 1),
 ('float', 'Ponto flutuante', 32, 1),
-('double', 'Ponto flutuante', 64, 1);
-
-insert into tipos (tipo, id_linguagem) values
-('void', 1);
-
-insert into tipos (tipo, descricao, tamanho, id_linguagem) values
+('double', 'Ponto flutuante', 64, 1),
+('void', 'Vazio', 0, 1),
 ('byte', 'Inteiro', 8, 2),
 ('short', 'Inteiro', 16, 2),
 ('int', 'Inteiro', 32, 2),
@@ -149,25 +145,20 @@ insert into tipos (tipo, descricao, tamanho, id_linguagem) values
 ('Long', 'Inteiro', 64, 3),
 ('Int', 'Inteiro', 32, 3),
 ('Short', 'Inteiro', 16, 3),
-('Byte', 'Inteiro', 8, 3);
-
-insert into tipos (tipo, id_linguagem) values
-('Char', 3),
-('Boolean', 3),
-('Unit', 3);
-
-insert into tipos (tipo, descricao, id_linguagem) values
-('int', 'Inteiro', 4),
-('float', 'Ponto flutuante', 4),
-('bool', 'Booleano', 4),
-('str', 'Cadeia de caracteres', 4),
-('Char', 'Caracter', 5),
-('Bool', 'Booleano', 5),
-('Double', 'Ponto flutuante', 5),
-('Float', 'Ponto flutuante', 5),
-('Integer', 'Inteiro', 5),
-('Int', 'Inteiro', 5),
-('String', 'Cadeia de caracteres', 5);
+('Byte', 'Inteiro', 8, 3),
+('Char', 'Caracter', 16, 3),
+('Boolean', 'Booleano', 1, 3),
+('Unit', 'Vazio', 0, 3),
+('int', 'Inteiro', 32, 4),
+('float', 'Ponto flutuante', 32, 4),
+('bool', 'Booleano', 1, 4),
+('str', 'Caractere',16,  4),
+('Char', 'Caracter',16, 5),
+('Bool', 'Booleano',1,  5),
+('Double', 'Ponto flutuante',64, 5),
+('Float', 'Ponto flutuante',32, 5),
+('Int', 'Inteiro',32, 5),
+('String', 'Caracter',16, 5);
 
 -- Inserção de legendas
 

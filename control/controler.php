@@ -9,9 +9,7 @@ switch ($action)
 		require_once "../model/analise.php";
 
 		$result = analisar($cfonte, $lfonte, $ldestino);
-		
-		var_dump($result);
-		// echo $result['descricao'];
+		echo json_encode(["prototipo" => $result]);
 		break;
 	
 	case 'carregarLinguagens':
