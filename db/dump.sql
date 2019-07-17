@@ -90,7 +90,24 @@ descricao varchar(500)
 create sequence legendas_seq increment 1 minvalue 1 start 1;
 alter table legendas alter column id set default nextval('legendas_seq');
 
+create table declaracoes (
+id int primary key,
+descricao varchar(255) not null,
+id_linguagem int references linguagens(id)
+);
+
+create sequence declaracoes_seq increment 1 minvalue 1 start 1;
+alter table declaracoes alter column id set default nextval('declaracoes_seq');
+
 /* Inserção de dados nas tabelas */
+
+-- Inserção de declarações
+insert into declaracoes (descricao, id_linguagem) values
+('<tipo> <nome> = <valor>;', 1),
+('<tipo> <nome> = <valor>;', 2),
+('<nome> : <tipo> = <valor>;', 3),
+('<nome> = <valor>', 4),
+('let <nome> = <valor>', 5);
 
 -- Inserção dos paradigmas
 insert into paradigmas (nome) values 

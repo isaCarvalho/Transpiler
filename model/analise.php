@@ -190,6 +190,17 @@ function transpilaFor($id_fonte, $id_destino, $matches = [])
     return str_replace($antigo, $novo, $prototipo);
 }
 
+function transpilaDeclaracao($id_fonte, $id_destino, $matches = [])
+{
+    // pega o prototipo de uma declaracao na linguagem de destino
+    $prototipo = Query::select("descricao", "declaracoes", "id_linguagem = ?", [$id_destino]);
+
+    // retorna o tipo na liguagem de destino
+    $prototipo = buscaTipo($id_fonte, $id_destino, $matches['tipo'], $matches['nome'], $prototipo[0]['descricao']);
+
+    return str_replace('<valor>', $matches['valor'], $prototipo);
+}
+
 function analiseC($codigo, $id_destino)
 {
 	// Transpila um if
@@ -215,6 +226,17 @@ function analiseC($codigo, $id_destino)
         ];
 
         return transpilaFor(2, $id_destino, $matches);
+    }
+    // Transpila uma declaracao de variavel
+    else if (preg_match("/([\w]+)\s\s?+([\w]?+)\s?+\=\s?+([\d]+)\;/", $codigo, $matches))
+    {
+        $matches = [
+            'tipo' => $matches[1],
+            'nome' => $matches[2],
+            'valor' => $matches[3]
+        ];
+
+        return transpilaDeclaracao(1, $id_destino, $matches);
     }
 
     return 'O codigo não pode ser transpilado!';
@@ -246,6 +268,17 @@ function analiseJava($codigo, $id_destino)
 
         return transpilaFor(2, $id_destino, $matches);
     }
+    // Transpila uma declaracao de variavel
+    else if (preg_match("/([\w]+)\s\s?+([\w]?+)\s?+\=\s?+([\d]+)\;/", $codigo, $matches))
+    {
+        $matches = [
+            'tipo' => $matches[1],
+            'nome' => $matches[2],
+            'valor' => $matches[3]
+        ];
+
+        return transpilaDeclaracao(2, $id_destino, $matches);
+    }
 
     return 'O codigo não pode ser transpilado!';
 }
@@ -276,6 +309,17 @@ function analiseKotlin($codigo, $id_destino)
         ];
 
         return transpilaFor(3, $id_destino, $matches);
+    }
+	// Transpila a declaracao de uma variavel
+    else if (preg_match("/([\w]+)\s?+\:\s?+([\w]+)\s?+\=\s?+(.*)\;/", $codigo, $matches))
+    {
+        $matches = [
+            'tipo' => $matches[2],
+            'nome' => $matches[1],
+            'valor' => $matches[3]
+        ];
+
+        return transpilaDeclaracao(3, $id_destino, $matches);
     }
 
 	return 'O codigo não pode ser transpilado!';

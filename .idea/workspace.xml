@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09db7d0e-9863-47ee-96b6-63c6784756e4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/dump.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/dump.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/analise.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/analise.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/analise.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-71">
-              <caret line="265" column="35" selection-start-line="265" selection-start-column="35" selection-end-line="265" selection-end-column="35" />
+            <state relative-caret-position="289">
+              <caret line="238" column="61" selection-start-line="238" selection-start-column="61" selection-end-line="238" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -41,15 +41,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
               <caret line="152" column="18" selection-start-line="152" selection-start-column="18" selection-end-line="152" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/dump.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2745">
-              <caret line="183" column="37" selection-start-line="183" selection-start-column="37" selection-end-line="183" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -104,6 +95,7 @@
         <option value="$PROJECT_DIR$/model/linguagem.php" />
         <option value="$PROJECT_DIR$/js/carregarTutorials.js" />
         <option value="$PROJECT_DIR$/css/pagina.css" />
+        <option value="$PROJECT_DIR$/db/dump.sql" />
         <option value="$PROJECT_DIR$/model/analise.php" />
       </list>
     </option>
@@ -167,18 +159,18 @@
       <updated>1563306315700</updated>
       <workItem from="1563306321306" duration="526000" />
       <workItem from="1563367191178" duration="10851000" />
-      <workItem from="1563383423984" duration="5043000" />
+      <workItem from="1563383423984" duration="6998000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16420000" />
+    <option name="totallyTimeSpent" value="18375000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="701" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20833333" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20833333" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -230,13 +222,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/dump.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2745">
-          <caret line="183" column="37" selection-start-line="183" selection-start-column="37" selection-end-line="183" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -247,13 +232,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/pagina.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="152" column="18" selection-start-line="152" selection-start-column="18" selection-end-line="152" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/control/controler.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -261,10 +239,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/db/dump.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/pagina.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="152" column="18" selection-start-line="152" selection-start-column="18" selection-end-line="152" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/analise.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-71">
-          <caret line="265" column="35" selection-start-line="265" selection-start-column="35" selection-end-line="265" selection-end-column="35" />
+        <state relative-caret-position="289">
+          <caret line="238" column="61" selection-start-line="238" selection-start-column="61" selection-end-line="238" selection-end-column="61" />
         </state>
       </provider>
     </entry>
