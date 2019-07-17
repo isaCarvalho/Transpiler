@@ -16,7 +16,8 @@ a
 
 .body
 {
-	background-image: url(../images/fundo2.jpeg);
+	background-image: url(../images/fundo4.jpeg);
+	background-size: cover;
 	max-height: 100%;
 	width: 100%;
 	margin: 0 auto;
@@ -67,10 +68,12 @@ a
 
 .button
 {
-	background-color: #630529;
+	/*background-color: #630529;*/
+	background-color: rgb(70, 129, 168);
 	width: 405px;
 	height: 40px;
-	border: 1px solid #79133aee;
+	/*border: 1px solid #79133aee;*/
+	border: none;
 	border-radius: 3px;
 	border-collapse: collapse;
 	color: white;
@@ -123,9 +126,10 @@ table tr
 
 table tr th
 {
-	background-color: #630529;
+	/*background-color: #630529;*/
+	background-color: rgb(70, 129, 168);
 	color: white;
-	border: 1px solid #630529;
+	border: 1px solid rgb(70, 129, 168);
 	font-size: 18px;
 }
 

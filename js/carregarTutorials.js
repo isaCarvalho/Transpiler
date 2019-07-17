@@ -63,7 +63,7 @@ function carregarFunctions(id)
 		.then(functions => {
 			let tableFunctions = document.createElement('table');
 			tableFunctions.innerHTML = `<tr>
-									  	<th>Descrição</th>
+									  	<th>Funções</th>
 							  		</tr>`;
 
 
@@ -87,6 +87,7 @@ function carregarTipos(id)
 		.then(tipos => {
 			let tableTipos = document.createElement('table');
 			tableTipos.innerHTML = `<tr>
+										<th>Tipo</th>
 									  	<th>Descrição</th>
 									  	<th>Tamanho</th>
 							  		</tr>`;
@@ -99,9 +100,10 @@ function carregarTipos(id)
 				if (tipo.tamanho == 0)
 					tamanho = 'não informado';
 				else
-					tamanho = `${tipos.tamanho}`;
+					tamanho = tipo.tamanho + ' bits';
 
-				tr.innerHTML = `<td>${tipo.descricao}</td>
+				tr.innerHTML = `<td>${tipo.tipo}</td>
+								<td>${tipo.descricao}</td>
 								<td>${tamanho}</td>
 								`;
 
@@ -121,7 +123,7 @@ function carregarIfs(id)
 
 			let tableIfs = document.createElement('table');
 			tableIfs.innerHTML = `<tr>
-								  	<th>Descrição</th>
+								  	<th>Expressões Condicionais</th>
 							  	</tr>`;
 
 			ifs.forEach(bnfIf => {
@@ -144,7 +146,7 @@ function carregarLoops(id)
 
 			let tableLoops = document.createElement('table');
 			tableLoops.innerHTML = `<tr>
-										<th>Descrição</th>
+										<th>Laços de Repetição</th>
 									</tr>`;
 
 			loops.forEach(loop => {
