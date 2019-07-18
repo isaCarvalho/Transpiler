@@ -201,20 +201,54 @@ function transpilaDeclaracao($id_fonte, $id_destino, $matches = [])
     return str_replace('<valor>', $matches['valor'], $prototipo);
 }
 
+function transpilaReturn($id_destino, $valor)
+{
+    // pega o prototipo do return na linguagem de destino
+    $prototipo = Query::select("descricao", "returns", "id_linguagem = ?", [$id_destino]);
+
+    $str = str_replace('<valor>', $valor, $prototipo[0]['descricao']) ;
+
+    if ($id_destino != 5 && $id_destino != 4)
+        $str .= "\n}";
+
+    return $str;
+}
+
+function codigo_final($codigo_final)
+{
+    if (strlen($codigo_final))
+        return $codigo_final;
+
+    return 'O codigo não pode ser transpilado!';
+}
+
+function formatarFuncao($id_destino)
+{
+    if ($id_destino == 4)
+        return "\n";
+
+    if ($id_destino != 5 && $id_destino != 4)
+        return " {\n";
+}
+
 function analiseC($codigo, $id_destino)
 {
+    $codigo_final = '';
+
 	// Transpila um if
-	if (preg_match("/^(if)/", $codigo, $matches))
+	if (preg_match("/(if)/", $codigo, $matches))
 	{
-		return transpilaIF($codigo, $id_destino);
+        $codigo_final .= transpilaIF($codigo, $id_destino)."\n";
 	}
 	// Transpila uma funcao
-	else if (preg_match("/([\w]+)\s([\w]+)\s?\((.*?)\)/", $codigo, $matches))
+	if (preg_match("/^([\w]+)\s([\w]+)\s?\((.*?)\)/", $codigo, $matches))
     {
-        return transpilaFuncao(1, $id_destino, $matches[1], $matches[2], $matches[3]);
+        $codigo_final .= transpilaFuncao(1, $id_destino, $matches[1], $matches[2], $matches[3]);
+
+        $codigo_final .= formatarFuncao($id_destino);
     }
 	// Transpila um for padrao
-    else if (preg_match("/^for\s?+\(\s?+([\w]+)\s\s?+([\w+])\s?+\=\s?+([\d]+)\s?+\;\s?+[\w]+\s?+([<>!=]+)\s?+([\d]+)\s?+\;\s?+[\w]+(.*)\)/", $codigo, $matches))
+    if (preg_match("/for\s?+\(\s?+([\w]+)\s\s?+([\w+])\s?+\=\s?+([\d]+)\s?+\;\s?+[\w]+\s?+([<>!=]+)\s?+([\d]+)\s?+\;\s?+[\w]+(.*)\)/", $codigo, $matches))
     {
         $matches = [
             'tipo' => $matches[1],
@@ -225,37 +259,53 @@ function analiseC($codigo, $id_destino)
             'incr' => $matches[6]
         ];
 
-        return transpilaFor(2, $id_destino, $matches);
+        $codigo_final .= transpilaFor(2, $id_destino, $matches)."\n";
     }
     // Transpila uma declaracao de variavel
-    else if (preg_match("/([\w]+)\s\s?+([\w]?+)\s?+\=\s?+([\d]+)\;/", $codigo, $matches))
+    if (preg_match_all("/([\w]+)\s\s?+([\w]?+)\s?+\=\s?+([\d]+)\;/", $codigo, $matches))
     {
-        $matches = [
-            'tipo' => $matches[1],
-            'nome' => $matches[2],
-            'valor' => $matches[3]
-        ];
+        for ($i = 0; $i < sizeof($matches)-1; $i++)
+        {
+            $values = [
+                'tipo' => $matches[1][$i],
+                'nome' => $matches[2][$i],
+                'valor' => $matches[3][$i]
+            ];
 
-        return transpilaDeclaracao(1, $id_destino, $matches);
+            $codigo_final .= transpilaDeclaracao(2, $id_destino, $values);
+
+            if ($i != sizeof($matches)-2)
+                $codigo_final .= "\n";
+        }
+
+    }
+    // Transpila return
+    if (preg_match("/return\s+?(.*?)\;\s+?\}/", $codigo, $matches))
+    {
+        $codigo_final .= transpilaReturn($id_destino, $matches[1]);
     }
 
-    return 'O codigo não pode ser transpilado!';
+    return codigo_final($codigo_final);
 }
 
 function analiseJava($codigo, $id_destino)
 {
+    $codigo_final = '';
+
 	// Transpila um if em Java
-	if (preg_match("/^(if)/", $codigo, $matches))
+	if (preg_match("/(if)/", $codigo, $matches))
 	{
-		return transpilaIF($codigo, $id_destino);
+		$codigo_final .= transpilaIF($codigo, $id_destino) ."\n";
 	}
 	// Transpila um metodo publico
-	else if (preg_match("/^public\s+([\w]+)\s+([\w]+)\((.*?)\)/", $codigo, $matches))
-	{
-		return transpilaFuncao(2, $id_destino, $matches[1], $matches[2], $matches[3]);
-	}
+	if (preg_match("/public\s+([\w]+)\s+([\w]+)\s?+\((.*?)\)\s?+\{/", $codigo, $matches))
+    {
+        $codigo_final .= transpilaFuncao(2, $id_destino, $matches[1], $matches[2], $matches[3]);
+
+        $codigo_final .= formatarFuncao($id_destino);
+    }
 	// Transpila um for padrao
-	else if (preg_match("/^for\s?+\(\s?+([\w]+)\s\s?+([\w+])\s?+\=\s?+([\d]+)\s?+\;\s?+[\w]+\s?+([<>!=]+)\s?+([\d]+)\s?+\;\s?+[\w]+(.*)\)/", $codigo, $matches))
+	if (preg_match("/for\s?+\(\s?+([\w]+)\s\s?+([\w+])\s?+\=\s?+([\d]+)\s?+\;\s?+[\w]+\s?+([<>!=]+)\s?+([\d]+)\s?+\;\s?+[\w]+(.*)\)/", $codigo, $matches))
     {
         $matches = [
                     'tipo' => $matches[1],
@@ -266,38 +316,54 @@ function analiseJava($codigo, $id_destino)
                     'incr' => $matches[6]
         ];
 
-        return transpilaFor(2, $id_destino, $matches);
+        $codigo_final .= transpilaFor(2, $id_destino, $matches) ."\n";
     }
     // Transpila uma declaracao de variavel
-    else if (preg_match("/([\w]+)\s\s?+([\w]?+)\s?+\=\s?+([\d]+)\;/", $codigo, $matches))
+    if (preg_match_all("/([\w]+)\s\s?+([\w]?+)\s?+\=\s?+([\d]+)\;/", $codigo, $matches))
     {
-        $matches = [
-            'tipo' => $matches[1],
-            'nome' => $matches[2],
-            'valor' => $matches[3]
-        ];
+        for ($i = 0; $i < sizeof($matches)-1; $i++)
+        {
+            $values = [
+                'tipo' => $matches[1][$i],
+                'nome' => $matches[2][$i],
+                'valor' => $matches[3][$i]
+            ];
 
-        return transpilaDeclaracao(2, $id_destino, $matches);
+            $codigo_final .= transpilaDeclaracao(2, $id_destino, $values);
+
+            if ($i != sizeof($matches)-2)
+                $codigo_final .= "\n";
+        }
+
+    }
+    // Transpila return
+    if (preg_match("/return\s+?(.*?)\;\s+?\}/", $codigo, $matches))
+    {
+        $codigo_final .= transpilaReturn($id_destino, $matches[1]);
     }
 
-    return 'O codigo não pode ser transpilado!';
+    return codigo_final($codigo_final);
 }
 
 function analiseKotlin($codigo, $id_destino)
 {
+    $codigo_final = '';
+
 	// Transpila um if em Kotlin
-	if (preg_match("/^(if)/", $codigo, $matches))
+	if (preg_match("/(if)/", $codigo, $matches))
 	{
-		return transpilaIF($codigo, $id_destino);
+        $codigo_final .= transpilaIF($codigo, $id_destino)."\n";
 	}
 	// Transpila um metodo em Kotlin
-	else if (preg_match("/^fun\s+([\w]+)\s?+\((.*?)\)\s?+\:?\s?+([\w]+)?/", $codigo, $matches))
+	if (preg_match("/fun\s+([\w]+)\s?+\((.*?)\)\s?+\:?\s?+([\w]+)?/", $codigo, $matches))
 	{
 	    //O array de matches contém o tipo de retorno, nome da função e parametros, respectivamente.
-		return transpilaFuncao(3, $id_destino, $matches[3], $matches[1], $matches[2], ':');
-	}
+        $codigo_final .= transpilaFuncao(3, $id_destino, $matches[3], $matches[1], $matches[2], ':');
+
+        $codigo_final .= formatarFuncao($id_destino);
+    }
 	// Transpila um laço for padrão
-	else if (preg_match("/^for\s?+\(([\w]+)\s?+\:\s?+([\w]+)\s?+in\s?+([\d]+)..([\d]+)/", $codigo, $matches))
+	if (preg_match("/for\s?+\(([\w]+)\s?+\:\s?+([\w]+)\s?+in\s?+([\d]+)..([\d]+)/", $codigo, $matches))
     {
         $matches = [
             'tipo' => $matches[2],
@@ -308,29 +374,41 @@ function analiseKotlin($codigo, $id_destino)
             'incr' => $matches[1].'++'
         ];
 
-        return transpilaFor(3, $id_destino, $matches);
+        $codigo_final .= transpilaFor(3, $id_destino, $matches)."\n";
     }
 	// Transpila a declaracao de uma variavel
-    else if (preg_match("/([\w]+)\s?+\:\s?+([\w]+)\s?+\=\s?+(.*)\;/", $codigo, $matches))
+    if (preg_match_all("/([\w]+)\s?+\:\s?+([\w]+)\s?+\=\s?+(.*)\;?/", $codigo, $matches))
     {
-        $matches = [
-            'tipo' => $matches[2],
-            'nome' => $matches[1],
-            'valor' => $matches[3]
-        ];
 
-        return transpilaDeclaracao(3, $id_destino, $matches);
+        for ($i = 0; $i < sizeof($matches)-1; $i++)
+        {
+            $values = [
+                'tipo' => trim($matches[2][$i]),
+                'nome' => trim($matches[1][$i]),
+                'valor' => trim($matches[3][$i])
+            ];
+
+            $codigo_final .= transpilaDeclaracao(3, $id_destino, $values);
+
+            if ($i != sizeof($matches)-2)
+                $codigo_final .= "\n";
+        }
+    }
+    // Transpila return
+    if (preg_match("/return\s+?(.*?)\;?\s+?\}/", $codigo, $matches))
+    {
+        $codigo_final .= transpilaReturn($id_destino, $matches[1]);
     }
 
-	return 'O codigo não pode ser transpilado!';
+	return codigo_final($codigo_final);
 }
 
 function analisePython($codigo, $id_destino)
 {
 	// Transpila um if em Python 3
-	if (preg_match("/^(if)/", $codigo, $matches))
+	if (preg_match("/(if)/", $codigo, $matches))
 	{
-		return transpilaIF($codigo, $id_destino);
+		return transpilaIF($codigo, $id_destino)."\n";
 	}
 
     return 'O codigo não pode ser transpilado!';

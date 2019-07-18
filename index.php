@@ -42,7 +42,6 @@
 	
 </body>
 
-<script src="js/carregarCodigo.js"></script>
 <script src="js/carregaResultado.js"></script>
 
 <?php

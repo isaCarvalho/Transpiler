@@ -99,13 +99,30 @@ id_linguagem int references linguagens(id)
 create sequence declaracoes_seq increment 1 minvalue 1 start 1;
 alter table declaracoes alter column id set default nextval('declaracoes_seq');
 
+create table returns(
+id int primary key,
+descricao varchar(255) not null,
+id_linguagem int references linguagens(id)
+);
+
+create sequence returns_seq increment 1 minvalue 1 start 1;
+alter table returns alter column id set default nextval('returns_seq');
+
 /* Inserção de dados nas tabelas */
+
+-- Inserção dos retornos
+insert into returns (descricao, id_linguagem) values
+('return <valor>;', 1),
+('return <valor>;', 2),
+('return <valor>', 3),
+('return <valor>', 4),
+('= <valor>', 5);
 
 -- Inserção de declarações
 insert into declaracoes (descricao, id_linguagem) values
 ('<tipo> <nome> = <valor>;', 1),
 ('<tipo> <nome> = <valor>;', 2),
-('<nome> : <tipo> = <valor>;', 3),
+('<nome> : <tipo> = <valor>', 3),
 ('<nome> = <valor>', 4),
 ('let <nome> = <valor>', 5);
 
@@ -137,7 +154,7 @@ insert into functions (descricao, id_linguagem) values
 ('public <tipo> <nome> (<param>)', 2), 
 ('fun <nome> (<param>) : <tipo>', 3), 
 ('def <nome>(<param>):', 4), 
-('<nome> <param> =', 5);
+('<nome> <param> ', 5);
 
 -- Inserção de tipos primitivos
 insert into tipos (tipo, descricao, tamanho, id_linguagem) values
