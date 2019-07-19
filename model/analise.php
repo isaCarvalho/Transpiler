@@ -28,19 +28,15 @@ function analisar($codigo, $id_fonte, $id_destino)
 	}
 }
 
-function transpilaIF($codigo, $id_destino)
+function transpilaIF($codigo, $id_destino, $matches = [])
 {
 	// formato geral de uma expressão condicional na linguagem de destino
 	$result = Query::select("descricao", "ifs", "id_linguagem = ?", [$id_destino]);
 
-	// forma da expressão condicional
-	$regex = "/['('](.*?)[')']/";
-
-	// captura a expressão condicional contida no codigo enviado
-	preg_match_all($regex, $codigo, $if);
-
 	// substitui a ocorrencia do if na linguagem de fonte para lingugagem de destino;
-	$sub = str_replace('<exp>', $if[1][0], $result[0]['descricao']);
+	$sub = str_replace('<exp>', $matches[1], $result[0]['descricao']);
+
+	$sub .= formatarFuncao($id_destino);
 
 	// retorna o if na linguagem de destino
 	return $sub;
@@ -214,6 +210,21 @@ function transpilaReturn($id_destino, $valor)
     return $str;
 }
 
+function transpilaAtribuicao($id_destino, $matches, $codigo)
+{
+    foreach ($matches as $match)
+    {
+        $aux = $match[0];
+
+        if ($id_destino != 1 && $id_destino != 2)
+            $aux = str_replace(';', '', $match[0]);
+
+        $codigo = str_replace($match[0], $aux,$codigo);
+    }
+
+    return $codigo;
+}
+
 function codigo_final($codigo_final)
 {
     if (strlen($codigo_final))
@@ -224,32 +235,32 @@ function codigo_final($codigo_final)
 
 function formatarFuncao($id_destino)
 {
-    if ($id_destino == 4)
-        return "\n";
-
     if ($id_destino != 5 && $id_destino != 4)
-        return " {\n";
+        return " {";
 }
 
 function analiseC($codigo, $id_destino)
 {
-    $codigo_final = '';
-
 	// Transpila um if
-	if (preg_match("/(if)/", $codigo, $matches))
+	if (preg_match("/if\s?+\((.*?)\)\s?+\{/", $codigo, $matches))
 	{
-        $codigo_final .= transpilaIF($codigo, $id_destino)."\n";
+        $aux = transpilaIF($codigo, $id_destino, $matches);
+
+        $codigo = str_replace($matches[0], $aux, $codigo);
 	}
 	// Transpila uma funcao
-	if (preg_match("/^([\w]+)\s([\w]+)\s?\((.*?)\)/", $codigo, $matches))
+	if (preg_match("/([\w]+)\s([\w]+)\s?\((.*?)\)\s?+\{/", $codigo, $matches))
     {
-        $codigo_final .= transpilaFuncao(1, $id_destino, $matches[1], $matches[2], $matches[3]);
+        $aux = transpilaFuncao(1, $id_destino, $matches[1], $matches[2], $matches[3]).formatarFuncao($id_destino);
 
-        $codigo_final .= formatarFuncao($id_destino);
+//        var_dump($aux);
+        $codigo = str_replace($matches[0], $aux, $codigo);
     }
 	// Transpila um for padrao
-    if (preg_match("/for\s?+\(\s?+([\w]+)\s\s?+([\w+])\s?+\=\s?+([\d]+)\s?+\;\s?+[\w]+\s?+([<>!=]+)\s?+([\d]+)\s?+\;\s?+[\w]+(.*)\)/", $codigo, $matches))
+    if (preg_match("/for\s?+\(\s?+([\w]+)\s\s?+([\w+])\s?+\=\s?+(.*)\s?+\;\s?+[\w]+\s?+([<>!=]+)\s?+(.*)\s?+\;\s?+[\w]+(.*)\)\s?+\{/", $codigo, $matches))
     {
+        $match = $matches[0];
+
         $matches = [
             'tipo' => $matches[1],
             'var' => $matches[2],
@@ -259,7 +270,10 @@ function analiseC($codigo, $id_destino)
             'incr' => $matches[6]
         ];
 
-        $codigo_final .= transpilaFor(2, $id_destino, $matches)."\n";
+        $aux = transpilaFor(2, $id_destino, $matches).formatarFuncao($id_destino);
+
+        $codigo = str_replace($match, $aux, $codigo);
+
     }
     // Transpila uma declaracao de variavel
     if (preg_match_all("/([\w]+)\s\s?+([\w]?+)\s?+\=\s?+([\d]+)\;/", $codigo, $matches))
@@ -272,41 +286,48 @@ function analiseC($codigo, $id_destino)
                 'valor' => $matches[3][$i]
             ];
 
-            $codigo_final .= transpilaDeclaracao(2, $id_destino, $values);
+            $aux = transpilaDeclaracao(2, $id_destino, $values);
 
-            if ($i != sizeof($matches)-2)
-                $codigo_final .= "\n";
+            $codigo = str_replace($matches[0][$i], $aux, $codigo);
         }
 
     }
     // Transpila return
     if (preg_match("/return\s+?(.*?)\;\s+?\}/", $codigo, $matches))
     {
-        $codigo_final .= transpilaReturn($id_destino, $matches[1]);
+        $aux = transpilaReturn($id_destino, $matches[1]);
+
+        $codigo = str_replace($matches[0], $aux, $codigo);
+    }
+    if (preg_match_all("/([\w]+)\s?+([=\-+*\/]+)\s?+(.*)\;/", $codigo, $matches))
+    {
+
+        $codigo = transpilaAtribuicao($id_destino, $matches, $codigo);
     }
 
-    return codigo_final($codigo_final);
+    return codigo_final($codigo);
 }
 
 function analiseJava($codigo, $id_destino)
 {
-    $codigo_final = '';
-
 	// Transpila um if em Java
-	if (preg_match("/(if)/", $codigo, $matches))
+	if (preg_match("/if\s?+\((.*?)\)\s?+\{/", $codigo, $matches))
 	{
-		$codigo_final .= transpilaIF($codigo, $id_destino) ."\n";
+		$aux = transpilaIF($codigo, $id_destino, $matches);
+
+		$codigo = str_replace($matches[0], $aux, $codigo);
 	}
 	// Transpila um metodo publico
 	if (preg_match("/public\s+([\w]+)\s+([\w]+)\s?+\((.*?)\)\s?+\{/", $codigo, $matches))
     {
-        $codigo_final .= transpilaFuncao(2, $id_destino, $matches[1], $matches[2], $matches[3]);
+        $aux = transpilaFuncao(2, $id_destino, $matches[1], $matches[2], $matches[3]).formatarFuncao($id_destino);
 
-        $codigo_final .= formatarFuncao($id_destino);
+        $codigo = str_replace($matches[0], $aux, $codigo);
     }
 	// Transpila um for padrao
-	if (preg_match("/for\s?+\(\s?+([\w]+)\s\s?+([\w+])\s?+\=\s?+([\d]+)\s?+\;\s?+[\w]+\s?+([<>!=]+)\s?+([\d]+)\s?+\;\s?+[\w]+(.*)\)/", $codigo, $matches))
+	if (preg_match("/for\s?+\(\s?+([\w]+)\s\s?+([\w+])\s?+\=\s?+(.*)\s?+\;\s?+[\w]+\s?+([<>!=]+)\s?+(.*)\s?+\;\s?+[\w]+(.*)\)\s?+\{/", $codigo, $matches))
     {
+        $match = $matches[0];
         $matches = [
                     'tipo' => $matches[1],
                     'var' => $matches[2],
@@ -316,7 +337,9 @@ function analiseJava($codigo, $id_destino)
                     'incr' => $matches[6]
         ];
 
-        $codigo_final .= transpilaFor(2, $id_destino, $matches) ."\n";
+        $aux = transpilaFor(2, $id_destino, $matches).formatarFuncao($id_destino);
+
+        $codigo = str_replace($match, $aux, $codigo);
     }
     // Transpila uma declaracao de variavel
     if (preg_match_all("/([\w]+)\s\s?+([\w]?+)\s?+\=\s?+([\d]+)\;/", $codigo, $matches))
@@ -329,22 +352,29 @@ function analiseJava($codigo, $id_destino)
                 'valor' => $matches[3][$i]
             ];
 
-            $codigo_final .= transpilaDeclaracao(2, $id_destino, $values);
+            $aux = transpilaDeclaracao(2, $id_destino, $values);
 
-            if ($i != sizeof($matches)-2)
-                $codigo_final .= "\n";
+            $codigo = str_replace($matches[0][$i], $aux, $codigo);
         }
 
     }
     // Transpila return
     if (preg_match("/return\s+?(.*?)\;\s+?\}/", $codigo, $matches))
     {
-        $codigo_final .= transpilaReturn($id_destino, $matches[1]);
+        $aux= transpilaReturn($id_destino, $matches[1]);
+
+        $codigo = str_replace($matches[0], $aux, $codigo);
+    }
+    if (preg_match_all("/([\w]+)\s?+([=\-+*\/]+)\s?+(.*)\;/", $codigo, $matches))
+    {
+
+        $codigo = transpilaAtribuicao($id_destino, $matches, $codigo);
     }
 
-    return codigo_final($codigo_final);
+    return codigo_final($codigo);
 }
 
+// LEMBRAR DE VERIFICAR AS CHAVES AQUI E DE FAZER ANALISE EM BLOCO
 function analiseKotlin($codigo, $id_destino)
 {
     $codigo_final = '';
@@ -355,7 +385,7 @@ function analiseKotlin($codigo, $id_destino)
         $codigo_final .= transpilaIF($codigo, $id_destino)."\n";
 	}
 	// Transpila um metodo em Kotlin
-	if (preg_match("/fun\s+([\w]+)\s?+\((.*?)\)\s?+\:?\s?+([\w]+)?/", $codigo, $matches))
+	if (preg_match("/fun\s+([\w]+)\s?+\((.*?)\)\s?+\:?\s?+([\w]+)?", $codigo, $matches))
 	{
 	    //O array de matches contém o tipo de retorno, nome da função e parametros, respectivamente.
         $codigo_final .= transpilaFuncao(3, $id_destino, $matches[3], $matches[1], $matches[2], ':');
@@ -363,7 +393,7 @@ function analiseKotlin($codigo, $id_destino)
         $codigo_final .= formatarFuncao($id_destino);
     }
 	// Transpila um laço for padrão
-	if (preg_match("/for\s?+\(([\w]+)\s?+\:\s?+([\w]+)\s?+in\s?+([\d]+)..([\d]+)/", $codigo, $matches))
+	if (preg_match("/for\s?+\(([\w]+)\s?+\:\s?+([\w]+)\s?+in\s?+([\d]+)..([\d]+)\s?+\{/", $codigo, $matches))
     {
         $matches = [
             'tipo' => $matches[2],

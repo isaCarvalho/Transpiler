@@ -2,6 +2,8 @@
 	include_once "header.html";
 ?>
 
+<!--LEMBRAR DE PROCURAR A BIBLIOTECA HIGHLIGHTING DO JAVASCRIPT-->
+
 <script src="js/limpar.js"></script>
 
 <body class="body">
@@ -30,7 +32,7 @@
 			</p>
 			<p>
 				<textarea class="text" placeholder="Código na linguagem de origem..." name="cfonte"></textarea>
-				<textarea class="text" placeholder="Código na linguagem de destino..." name="cdestino" id="cDestino"></textarea>
+				<textarea class="text" placeholder="Código na linguagem de destino..." name="cdestino" id="cDestino" contenteditable="false"></textarea>
 			</p>
 
 			<p>

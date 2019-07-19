@@ -90,6 +90,7 @@ descricao varchar(500)
 create sequence legendas_seq increment 1 minvalue 1 start 1;
 alter table legendas alter column id set default nextval('legendas_seq');
 
+-- Tabela de declaracoes
 create table declaracoes (
 id int primary key,
 descricao varchar(255) not null,
@@ -99,6 +100,7 @@ id_linguagem int references linguagens(id)
 create sequence declaracoes_seq increment 1 minvalue 1 start 1;
 alter table declaracoes alter column id set default nextval('declaracoes_seq');
 
+-- Tabela de returns
 create table returns(
 id int primary key,
 descricao varchar(255) not null,
@@ -214,20 +216,20 @@ insert into legendas (nome, descricao) values
 -- Inserção de loops 
 
 insert into loops (descricao, id_linguagem) values
-('for (<tipo> <var> = <inicio>; <var> <cond> <fim>; <incr>) { <commands> }', 1),
-('while (<exp>) { <commands> } ', 1),
+('for (<tipo> <var> = <inicio>; <var> <cond> <fim>; <incr>)', 1),
+('while (<exp>)', 1),
 ('do { <commands> } while (<exp>)', 1),
-('for (<tipo> <var> = <inicio>; <var> <cond> <fim>; <incr>) { <commands> }', 2),
+('for (<tipo> <var> = <inicio>; <var> <cond> <fim>; <incr>)', 2),
 ('for (<tipo> <var>: <collections>)', 2),
-('while (<exp>) { <commands> }', 2),
+('while (<exp>)', 2),
 ('do { <commands> } while (<exp>)', 2),
-('for (<var> : <tipo> in <collections>) { <commands> }', 3),
+('for (<var> : <tipo> in <collections>)', 3),
 ('for (<var> : <tipo> in <inicio>..<fim>)', 3),
-('while (<exp>) { <commands> }', 3),
+('while (<exp>)', 3),
 ('do { <commands> } while (exp)', 3),
-('for <var> in <collections>: <commands>', 4),
-('for <var> in range(<inicio>, <fim>, <step>): <commands>', 4),
-('while <exp>: <commands>', 4),
+('for <var> in <collections>:', 4),
+('for <var> in range(<inicio>, <fim>, <step>):', 4),
+('while <exp>:', 4),
 ('não informado', 5);
 
 /* Consultas */
