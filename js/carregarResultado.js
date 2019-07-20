@@ -8,9 +8,17 @@ form.addEventListener("submit", (event) => {
     fetch('control/controler.php?action=enviarFonte', {method: "post", body})
     .then(response => response.json())
     .then(response => {
-        let destino = document.querySelector("textarea[name=cdestino]");
+        let destino = document.querySelector("pre[name=cdestino]");
         console.log(response)
 
-        destino.value = response.prototipo
+        // destino.value = response.prototipo
+
+        destino.innerHTML = `<code>${response.prototipo}</code>`
+
+        // response.forEach(line => {
+        //     let code = document.createElement('<code>');
+        //     code.innerHTML =`<span>${line}</span>`;
+        //     destino.appendChild(code);
+        // });
     })
 })

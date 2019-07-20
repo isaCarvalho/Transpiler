@@ -25,6 +25,14 @@ a
 	position: relative;
 }
 
+.home
+{
+	display: inline-block;
+	margin: 0 auto;
+	margin-bottom: 135px;
+	margin-top: 20px;
+}
+
 .label
 {
 	font-family: 'Share Tech Mono', monospace;
@@ -45,12 +53,48 @@ a
 	margin-bottom: 5px;
 }
 
-.text
-{
-	width: 400px;
-	height: 200px;
+.text {
+	width: 392px;
+	height: 205px;
 	border: 0px solid white;
+	border-left: 3px solid rgb(255, 82, 82);
 	border-radius: 2px;
+	float: left;
+	margin-right: 5px;
+	padding-left: 5px;
+	font-family: monospace;
+	font-size: 14px;
+	color: rgba(14, 14, 14, 0.98);
+	line-height: 1.6;
+	overflow: auto;
+	box-shadow: .1em .1em .5em rgba(0,0,0,.45);
+}
+
+code
+{
+	text-align: left;
+	float: left;
+}
+
+pre {
+	width: 395px;
+	height: 207px;
+	background-color: white;
+	border: 1px solid #ddd;
+	border-left: 3px solid rgb(255,82,82);
+	border-radius: 2px;
+	color: rgba(14, 14, 14, 0.98);
+	page-break-inside: avoid;
+	font-family: monospace;
+	font-size: 14px;
+	line-height: 1.6;
+	margin-bottom: 1.6em;
+	padding-left: 5px;
+	overflow: auto;
+	display: block;
+	word-wrap: break-word;
+	float: top;
+	box-shadow: .1em .1em .5em rgba(0,0,0,.45);
 }
 
 .ling
@@ -68,11 +112,9 @@ a
 
 .button
 {
-	/*background-color: #630529;*/
 	background-color: rgb(70, 129, 168);
 	width: 405px;
 	height: 40px;
-	/*border: 1px solid #79133aee;*/
 	border: none;
 	border-radius: 3px;
 	border-collapse: collapse;

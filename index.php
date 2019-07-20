@@ -7,7 +7,7 @@
 <script src="js/limpar.js"></script>
 
 <body class="body">
-	<nav class="selecao">
+	<nav class="home">
 		<form id="formulario">			
 			
 			<p>
@@ -32,7 +32,7 @@
 			</p>
 			<p>
 				<textarea class="text" placeholder="Código na linguagem de origem..." name="cfonte"></textarea>
-				<textarea class="text" placeholder="Código na linguagem de destino..." name="cdestino" id="cDestino" contenteditable="false"></textarea>
+                <pre name="cdestino"></pre>
 			</p>
 
 			<p>
