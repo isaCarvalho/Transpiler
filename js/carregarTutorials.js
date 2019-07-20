@@ -51,6 +51,7 @@ function carregarTexto(id)
 	carregarTipos(id);
 	carregarIfs(id);
 	carregarLoops(id);
+	carregarDeclaracoes(id);
 
 	nav.appendChild(navLing);
 }
@@ -157,5 +158,28 @@ function carregarLoops(id)
 			});
 
 			navLing.appendChild(tableLoops);
+		})
+}
+
+function carregarDeclaracoes(id)
+{
+	fetch(`../control/controler.php?action=carregarDeclaracoes&id_linguagem=${id}`)
+		.then(response => response.json())
+		.then(declaracoes => {
+
+			let tableDecl = document.createElement('table');
+			tableDecl.innerHTML = `<tr>
+										<th>Declaração</th>
+									</tr>
+			`;
+
+			declaracoes.forEach(declaracao => {
+				let tr = document.createElement('tr');
+				tr.innerHTML = `<td>${declaracao.descricao}</td>`;
+
+				tableDecl.appendChild(tr);
+			});
+
+			navLing.appendChild(tableDecl);
 		})
 }

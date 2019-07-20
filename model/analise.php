@@ -1,34 +1,35 @@
 <?php
 
 require_once "Query.php";
+require_once "Linguagem.php";
 
 function analisar($codigo, $id_fonte, $id_destino)
 {
 	switch($id_fonte)
 	{
-		case 1:
+        case Linguagem::C:
 			return analiseC($codigo, $id_destino);
 			break;
 
-		case 2:
+		case Linguagem::JAVA:
 			return analiseJava($codigo, $id_destino);
 			break;
 
-		case 3:
+		case Linguagem::KOTLIN:
 			return analiseKotlin($codigo, $id_destino);
 			break;
 
-		case 4:
+		case Linguagem::PYTHON:
 			return analisePython($codigo, $id_destino);
 			break;
 
-		case 5:
+		case Linguagem::HASKELL:
 			analiseHaskell($codigo, $id_destino);
 			break;
 	}
 }
 
-function transpilaIF($codigo, $id_destino, $matches = [])
+function transpilaIF($id_destino, $matches = [])
 {
 	// formato geral de uma expressão condicional na linguagem de destino
 	$result = Query::select("descricao", "ifs", "id_linguagem = ?", [$id_destino]);
@@ -62,30 +63,30 @@ function transpilaFuncao($id_fonte, $id_destino, $tipo, $nome, $param, $delimita
 		{
 			switch ($id_destino)
 			{
-				case 1:
+				case Linguagem::C:
 					$str .= subParametro($id_fonte, $id_destino, '<tipo> <nome>', $parametros[$i], $delimitador);
 					break;
 
-				case 2:
+				case Linguagem::JAVA:
 					$str .= subParametro($id_fonte, $id_destino, '<tipo> <nome>', $parametros[$i], $delimitador);
 					break;
 
-				case 3:
+				case Linguagem::KOTLIN:
 					$str .= subParametro($id_fonte, $id_destino, '<nome> : <tipo>', $parametros[$i], $delimitador);
 					break;
 
-				case 4:
+				case Linguagem::PYTHON:
 					$str .= subParametro($id_fonte, $id_destino, '<nome>', $parametros[$i], $delimitador);
 					break;
 				
-				case 5:
+				case Linguagem::HASKELL:
 					$str .= subParametro($id_fonte, $id_destino, '<nome>', $parametros[$i], $delimitador);
 					break;
 			}
 
-			if ($id_destino != 5 && $i != $parLenght-1)
+			if ($id_destino != Linguagem::HASKELL && $i != $parLenght-1)
 				$str .= ', ';
-			else if ($id_destino == 5 && $i != $parLenght-1)
+			else if ($id_destino == Linguagem::HASKELL && $i != $parLenght-1)
 				$str .= ' ';
 
 		}
@@ -96,7 +97,7 @@ function transpilaFuncao($id_fonte, $id_destino, $tipo, $nome, $param, $delimita
 		return $prototipo;
 }
 
-function buscaTipo($id_fonte, $id_destino, $tipo, $nome = '', $prototipo)
+function buscaTipo($id_fonte, $id_destino, $tipo, $nome, $prototipo)
 {
 	// retorna os tipos primitivos na linguagem de origem
 	$results = Query::select("tipo, descricao, tamanho", "tipos", "id_linguagem = ?", [$id_fonte]);
@@ -130,7 +131,7 @@ function subParametro($id_fonte, $id_destino, $prototipo, $parametro, $delimitad
     }, $aux);
 
 	// se a linguagem for kotlin, o nome e o tipo deve ser invertido
-	if ($id_fonte == 3)
+	if ($id_fonte == Linguagem::KOTLIN)
         return buscaTipo($id_fonte, $id_destino, $aux[1], $aux[0], $prototipo);
 
 	return buscaTipo($id_fonte, $id_destino, $aux[0], $aux[1], $prototipo);
@@ -147,20 +148,20 @@ function transpilaFor($id_fonte, $id_destino, $matches = [])
     // substitui os valores no prototipo de acordo com a linguagem de destino
     switch ($id_destino)
     {
-        case 1:
-        case 2:
+        case Linguagem::C:
+        case Linguagem::JAVA:
             $antigo = ['<tipo>', '<var>', '<inicio>', '<cond>', '<fim>', '<incr>'];
             $novo = [$tipo, $matches['var'], $matches['inicio'], $matches['cond'], $matches['fim'], $matches['incr']];
             $prototipo = $prototipo[0]['descricao'];
             break;
 
-        case 3:
+        case Linguagem::KOTLIN:
             $antigo = ['<tipo>', '<var>', '<inicio>', '<fim>'];
             $novo = [$tipo, $matches['var'], $matches['inicio'], $matches['fim']];
             $prototipo = $prototipo[1]['descricao'];
             break;
 
-        case 4:
+        case Linguagem::PYTHON:
 
             $antigo = ['<var>', '<inicio>', '<fim>', '<step>'];
             $novo = [$matches['var'], $matches['inicio'], $matches['fim']];
@@ -191,6 +192,8 @@ function transpilaDeclaracao($id_fonte, $id_destino, $matches = [])
     // pega o prototipo de uma declaracao na linguagem de destino
     $prototipo = Query::select("descricao", "declaracoes", "id_linguagem = ?", [$id_destino]);
 
+//    var_dump($prototipo);
+
     // retorna o tipo na liguagem de destino
     $prototipo = buscaTipo($id_fonte, $id_destino, $matches['tipo'], $matches['nome'], $prototipo[0]['descricao']);
 
@@ -202,9 +205,9 @@ function transpilaReturn($id_destino, $valor)
     // pega o prototipo do return na linguagem de destino
     $prototipo = Query::select("descricao", "returns", "id_linguagem = ?", [$id_destino]);
 
-    $str = str_replace('<valor>', $valor, $prototipo[0]['descricao']) ;
+    $str = str_replace('<valor>', $valor, $prototipo[0]['descricao']);
 
-    if ($id_destino != 5 && $id_destino != 4)
+    if ($id_destino != Linguagem::HASKELL && $id_destino != Linguagem::PYTHON)
         $str .= "\n}";
 
     return $str;
@@ -216,7 +219,7 @@ function transpilaAtribuicao($id_destino, $matches, $codigo)
     {
         $aux = $match[0];
 
-        if ($id_destino != 1 && $id_destino != 2)
+        if ($id_destino != Linguagem::C && $id_destino != Linguagem::JAVA)
             $aux = str_replace(';', '', $match[0]);
 
         $codigo = str_replace($match[0], $aux,$codigo);
@@ -235,7 +238,7 @@ function codigo_final($codigo_final)
 
 function formatarFuncao($id_destino)
 {
-    if ($id_destino != 5 && $id_destino != 4)
+    if ($id_destino != Linguagem::HASKELL && $id_destino != Linguagem::PYTHON)
         return " {";
 }
 
@@ -244,14 +247,14 @@ function analiseC($codigo, $id_destino)
 	// Transpila um if
 	if (preg_match("/if\s?+\((.*?)\)\s?+\{/", $codigo, $matches))
 	{
-        $aux = transpilaIF($codigo, $id_destino, $matches);
+        $aux = transpilaIF($id_destino, $matches);
 
         $codigo = str_replace($matches[0], $aux, $codigo);
 	}
 	// Transpila uma funcao
 	if (preg_match("/([\w]+)\s([\w]+)\s?\((.*?)\)\s?+\{/", $codigo, $matches))
     {
-        $aux = transpilaFuncao(1, $id_destino, $matches[1], $matches[2], $matches[3]).formatarFuncao($id_destino);
+        $aux = transpilaFuncao(Linguagem::C, $id_destino, $matches[1], $matches[2], $matches[3]).formatarFuncao($id_destino);
 
 //        var_dump($aux);
         $codigo = str_replace($matches[0], $aux, $codigo);
@@ -270,13 +273,13 @@ function analiseC($codigo, $id_destino)
             'incr' => $matches[6]
         ];
 
-        $aux = transpilaFor(2, $id_destino, $matches).formatarFuncao($id_destino);
+        $aux = transpilaFor(Linguagem::C, $id_destino, $matches).formatarFuncao($id_destino);
 
         $codigo = str_replace($match, $aux, $codigo);
 
     }
     // Transpila uma declaracao de variavel
-    if (preg_match_all("/([\w]+)\s\s?+([\w]?+)\s?+\=\s?+([\d]+)\;/", $codigo, $matches))
+    if (preg_match_all("/([\w]+)\s\s?+([\w]?+)\s?+\=\s?+(.*)\;/", $codigo, $matches))
     {
         for ($i = 0; $i < sizeof($matches)-1; $i++)
         {
@@ -286,7 +289,7 @@ function analiseC($codigo, $id_destino)
                 'valor' => $matches[3][$i]
             ];
 
-            $aux = transpilaDeclaracao(2, $id_destino, $values);
+            $aux = transpilaDeclaracao(Linguagem::C, $id_destino, $values);
 
             $codigo = str_replace($matches[0][$i], $aux, $codigo);
         }
@@ -299,6 +302,7 @@ function analiseC($codigo, $id_destino)
 
         $codigo = str_replace($matches[0], $aux, $codigo);
     }
+    // Transpila atribuicoes
     if (preg_match_all("/([\w]+)\s?+([=\-+*\/]+)\s?+(.*)\;/", $codigo, $matches))
     {
 
@@ -313,14 +317,14 @@ function analiseJava($codigo, $id_destino)
 	// Transpila um if em Java
 	if (preg_match("/if\s?+\((.*?)\)\s?+\{/", $codigo, $matches))
 	{
-		$aux = transpilaIF($codigo, $id_destino, $matches);
+		$aux = transpilaIF($id_destino, $matches);
 
 		$codigo = str_replace($matches[0], $aux, $codigo);
 	}
 	// Transpila um metodo publico
 	if (preg_match("/public\s+([\w]+)\s+([\w]+)\s?+\((.*?)\)\s?+\{/", $codigo, $matches))
     {
-        $aux = transpilaFuncao(2, $id_destino, $matches[1], $matches[2], $matches[3]).formatarFuncao($id_destino);
+        $aux = transpilaFuncao(Linguagem::JAVA, $id_destino, $matches[1], $matches[2], $matches[3]).formatarFuncao($id_destino);
 
         $codigo = str_replace($matches[0], $aux, $codigo);
     }
@@ -337,12 +341,12 @@ function analiseJava($codigo, $id_destino)
                     'incr' => $matches[6]
         ];
 
-        $aux = transpilaFor(2, $id_destino, $matches).formatarFuncao($id_destino);
+        $aux = transpilaFor(Linguagem::JAVA, $id_destino, $matches).formatarFuncao($id_destino);
 
         $codigo = str_replace($match, $aux, $codigo);
     }
     // Transpila uma declaracao de variavel
-    if (preg_match_all("/([\w]+)\s\s?+([\w]?+)\s?+\=\s?+([\d]+)\;/", $codigo, $matches))
+    if (preg_match_all("/([\w]+)\s\s?+([\w]?+)\s?+\=\s?+(.*)\;/", $codigo, $matches))
     {
         for ($i = 0; $i < sizeof($matches)-1; $i++)
         {
@@ -352,7 +356,7 @@ function analiseJava($codigo, $id_destino)
                 'valor' => $matches[3][$i]
             ];
 
-            $aux = transpilaDeclaracao(2, $id_destino, $values);
+            $aux = transpilaDeclaracao(Linguagem::JAVA, $id_destino, $values);
 
             $codigo = str_replace($matches[0][$i], $aux, $codigo);
         }
@@ -365,6 +369,7 @@ function analiseJava($codigo, $id_destino)
 
         $codigo = str_replace($matches[0], $aux, $codigo);
     }
+    // Transpila atribuicoes
     if (preg_match_all("/([\w]+)\s?+([=\-+*\/]+)\s?+(.*)\;/", $codigo, $matches))
     {
 
@@ -377,24 +382,25 @@ function analiseJava($codigo, $id_destino)
 // LEMBRAR DE VERIFICAR AS CHAVES AQUI E DE FAZER ANALISE EM BLOCO
 function analiseKotlin($codigo, $id_destino)
 {
-    $codigo_final = '';
-
 	// Transpila um if em Kotlin
-	if (preg_match("/(if)/", $codigo, $matches))
+	if (preg_match("/if\s?+\((.*?)\)\s?+\{/", $codigo, $matches))
 	{
-        $codigo_final .= transpilaIF($codigo, $id_destino)."\n";
+        $aux = transpilaIF($id_destino, $matches);
+
+        $codigo = str_replace($matches[0], $aux, $codigo);
 	}
 	// Transpila um metodo em Kotlin
-	if (preg_match("/fun\s+([\w]+)\s?+\((.*?)\)\s?+\:?\s?+([\w]+)?", $codigo, $matches))
+	if (preg_match("/fun\s+([\w]+)\s?+\((.*?)\)\s?+\:?\s?+([\w]+)?\s?+\{/", $codigo, $matches))
 	{
 	    //O array de matches contém o tipo de retorno, nome da função e parametros, respectivamente.
-        $codigo_final .= transpilaFuncao(3, $id_destino, $matches[3], $matches[1], $matches[2], ':');
+        $aux = transpilaFuncao(Linguagem::KOTLIN, $id_destino, $matches[3], $matches[1], $matches[2], ':').formatarFuncao($id_destino);
 
-        $codigo_final .= formatarFuncao($id_destino);
+        $codigo = str_replace($matches[0], $aux, $codigo);
     }
 	// Transpila um laço for padrão
 	if (preg_match("/for\s?+\(([\w]+)\s?+\:\s?+([\w]+)\s?+in\s?+([\d]+)..([\d]+)\s?+\{/", $codigo, $matches))
     {
+        $match = $matches[0];
         $matches = [
             'tipo' => $matches[2],
             'var' => $matches[1],
@@ -404,7 +410,9 @@ function analiseKotlin($codigo, $id_destino)
             'incr' => $matches[1].'++'
         ];
 
-        $codigo_final .= transpilaFor(3, $id_destino, $matches)."\n";
+        $aux = transpilaFor(Linguagem::KOTLIN, $id_destino, $matches);
+
+        $codigo = str_replace($match, $aux, $codigo);
     }
 	// Transpila a declaracao de uma variavel
     if (preg_match_all("/([\w]+)\s?+\:\s?+([\w]+)\s?+\=\s?+(.*)\;?/", $codigo, $matches))
@@ -418,19 +426,20 @@ function analiseKotlin($codigo, $id_destino)
                 'valor' => trim($matches[3][$i])
             ];
 
-            $codigo_final .= transpilaDeclaracao(3, $id_destino, $values);
+            $aux = transpilaDeclaracao(Linguagem::KOTLIN, $id_destino, $values);
 
-            if ($i != sizeof($matches)-2)
-                $codigo_final .= "\n";
+            $codigo = str_replace($matches[0][$i], $aux, $codigo);
         }
     }
     // Transpila return
     if (preg_match("/return\s+?(.*?)\;?\s+?\}/", $codigo, $matches))
     {
-        $codigo_final .= transpilaReturn($id_destino, $matches[1]);
+        $aux = transpilaReturn($id_destino, $matches[1]);
+
+        $codigo = str_replace($matches[0], $aux, $codigo);
     }
 
-	return codigo_final($codigo_final);
+	return codigo_final($codigo);
 }
 
 function analisePython($codigo, $id_destino)
@@ -438,7 +447,8 @@ function analisePython($codigo, $id_destino)
 	// Transpila um if em Python 3
 	if (preg_match("/(if)/", $codigo, $matches))
 	{
-		return transpilaIF($codigo, $id_destino)."\n";
+
+		return transpilaIF($id_destino, $matches)."\n";
 	}
 
     return 'O codigo não pode ser transpilado!';

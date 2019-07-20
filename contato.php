@@ -16,15 +16,15 @@
 				<p>Isabela Carvalho</p>
 				<p>Email: isabelasc@id.uff.br</p>
 				<p>
-					<a href="https://github.com/isaCarvalho">
+					<a href="https://github.com/isaCarvalho" target="_blank">
 						<img src="images/github1.png" class="logos">
 					</a>
 
-					<a href="https://www.facebook.com/isabelacarvalhocf">
+					<a href="https://www.facebook.com/isabelacarvalhocf" target="_blank">
 						<img src="images/facebook.png" class="logos">
 					</a>
 
-					<a href="https://www.linkedin.com/in/isabela-carvalho-69a1b0136/">
+					<a href="https://www.linkedin.com/in/isabela-carvalho-69a1b0136/" target="_blank">
 						<img src="images/linkedin.png" class="logos">
 					</a>
 				</p>
@@ -38,15 +38,15 @@
 				<p>Prof. Carlos Bazilio</p>
 				<p>Email: carlosbazilio@id.uff.br</p>
 				<p>
-					<a href="https://github.com/CarlosBazilio">
+					<a href="https://github.com/CarlosBazilio" target="_blank">
 						<img src="images/github1.png" class="logos">
 					</a>
 
-					<a href="https://www.facebook.com/carlos.bazilio.9">
+					<a href="https://www.facebook.com/carlos.bazilio.9" target="_blank">
 						<img src="images/facebook.png" class="logos">
 					</a>
 
-					<a href="https://www.linkedin.com/in/carlos-bazilio-090ba750/">
+					<a href="https://www.linkedin.com/in/carlos-bazilio-090ba750/" target="_blank">
 						<img src="images/linkedin.png" class="logos">
 					</a>
 				</p>

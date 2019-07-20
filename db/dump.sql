@@ -148,7 +148,7 @@ insert into ifs (descricao, id_linguagem) values
 ('if (<exp>)', 2), 
 ('if (<exp>)', 3), 
 ('if <exp>:', 4), 
-('<exp> =', 5);
+('| <exp> =', 5);
 
 -- Inserção de Funções
 insert into functions (descricao, id_linguagem) values  

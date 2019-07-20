@@ -42,6 +42,12 @@ switch ($action)
 		preencherLoops($id_linguagem);
 		break;
 
+    case 'carregarDeclaracoes':
+        require_once  "../model/linguagem.php";
+
+        preencherDeclaracoes($id_linguagem);
+        break;
+
 	case 'carregarLegendas':
 		require_once "../model/linguagem.php";
 

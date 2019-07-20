@@ -44,7 +44,7 @@
 	
 </body>
 
-<script src="js/carregaResultado.js"></script>
+<script src="js/carregarResultado.js"></script>
 
 <?php
 	include_once "footer.html";
