@@ -3,6 +3,7 @@
 html
 {
 	position: relative;
+	display: flex;
 }
 
 /* HEADER */
@@ -95,6 +96,11 @@ pre {
 	word-wrap: break-word;
 	float: top;
 	box-shadow: .1em .1em .5em rgba(0,0,0,.45);
+}
+
+span {
+	display: block;
+	line-height: 1.5rem;
 }
 
 .ling

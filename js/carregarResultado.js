@@ -9,16 +9,24 @@ form.addEventListener("submit", (event) => {
     .then(response => response.json())
     .then(response => {
         let destino = document.querySelector("pre[name=cdestino]");
-        console.log(response)
+        console.log(response);
 
-        // destino.value = response.prototipo
+        let array = response.prototipo.split('\n');
+        console.log(array);
 
-        destino.innerHTML = `<code>${response.prototipo}</code>`
+        /**Terminar o contador de linhas*/
+        // let lineCounter = 0;
+        array.forEach(line => {
+            // let counter = document.createElement('span');
+            // counter.innerHTML = ++lineCounter;
+            // destino.appendChild(counter);
 
-        // response.forEach(line => {
-        //     let code = document.createElement('<code>');
-        //     code.innerHTML =`<span>${line}</span>`;
-        //     destino.appendChild(code);
-        // });
+            let code = document.createElement('code');
+            code.innerHTML =`<span>${line}</span>`;
+            destino.appendChild(code);
+
+            let br = document.createElement('br');
+            destino.appendChild(br);
+        });
     })
 })
