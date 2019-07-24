@@ -193,7 +193,5 @@ function carregarInformacoes(id)
 								   Documentação: ${informacoes[0].documentacao}</td></tr>`);
 
 			navLing.appendChild(tableDesc);
-
 		})
-
 }
