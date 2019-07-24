@@ -13,10 +13,11 @@ form.addEventListener("submit", (event) => {
         
         destino.innerHTML = '';
 
+        // divide as linhas do codigo
         let array = response.prototipo.split('\n');
         console.log(array);
 
-        /**Terminar o contador de linhas*/
+        // contador de linhas
         let lineCounter = 0;
         array.forEach(line => {
             let linha = document.createElement('nav');

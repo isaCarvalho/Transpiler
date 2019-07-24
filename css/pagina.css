@@ -154,7 +154,7 @@ span {
 
 .selecao 
 {
-	padding-top: 40px;
+	padding-top: 20px;
 	margin: 0 auto;
 	height: 465px;
 	width: 100%;
@@ -172,6 +172,12 @@ span {
 	background-color: white;
 	font-family: 'Roboto Mono', monospace;
 	font-size: 16px;
+}
+
+.desc
+{
+	text-align: justify;
+	padding: 10px;
 }
 
 table 

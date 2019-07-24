@@ -48,6 +48,12 @@ switch ($action)
         preencherDeclaracoes($id_linguagem);
         break;
 
+    case 'carregarInformacoes':
+        require_once "../model/linguagem.php";
+
+        echo preencherInformacoes($id_linguagem);
+        break;
+
 	case 'carregarLegendas':
 		require_once "../model/linguagem.php";
 

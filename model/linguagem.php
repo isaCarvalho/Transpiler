@@ -38,6 +38,11 @@ function preencherDeclaracoes($id_linguagem)
     encode_results("descricao", "declaracoes", "id_linguagem = ?", [$id_linguagem]);
 }
 
+function preencherInformacoes($id_linguagem)
+{
+    encode_results("nome, descricao, documentacao", "linguagens", "id = ?", [$id_linguagem]);
+}
+
 function preencherLegendas()
 {
 	encode_results("nome, descricao", "legendas", "true", []);

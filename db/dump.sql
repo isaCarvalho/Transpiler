@@ -19,7 +19,7 @@ COMMENT ON DATABASE transpiler
 
 /* Criação das tabelas */
 
--- Tabela paradigmas
+--- Tabela paradigmas
 create table paradigmas (
 id serial primary key,
 nome varchar(255) not null
@@ -32,6 +32,8 @@ alter table paradigmas alter column id set default nextval('paradigmas_seq');
 create table linguagens (
 id int primary key,
 nome varchar(255) not null,
+descricao varchar(10000000),
+documentacao varchar(1000),
 id_paradigma int references paradigmas(id) on delete cascade on update cascade
 );
 
@@ -39,7 +41,7 @@ create sequence linguagens_seq increment 1 minvalue 1 start 1;
 alter table linguagens alter column id set default nextval('linguagens_seq');
 
 -- Tabela ifs
-create table ifs ( 
+create table ifs (
 id int primary key,
 descricao varchar(255) not null,
 id_linguagem int not null references linguagens(id) on delete cascade on update cascade
@@ -50,7 +52,7 @@ alter table ifs alter column id set default nextval('ifs_seq');
 
 -- Tabela functions
 create table functions (
-id int primary key, 
+id int primary key,
 descricao varchar(255) not null,
 id_linguagem int not null references linguagens(id) on delete cascade on update cascade
 );
@@ -61,7 +63,7 @@ alter table functions alter column id set default nextval('functions_seq');
 -- Tabela tipos
 create table tipos (
 id int primary key,
-tipo varchar(255) not null, 
+tipo varchar(255) not null,
 descricao varchar(255) default 'não informado',
 tamanho int default 0,
 id_linguagem int not null references linguagens(id) on delete cascade on update cascade
@@ -73,7 +75,7 @@ alter table tipos alter column id set default nextval('tipos_seq');
 -- Tabela loops
 create table loops (
 id int primary key,
-descricao varchar(500) not null, 
+descricao varchar(500) not null,
 id_linguagem int not null references linguagens(id) on delete cascade on update cascade
 );
 
@@ -112,6 +114,20 @@ alter table returns alter column id set default nextval('returns_seq');
 
 /* Inserção de dados nas tabelas */
 
+-- Inserção dos paradigmas
+insert into paradigmas (nome) values
+('Funcional'),
+('Procedural'),
+('Orientacao a Objetos');
+
+-- Inserção de linguagens
+insert into linguagens (nome, documentacao, id_paradigma) values
+('C','http://www.cplusplus.com/', 2),
+('Java','https://www.oracle.com/technetwork/java/index.html', 3),
+('Kotlin','https://kotlinlang.org/docs/reference/', 3),
+('Python 3','https://docs.python.org/3/', 3),
+('Haskell','https://www.haskell.org/documentation/', 1);
+
 -- Inserção dos retornos
 insert into returns (descricao, id_linguagem) values
 ('return <valor>;', 1),
@@ -128,34 +144,20 @@ insert into declaracoes (descricao, id_linguagem) values
 ('<nome> = <valor>', 4),
 ('let <nome> = <valor>', 5);
 
--- Inserção dos paradigmas
-insert into paradigmas (nome) values 
-('Funcional'),
-('Procedural'),
-('Orientacao a Objetos');
-
--- Inserção de linguagens
-insert into linguagens (nome, id_paradigma) values
-('C', 2),
-('Java', 3),
-('Kotlin', 3),
-('Python 3', 3),
-('Haskell', 1);
-
 -- Inserção de IFs
-insert into ifs (descricao, id_linguagem) values 
-('if (<exp>)', 1), 
-('if (<exp>)', 2), 
-('if (<exp>)', 3), 
-('if <exp>:', 4), 
+insert into ifs (descricao, id_linguagem) values
+('if (<exp>)', 1),
+('if (<exp>)', 2),
+('if (<exp>)', 3),
+('if <exp>:', 4),
 ('| <exp> =', 5);
 
 -- Inserção de Funções
-insert into functions (descricao, id_linguagem) values  
-('<tipo> <nome> (<param>)', 1), 
-('public <tipo> <nome> (<param>)', 2), 
-('fun <nome> (<param>) : <tipo>', 3), 
-('def <nome>(<param>):', 4), 
+insert into functions (descricao, id_linguagem) values
+('<tipo> <nome> (<param>)', 1),
+('public <tipo> <nome> (<param>)', 2),
+('fun <nome> (<param>) : <tipo>', 3),
+('def <nome>(<param>):', 4),
 ('<nome> <param> ', 5);
 
 -- Inserção de tipos primitivos
@@ -213,7 +215,7 @@ insert into legendas (nome, descricao) values
 ('<fim>', 'Limite superior ou fim de um loop'),
 ('<nome>', 'Nome de função ou variável');
 
--- Inserção de loops 
+-- Inserção de loops
 
 insert into loops (descricao, id_linguagem) values
 ('for (<tipo> <var> = <inicio>; <var> <cond> <fim>; <incr>)', 1),
@@ -231,6 +233,42 @@ insert into loops (descricao, id_linguagem) values
 ('for <var> in range(<inicio>, <fim>, <step>):', 4),
 ('while <exp>:', 4),
 ('não informado', 5);
+
+/* Modificações */
+
+update linguagens set descricao = 'C é uma linguagem de programação de paradigma procedural, estruturada e que serviu de ' ||
+ 'base para várias outras linguagens de programação de alto nível tais como C++, C#, Java, Pyhton, dentre outras. ' ||
+  'Apesar do surgimento de linguagens mais novas para diferentes propósitos (JavaScript, para desenvolvimento de web, ' ||
+   'por exemplo), C ainda é amplamente utilizada, como nos sistemas Unix (Linux, Mac, etc). A linguagem C foi ' ||
+    'desenvolvida no ano de 1972 por Dennis Ritchie, que é conhecido como fundador da linguagem.' where id = 1;
+update linguagens set descricao = 'A linguagem Java foi desenvolvida na Sun Microsystems sob a liderança de Bill Joy e ' ||
+ 'James Gosling, na década de 1990. Dos membros originais de um pequeno time de programadores em Aspen, James Goslin ' ||
+  'é o que será para sempre reconhecido como pai de Java. No ano de 1993, com a explosão da Internet, e em ' ||
+   'particular da World Wide Web, surgia a necessidade de uma linguagem robusta, de arquitetura independente e ' ||
+    'orientada a objetos. Desta forma, nasceu Java. Em 2009, a Sun Microsystems foi comprada pela Oracle, ' ||
+     'que é a atual proprietária da linguagem Java. Por ser uma linguagem portável e multiplataforma, Java é ' ||
+      'utilizada na web e é uma das linguagens oficiais do sistema operacional Android, da Google.' where id = 2;
+update linguagens set descricao = 'Kotlin é uma linguagem recente, de propósito geral, orientada a objetos, ' ||
+ 'desenvolvida pela JetBrains para interoperar completamente com Java. Um dos seus princípios é Null Safety, a ' ||
+  'fim de eliminar NullPointerException do Java. O código em Kotlin é compilado e executado pela JVM (Java Virtual ' ||
+   'Machine), e ela foi projetada para ser uma linguagem com uma sintaxe mais simples. Em 2011, a JetBrains ' ||
+    'anunciou o projeto Kotlin. Seu nome foi inspirado pela Ilha de Kotlin, localizada no Golfo da Finlândia, ' ||
+     'próximo aos escritórios da JetBrains. Em 2017, no Google I/O, foi anunciada a parceira com a JetBrains ' ||
+      'para incorporar Kotlin como linguagem oficial do Android. Alguns aplicativos Android desenvolvidos em ' ||
+       'Kotlin são: Evernote, Airbnb, Netflix, Pinterest, Adobe Reader, Twitter, dentre outros.' where id = 3;
+update linguagens set descricao = 'A linguagem Python teve sua implementação iniciada em dezembro de 1989, ' ||
+ 'por Guido Van Rossum. Ele é o principal autor da linguagem e publicou o código para a alt.sources em fevereiro ' ||
+  'de 1991. O nome "Python" foi inspirado pela série de televisão da BBC "Monty Python''s Flying Circus". ' ||
+   'Ela é uma linguagem orientada a objetos e caracterizada por sua sintaxe simples. A versão 2.0 de Pyhton ' ||
+    'foi lançada em outubro de 2000, e já contava com recursos como coletor de lixo (além da contagem de ' ||
+     'referencia). Sua versão 3.0 foi lançada em dezembro de 2008, com muitas modificações incompatíveis ' ||
+      'com a versão 2.0. Atualmente a linguagem está em sua versão 3.9 em desenvolvimento. *GoTo - ' ||
+       'Transpiler transpila códigos escritos em Pyhton 3.' where id = 4;
+update linguagens set descricao = 'Haskell é uma linguagem de programação elaborada em 1987, ' ||
+ 'de paradigma puramente funcional, estaticamente tipada, preguiçosa - isto é, haskell só executará funções e ' ||
+  'calculos quando for forçado a mostrar resultados. Além disso, alguns princípios como ausência de efeitos ' ||
+   'colaterais são incorporados em Haskell. A linguagem foi nomeada por Haskell Brooks Curry. Haskell é baseada ' ||
+    'no cálculo lambda, por esta razão, seu logotipo é um lambda.' where id = 5;
 
 /* Consultas */
 
