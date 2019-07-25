@@ -20,6 +20,9 @@ COMMENT ON DATABASE transpiler
 /* Criação das tabelas */
 
 --- Tabela paradigmas
+drop table if exists paradigmas;
+drop sequence if exists paradigmas_seq;
+
 create table paradigmas (
 id serial primary key,
 nome varchar(255) not null
@@ -29,6 +32,9 @@ create sequence paradigmas_seq increment 1 minvalue 1 start 1;
 alter table paradigmas alter column id set default nextval('paradigmas_seq');
 
 -- Tabela linguagens
+drop table if exists linguagens;
+drop sequence if exists linguagens_seq;
+
 create table linguagens (
 id int primary key,
 nome varchar(255) not null,
@@ -41,6 +47,9 @@ create sequence linguagens_seq increment 1 minvalue 1 start 1;
 alter table linguagens alter column id set default nextval('linguagens_seq');
 
 -- Tabela ifs
+drop table if exists ifs;
+drop sequence if exists ifs_seq;
+
 create table ifs (
 id int primary key,
 descricao varchar(255) not null,
@@ -51,6 +60,9 @@ create sequence ifs_seq increment 1 minvalue 1 start 1;
 alter table ifs alter column id set default nextval('ifs_seq');
 
 -- Tabela functions
+drop table if exists functions;
+drop sequence if exists functions_seq;
+
 create table functions (
 id int primary key,
 descricao varchar(255) not null,
@@ -61,6 +73,9 @@ create sequence functions_seq increment 1 minvalue 1 start 1;
 alter table functions alter column id set default nextval('functions_seq');
 
 -- Tabela tipos
+drop table if exists tipos;
+drop sequence if exists tipos_seq;
+
 create table tipos (
 id int primary key,
 tipo varchar(255) not null,
@@ -73,6 +88,9 @@ create sequence tipos_seq increment 1 minvalue 1 start 1;
 alter table tipos alter column id set default nextval('tipos_seq');
 
 -- Tabela loops
+drop table if exists loops;
+drop sequence if exists loops_seq;
+
 create table loops (
 id int primary key,
 descricao varchar(500) not null,
@@ -83,6 +101,9 @@ create sequence loops_seq increment 1 minvalue 1 start 1;
 alter table loops alter column id set default nextval('loops_seq');
 
 -- Tabela legendas
+drop table if exists legendas;
+drop sequence if exists legendas_seq;
+
 create table legendas (
 id int primary key,
 nome varchar(255) not null,
@@ -93,6 +114,9 @@ create sequence legendas_seq increment 1 minvalue 1 start 1;
 alter table legendas alter column id set default nextval('legendas_seq');
 
 -- Tabela de declaracoes
+drop table if exists declaracoes;
+drop sequence if exists declaracoes_seq;
+
 create table declaracoes (
 id int primary key,
 descricao varchar(255) not null,
@@ -103,6 +127,9 @@ create sequence declaracoes_seq increment 1 minvalue 1 start 1;
 alter table declaracoes alter column id set default nextval('declaracoes_seq');
 
 -- Tabela de returns
+drop table if exists returns;
+drop sequence if exists returns_seq;
+
 create table returns(
 id int primary key,
 descricao varchar(255) not null,
@@ -113,6 +140,9 @@ create sequence returns_seq increment 1 minvalue 1 start 1;
 alter table returns alter column id set default nextval('returns_seq');
 
 -- Tabela de elses
+drop table if exists elses;
+drop sequence if exists elses_seq;
+
 create table elses (
 id int primary key,
 descricao varchar(255) not null,
@@ -173,9 +203,9 @@ insert into elses (descricao, id_linguagem) values
 
 -- Inserção de Funções
 insert into functions (descricao, id_linguagem) values
-('<tipo> <nome> (<param>)', 1),
-('public <tipo> <nome> (<param>)', 2),
-('fun <nome> (<param>) : <tipo>', 3),
+('<tipo> <nome> (<param>) {', 1),
+('public <tipo> <nome> (<param>) {', 2),
+('fun <nome> (<param>) : <tipo> {', 3),
 ('def <nome>(<param>):', 4),
 ('<nome> <param> ', 5);
 
@@ -237,17 +267,17 @@ insert into legendas (nome, descricao) values
 -- Inserção de loops
 
 insert into loops (descricao, id_linguagem) values
-('for (<tipo> <var> = <inicio>; <var> <cond> <fim>; <incr>)', 1),
+('for (<tipo> <var> = <inicio>; <var> <cond> <fim>; <var><incr>) {', 1),
 ('while (<exp>)', 1),
-('do { <commands> } while (<exp>)', 1),
-('for (<tipo> <var> = <inicio>; <var> <cond> <fim>; <incr>)', 2),
-('for (<tipo> <var>: <collections>)', 2),
+('do {', 1),
+('for (<tipo> <var> = <inicio>; <var> <cond> <fim>; <var><incr>) {', 2),
+('for (<tipo> <var>: <collections>) {', 2),
 ('while (<exp>)', 2),
-('do { <commands> } while (<exp>)', 2),
-('for (<var> : <tipo> in <collections>)', 3),
-('for (<var> : <tipo> in <inicio>..<fim>)', 3),
+('do {', 2),
+('for (<var> : <tipo> in <collections>) {', 3),
+('for (<var> : <tipo> in <inicio>..<fim>) {', 3),
 ('while (<exp>)', 3),
-('do { <commands> } while (exp)', 3),
+('do {', 3),
 ('for <var> in <collections>:', 4),
 ('for <var> in range(<inicio>, <fim>, <step>):', 4),
 ('while <exp>:', 4),
