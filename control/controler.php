@@ -51,7 +51,7 @@ switch ($action)
     case 'carregarInformacoes':
         require_once "../model/linguagem.php";
 
-        echo preencherInformacoes($id_linguagem);
+        preencherInformacoes($id_linguagem);
         break;
 
 	case 'carregarLegendas':

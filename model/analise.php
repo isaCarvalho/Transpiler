@@ -37,8 +37,6 @@ function transpilaIF($id_destino, $matches = [])
 	// substitui a ocorrencia do if na linguagem de fonte para lingugagem de destino;
 	$sub = str_replace('<exp>', $matches[1], $result[0]['descricao']);
 
-	$sub .= formatarFuncao($id_destino);
-
 	// retorna o if na linguagem de destino
 	return $sub;
 }
@@ -245,18 +243,23 @@ function formatarFuncao($id_destino)
 function analiseC($codigo, $id_destino)
 {
 	// Transpila um if
-	if (preg_match("/if\s?+\((.*?)\)\s?+\{/", $codigo, $matches))
+	if (preg_match("/if\s?+\((.*?)\)\s?+\n?+\s?+\{/", $codigo, $matches))
 	{
+//	    var_dump($matches);
         $aux = transpilaIF($id_destino, $matches);
 
         $codigo = str_replace($matches[0], $aux, $codigo);
 	}
+	// Transpila um else
+//    if ()
+//    {
+//
+//    }
 	// Transpila uma funcao
 	if (preg_match("/([\w]+)\s([\w]+)\s?\((.*?)\)\s?+\{/", $codigo, $matches))
     {
         $aux = transpilaFuncao(Linguagem::C, $id_destino, $matches[1], $matches[2], $matches[3]).formatarFuncao($id_destino);
 
-//        var_dump($aux);
         $codigo = str_replace($matches[0], $aux, $codigo);
     }
 	// Transpila um for padrao

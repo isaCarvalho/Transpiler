@@ -112,6 +112,16 @@ id_linguagem int references linguagens(id)
 create sequence returns_seq increment 1 minvalue 1 start 1;
 alter table returns alter column id set default nextval('returns_seq');
 
+-- Tabela de elses
+create table elses (
+id int primary key,
+descricao varchar(255) not null,
+id_linguagem int references linguagens(id)
+);
+
+create sequence elses_seq increment 1 minvalue 1 start 1;
+alter table elses alter column id set default nextval('elses_seq');
+
 /* Inserção de dados nas tabelas */
 
 -- Inserção dos paradigmas
@@ -146,11 +156,20 @@ insert into declaracoes (descricao, id_linguagem) values
 
 -- Inserção de IFs
 insert into ifs (descricao, id_linguagem) values
-('if (<exp>)', 1),
-('if (<exp>)', 2),
-('if (<exp>)', 3),
+('if (<exp>) {', 1),
+('if (<exp>) {', 2),
+('if (<exp>) {', 3),
 ('if <exp>:', 4),
 ('| <exp> =', 5);
+
+-- Inserção de elses
+insert into elses (descricao, id_linguagem) values
+('else {', 1),
+('else {', 2),
+('else {', 3),
+('else:', 4),
+('elif (<exp>):', 4),
+('otherwise = ', 5);
 
 -- Inserção de Funções
 insert into functions (descricao, id_linguagem) values
