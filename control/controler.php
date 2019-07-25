@@ -1,4 +1,5 @@
 <?php
+require_once "../model/Preencher.php";
 
 extract($_GET);
 extract($_POST);
@@ -13,51 +14,43 @@ switch ($action)
 		break;
 	
 	case 'carregarLinguagens':
-		require_once "../model/linguagem.php";
-
-		preencherLinguagens();
+        $p = new Preencher($id_linguagem);
+		$p->preencherLinguagens();
 		break;
 
 	case 'carregarFunctions':
-		require_once "../model/linguagem.php";
-
-		preencherFunctions($id_linguagem);
+        $p = new Preencher($id_linguagem);
+		$p->preencherFunctions();
 		break;
 
 	case 'carregarTipos':
-		require_once "../model/linguagem.php";
-
-		preencherTipos($id_linguagem);
+        $p = new Preencher($id_linguagem);
+		$p->preencherTipos();
 		break;
 
-	case 'carregarIfs':
-		require_once "../model/linguagem.php";
-
-		preencherIfs($id_linguagem);
+    case 'carregarIfs':
+        $p = new Preencher($id_linguagem);
+		$p->preencherIfs();
 		break;
 
 	case 'carregarLoops':
-		require_once "../model/linguagem.php";
-
-		preencherLoops($id_linguagem);
+        $p = new Preencher($id_linguagem);
+		$p->preencherLoops();
 		break;
 
     case 'carregarDeclaracoes':
-        require_once  "../model/linguagem.php";
-
-        preencherDeclaracoes($id_linguagem);
+        $p = new Preencher($id_linguagem);
+        $p->preencherDeclaracoes();
         break;
 
     case 'carregarInformacoes':
-        require_once "../model/linguagem.php";
-
-        preencherInformacoes($id_linguagem);
+        $p = new Preencher($id_linguagem);
+        $p->preencherInformacoes();
         break;
 
 	case 'carregarLegendas':
-		require_once "../model/linguagem.php";
-
-		preencherLegendas();
+        $p = new Preencher($id_linguagem);
+		$p->preencherLegendas();
 		break;
 
 	default:

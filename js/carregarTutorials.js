@@ -74,12 +74,10 @@ function carregarFunctions(id)
 
 			let tableFunctions = createTable(`<tr><th>Funções</th></tr>`);
 
-			functions.forEach(func => {
-				var tr = document.createElement('tr');
-				tr.innerHTML = `<td>${func.descricao}</td>`;
+			var tr = document.createElement('tr');
+			tr.innerHTML = `<td>${functions.descricao}</td>`;
 
-				tableFunctions.appendChild(tr);
-			});
+			tableFunctions.appendChild(tr);
 
 			navLing.appendChild(tableFunctions);
 		})
@@ -130,12 +128,10 @@ function carregarIfs(id)
 								  	<th>Expressões Condicionais</th>
 							  	</tr>`);
 
-			ifs.forEach(bnfIf => {
-				var tr = document.createElement('tr');
-				tr.innerHTML = `<td>${bnfIf.descricao}</td>`;
+			var tr = document.createElement('tr');
+			tr.innerHTML = `<td>${ifs.descricao}</td>`;
 
-				tableIfs.appendChild(tr);
-			});		
+			tableIfs.appendChild(tr);
 
 			navLing.appendChild(tableIfs);
 		})
@@ -171,12 +167,10 @@ function carregarDeclaracoes(id)
 
 			let tableDecl = createTable(`<tr><th>Declaração</th></tr>`);
 
-			declaracoes.forEach(declaracao => {
-				let tr = document.createElement('tr');
-				tr.innerHTML = `<td>${declaracao.descricao}</td>`;
+			let tr = document.createElement('tr');
+			tr.innerHTML = `<td>${declaracoes.descricao}</td>`;
 
-				tableDecl.appendChild(tr);
-			});
+			tableDecl.appendChild(tr);
 
 			navLing.appendChild(tableDecl);
 		})
@@ -188,9 +182,9 @@ function carregarInformacoes(id)
 		.then(response => response.json())
 		.then(informacoes => {
 
-			let tableDesc = createTable(`<tr><th>A linguagem ${informacoes[0].nome}</th></tr>
-								   <tr><td class="desc">${informacoes[0].descricao}
-								   Documentação: ${informacoes[0].documentacao}</td></tr>`);
+			let tableDesc = createTable(`<tr><th>A linguagem ${informacoes.nome}</th></tr>
+								   <tr><td class="desc">${informacoes.descricao}
+								   Documentação: ${informacoes.documentacao}</td></tr>`);
 
 			navLing.appendChild(tableDesc);
 		})

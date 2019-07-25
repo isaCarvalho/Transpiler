@@ -41,8 +41,6 @@ class Linguagem
 
         $results = Query::select("descricao", "returns", "id_linguagem = ?", [$this->id]);
         $this->retornos = $results[0]['descricao'];
-
-//        var_dump($this);
     }
 
     public function getId() { return $this->id; }
@@ -68,9 +66,4 @@ class Linguagem
     public function getDeclaracao() { return $this->declaracao; }
 
     public function getRetornos() { return $this->retornos; }
-
-    public function take_out_key($codigo)
-    {
-        return str_replace(['{', '}'], ['', ''], $codigo);
-    }
 }
