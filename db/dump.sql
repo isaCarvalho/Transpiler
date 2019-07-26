@@ -190,7 +190,7 @@ insert into ifs (descricao, id_linguagem) values
 ('if (<exp>) {', 2),
 ('if (<exp>) {', 3),
 ('if <exp>:', 4),
-('| <exp> =', 5);
+('| <exp> ', 5);
 
 -- Inserção de elses
 insert into elses (descricao, id_linguagem) values
@@ -198,8 +198,7 @@ insert into elses (descricao, id_linguagem) values
 ('else {', 2),
 ('else {', 3),
 ('else:', 4),
-('elif (<exp>):', 4),
-('otherwise = ', 5);
+('| otherwise ', 5);
 
 -- Inserção de Funções
 insert into functions (descricao, id_linguagem) values

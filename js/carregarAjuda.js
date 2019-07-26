@@ -8,7 +8,7 @@ console.log(nav)
 
 function carregarLegendas()
 {
-	fetch(`../control/controler.php?action=carregarLegendas`)
+	fetch(`../control/?action=carregarLegendas`)
 		.then(response => response.json())
 		.then(legendas => {
 			let table = document.createElement('table')

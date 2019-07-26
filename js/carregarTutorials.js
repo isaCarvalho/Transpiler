@@ -14,7 +14,7 @@ body.appendChild(nav);
 // Carrega o componente select e o preenche com os dados vindos do banco de dados
 function carregarSelect()
 {
-	fetch("../control/controler.php?action=carregarLinguagens")
+	fetch("../control/?action=carregarLinguagens")
 		.then(response => response.json())
 		.then(linguagens => {
 			let p = document.createElement('p');
@@ -68,7 +68,7 @@ function createTable(inner = ``)
 // carrega o BNF das funcoes em cada linguagem
 function carregarFunctions(id)
 {
-	fetch(`../control/controler.php?action=carregarFunctions&id_linguagem=${id}`)
+	fetch(`../control/?action=carregarFunctions&id_linguagem=${id}`)
 		.then(response => response.json())
 		.then(functions => {
 
@@ -86,7 +86,7 @@ function carregarFunctions(id)
 // Carrega os tipos primitivos de cada linguagem
 function carregarTipos(id)
 {
-	fetch(`../control/controler.php?action=carregarTipos&id_linguagem=${id}`)
+	fetch(`../control/?action=carregarTipos&id_linguagem=${id}`)
 		.then(response => response.json())
 		.then(tipos => {
 
@@ -120,7 +120,7 @@ function carregarTipos(id)
 // Carrega os ifs de cada linguagem
 function carregarIfs(id)
 {
-	fetch(`../control/controler.php?action=carregarIfs&id_linguagem=${id}`)
+	fetch(`../control/?action=carregarIfs&id_linguagem=${id}`)
 		.then(response => response.json())
 		.then(ifs => {
 
@@ -140,7 +140,7 @@ function carregarIfs(id)
 // carrega os loops de cada linguagem
 function carregarLoops(id)
 {
-	fetch(`../control/controler.php?action=carregarLoops&id_linguagem=${id}`)
+	fetch(`../control/?action=carregarLoops&id_linguagem=${id}`)
 		.then(response => response.json())
 		.then(loops => {
 
@@ -161,7 +161,7 @@ function carregarLoops(id)
 
 function carregarDeclaracoes(id)
 {
-	fetch(`../control/controler.php?action=carregarDeclaracoes&id_linguagem=${id}`)
+	fetch(`../control/?action=carregarDeclaracoes&id_linguagem=${id}`)
 		.then(response => response.json())
 		.then(declaracoes => {
 
@@ -178,7 +178,7 @@ function carregarDeclaracoes(id)
 
 function carregarInformacoes(id)
 {
-	fetch(`../control/controler.php?action=carregarInformacoes&id_linguagem=${id}`)
+	fetch(`../control/?action=carregarInformacoes&id_linguagem=${id}`)
 		.then(response => response.json())
 		.then(informacoes => {
 
