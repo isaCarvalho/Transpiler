@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Gochi+Hand&display=swap');
+
+body
+{
+    background-image: url(../images/fundo4.jpeg);
+    background-size: cover;
+    max-height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1
+{
+    font-family: 'Gochi Hand', cursive;
+    font-size: 45px;
+    color: rgb(247, 164, 10);
+}
+
+nav
+{
+    width: 700px;
+    height: 100%;
+    margin: 0 auto;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 2px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+nav a:hover
+{
+    text-decoration: underline;
+}
+
+h3
+{
+    margin-top: 60px;
+}
+

@@ -183,8 +183,8 @@ function carregarInformacoes(id)
 		.then(informacoes => {
 
 			let tableDesc = createTable(`<tr><th>A linguagem ${informacoes.nome}</th></tr>
-								   <tr><td class="desc">${informacoes.descricao}
-								   Documentação: ${informacoes.documentacao}</td></tr>`);
+				<tr><td class="desc">${informacoes.descricao}
+				Documentação: <a href="${informacoes.documentacao}" target="_blank">${informacoes.documentacao}</a></td></tr>`);
 
 			navLing.appendChild(tableDesc);
 		})

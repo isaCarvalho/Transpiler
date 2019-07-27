@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Faster+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Gochi+Hand&display=swap');
 
@@ -47,7 +46,6 @@
 #titulo
 {
 	font-family: 'Gochi Hand', cursive;
-	/*font-family: 'Faster One', cursive;*/
 	font-size: 45px;
 	color: rgb(247, 164, 10);
 	float: left;

@@ -3,11 +3,13 @@
 <head>
     <title>Referências</title>
 
+    <link rel="stylesheet" type="text/css" href="/css/referencias.css">
+    <link rel="stylesheet" type="text/css" href="/css/footer.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body class="body">
 <h1>Referências</h1>
     <nav>
         <p>Learning Java by Patrick Niemeyer and Jonathan Knudsen - O'Reilly & Associates, Inc., 2000.</p>
@@ -35,6 +37,8 @@
             <a href="http://learnyouahaskell.com/introduction#about-this-tutorial" target="_blank">http://learnyouahaskell.com/introduction#about-this-tutorial</a>
         </p>
     </nav>
+
+    <h3 class="footer"><img src="/images/copyright.png" class="imgFooter">Copyright Isabela Carvalho</h3>
+
 </body>
-</html>
 
