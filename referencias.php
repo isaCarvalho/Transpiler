@@ -36,6 +36,8 @@
         <p>
             <a href="http://learnyouahaskell.com/introduction#about-this-tutorial" target="_blank">http://learnyouahaskell.com/introduction#about-this-tutorial</a>
         </p>
+
+        <p><a href="index.php"><img src="/images/home.png" style="width: 20px; height: 20px;"></a></p>
     </nav>
 
     <h3 class="footer"><img src="/images/copyright.png" class="imgFooter">Copyright Isabela Carvalho</h3>

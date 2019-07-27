@@ -17,7 +17,7 @@ a
 
 .body
 {
-	background-image: url(../images/fundo4.jpeg);
+	background-image: url(../images/fundo9.jpeg);
 	background-size: cover;
 	max-height: 100%;
 	width: 100%;
@@ -28,9 +28,10 @@ a
 
 .home
 {
+	/*width: 1000px;*/
+	height: 480px;
 	display: inline-block;
 	margin: 0 auto;
-	margin-bottom: 135px;
 	margin-top: 20px;
 }
 
@@ -39,24 +40,28 @@ a
 	font-family: 'Share Tech Mono', monospace;
 	font-weight: bold;
 	font-size: 20px;
-	color:rgb(70, 129, 168);
-	padding-right: 10px;
+	/*color:rgb(70, 129, 168);*/
+	color: rgb(247, 164, 10);
+	padding: 5px;
 }
 
 .select
 {
-	width: 300px;
+	width: 319px;
 	height: 30px;
 	margin: 0 auto;
 	background-color: white;
 	border: 1px solid white;
 	border-radius: 1px;
 	margin-bottom: 5px;
+	box-shadow: .2em .2em .5em rgba(0,0,0,.45);
 }
+
+/* CODIGO */
 
 .text {
 	width: 392px;
-	height: 205px;
+	height: 249px;
 	border: 0px solid white;
 	border-left: 3px solid rgb(255, 82, 82);
 	border-radius: 2px;
@@ -68,7 +73,7 @@ a
 	color: rgba(14, 14, 14, 0.98);
 	line-height: 1.6;
 	overflow: auto;
-	box-shadow: .1em .1em .5em rgba(0,0,0,.45);
+	box-shadow: .2em .2em .5em rgba(0,0,0,.45);
 }
 
 code
@@ -79,7 +84,7 @@ code
 
 pre {
 	width: 395px;
-	height: 207px;
+	height: 250px;
 	background-color: white;
 	border: 1px solid #ddd;
 	border-left: 3px solid rgb(255,82,82);
@@ -95,7 +100,7 @@ pre {
 	display: block;
 	word-wrap: break-word;
 	float: top;
-	box-shadow: .1em .1em .5em rgba(0,0,0,.45);
+	box-shadow: .2em .2em .5em rgba(0,0,0,.45);
 }
 
 span {
@@ -112,6 +117,7 @@ span {
 	padding: 0px 2px 0px 0px;
 	margin-right: 3px;
 	float: left;
+	box-shadow: .2em .2em .5em rgba(0,0,0,.45);
 }
 
 .line
@@ -137,9 +143,10 @@ span {
 
 .button
 {
-	background-color: rgb(70, 129, 168);
+	/*background-color: rgb(70, 129, 168);*/
+	background-color: rgb(104, 72, 160);
 	width: 405px;
-	height: 40px;
+	height: 45px;
 	border: none;
 	border-radius: 3px;
 	border-collapse: collapse;
@@ -147,6 +154,7 @@ span {
 	font-weight: bold;
 	font-family: 'Roboto', monospace;
 	font-size: 18px;
+	box-shadow: .2em .2em .5em rgba(0,0,0,.45);
 }
 
 
@@ -156,6 +164,7 @@ span {
 {
 	padding-top: 20px;
 	margin: 0 auto;
+	margin-bottom: 5px;
 	height: 465px;
 	width: 100%;
 	overflow: auto scroll;
@@ -172,6 +181,7 @@ span {
 	background-color: white;
 	font-family: 'Roboto Mono', monospace;
 	font-size: 16px;
+	box-shadow: .2em .2em .5em rgba(0,0,0,.45);
 }
 
 .desc
@@ -190,6 +200,7 @@ table
 	border: 1px solid white;
 	width: 695px;
 	font-family: 'Roboto', monospace;
+	box-shadow: .3em .3em .5em rgba(0,0,0,.45);
 }
 
 table tr 
@@ -200,9 +211,10 @@ table tr
 table tr th
 {
 	/*background-color: #630529;*/
-	background-color: rgb(70, 129, 168);
+	/*background-color: rgb(70, 129, 168);*/
+	background-color: rgb(104, 72, 160);
 	color: white;
-	border: 1px solid rgb(70, 129, 168);
+	border: 1px solid rgb(104, 72, 160);
 	font-size: 18px;
 }
 
@@ -210,6 +222,7 @@ table tr td
 {
 	border-left: 1px solid white;
 	border-right: 1px solid white;
+	border-bottom: 1px solid white;
 	font-size: 16px;
 }
 
@@ -225,17 +238,20 @@ table tr:hover
 	width: 200px;
 	height: 200px;
 	border-radius: 50%;
+	border: 3px solid rgb(255,255,255);
+	box-shadow: .2em .2em .5em rgba(0,0,0,.45);
 }
 
 .equipe
 {
 	width: 270px;
 	height: 340px;
-	background-color: white;
+	background-color: rgba(255, 255, 255, 0.5);
 	margin: 0 auto;
 	padding-top: 20px;
 	border-radius: 10px;
 	position: relative;
+	box-shadow: .3em .3em .5em rgba(0,0,0,.45);
 }
 
 #contato

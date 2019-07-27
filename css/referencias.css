@@ -3,7 +3,7 @@
 
 body
 {
-    background-image: url(../images/fundo4.jpeg);
+    background-image: url(../images/fundo9.jpeg);
     background-size: cover;
     max-height: 100%;
     width: 100%;
@@ -41,6 +41,6 @@ nav a:hover
 
 h3
 {
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
