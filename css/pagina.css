@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fira+Code&display=swap');
 
 html
 {
@@ -143,8 +144,8 @@ span {
 
 .button
 {
-	/*background-color: rgb(70, 129, 168);*/
-	background-color: rgb(104, 72, 160);
+	background-color: rgb(70, 129, 168);
+	/*background-color: rgb(104, 72, 160);*/
 	width: 405px;
 	height: 45px;
 	border: none;
@@ -244,14 +245,17 @@ table tr:hover
 
 .equipe
 {
-	width: 270px;
-	height: 340px;
-	background-color: rgba(255, 255, 255, 0.5);
+	width: 300px;
+	height: 350px;
+	/*background-color: rgba(255, 255, 255, 0.5);*/
+	background-color: rgba(18,22,25,.9);
 	margin: 0 auto;
 	padding-top: 20px;
 	border-radius: 10px;
 	position: relative;
 	box-shadow: .3em .3em .5em rgba(0,0,0,.45);
+	font-family: 'Fira Code', monospace;
+	color: white;
 }
 
 #contato
