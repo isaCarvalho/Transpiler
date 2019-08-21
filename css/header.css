@@ -51,3 +51,7 @@
 	color: rgb(247, 164, 10);
 	float: left;
 }
+
+.sanduiche {
+	display: none;
+}

@@ -5,7 +5,7 @@ require_once "Query.php";
 class Linguagem
 {
     private $id, $nome, $paradigma, $descricao, $documentacao;
-    private $tipos, $funcoes, $fors, $ifs, $elses;
+    private $tipos, $funcoes, $fors, $ifs, $elses, $else_if;
     private $declaracao, $retornos;
 
     public function __construct($id)
@@ -41,6 +41,9 @@ class Linguagem
 
         $results = Query::select("descricao", "returns", "id_linguagem = ?", [$this->id]);
         $this->retornos = $results[0]['descricao'];
+
+        $results = Query::select("descricao", "else_ifs", "id_linguagem = ?", [$this->id]);
+        $this->else_if = $results[0]['descricao'];
     }
 
     public function getId() { return $this->id; }
@@ -66,4 +69,6 @@ class Linguagem
     public function getDeclaracao() { return $this->declaracao; }
 
     public function getRetornos() { return $this->retornos; }
+
+    public function getElseIfs() { return $this->else_if; }
 }

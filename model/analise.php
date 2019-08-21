@@ -253,7 +253,7 @@ function functionIf($ling_destino, $codigo)
 
 function functionElse($ling_destino, $codigo)
 {
-    if (preg_match_all("/(else)\s?+\n?+\s?+(.*)/", $codigo, $matches))
+    if (preg_match_all("/(else)\s?+\n?+\s?+\{/", $codigo, $matches))
     {
         $codigo = transpilaElse($ling_destino, $matches, $codigo);
     }
@@ -329,11 +329,23 @@ function functionAtribuicao($ling_destino, $codigo)
 
 function analiseC($codigo, $ling_fonte, $ling_destino)
 {
-	// Transpila um if
-	$codigo = functionIf($ling_destino, $codigo);
-
 	// Transpila um else
     $codigo = functionElse($ling_destino, $codigo);
+
+    if (preg_match_all("/else\s?+if\s?\((.*)\)\s?+\{/", $codigo, $matches))
+    {
+        for ($i = 0; $i < sizeof($matches[0]); $i++) {
+            $aux = str_replace('<exp>', $matches[1][$i], $ling_destino->getElseIfs());
+
+
+            $codigo = str_replace($matches[0][$i], $aux, $codigo);
+            echo '<pre>';
+            var_dump($codigo);
+        }
+    }
+
+    // Transpila um if
+	$codigo = functionIf($ling_destino, $codigo);
 
 	// Transpila uma funcao
 	if (preg_match_all("/([\w]+)\s([\w]+)\s?\((.*?)\)\s?+\{/", $codigo, $matches))

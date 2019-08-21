@@ -1,0 +1,101 @@
+@media screen and (max-width: 768px) {
+    #menu {
+        display: none;
+    }
+
+    .sanduiche {
+        display: flex;
+        font-size: 36px;
+        color: lightgray;
+        width: auto;
+        float: right;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .body {
+        width: 100%;
+        margin: 0;
+        align-items: center !important;
+    }
+
+    /* Pagina Inicial */
+    .home {
+        width: 100%;
+    }
+
+    .header {
+        height: 40px;
+    }
+
+    #titulo {
+        font-size: 40px;
+    }
+
+    #formulario {
+        display: flex;
+        width: 90%;
+        flex-direction: column;
+        margin: 0 auto !important;
+        overflow-y: scroll;
+    }
+
+    .label {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .select {
+        width: 99%;
+        margin-bottom: 5px;
+    }
+
+    .text {
+        width: 99%;
+        height: 100px;
+        padding: 0;
+    }
+
+    pre {
+        width: 99%;
+        height: 100px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .button {
+        width: 40%;
+    }
+
+    .footer {
+        padding-top: 10px;
+        width: 100%;
+    }
+
+    /* Tutoriais */
+
+    .selecao {
+        padding-top: 5px;
+    }
+
+    .selectT {
+        width: 90%;
+        margin-top: 5px;
+    }
+
+    table {
+        width: 90%;
+    }
+
+    /* Contato */
+    #contato {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 15px;
+    }
+
+    .equipe {
+        margin-bottom: 15px;
+    }
+}
