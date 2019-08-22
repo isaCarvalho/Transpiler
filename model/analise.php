@@ -339,14 +339,12 @@ function analiseC($codigo, $ling_fonte, $ling_destino)
 
 
             $codigo = str_replace($matches[0][$i], $aux, $codigo);
-            echo '<pre>';
-            var_dump($codigo);
         }
     }
 
     // Transpila um if
 	$codigo = functionIf($ling_destino, $codigo);
-
+    
 	// Transpila uma funcao
 	if (preg_match_all("/([\w]+)\s([\w]+)\s?\((.*?)\)\s?+\{/", $codigo, $matches))
     {
