@@ -1,5 +1,5 @@
 <?php
-	include_once "header.html";
+	include_once "view/header.html";
 ?>
 
 <!--LEMBRAR DE PROCURAR A BIBLIOTECA HIGHLIGHTING DO JAVASCRIPT-->
@@ -47,4 +47,4 @@
 <script src="js/carregarResultado.js"></script>
 
 <?php
-	include_once "footer.html";
+	include_once "view/footer.html";

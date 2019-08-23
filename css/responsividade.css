@@ -1,6 +1,27 @@
 @media screen and (max-width: 768px) {
+    .header {
+        height: 40px;
+        z-index: 1000 !important;
+    }
+
+    .header nav {
+        position: absolute;
+    }
+
     #menu {
-        display: none;
+        visibility: hidden;
+        width: 100%;
+        z-index: 900;
+        background-color: rgba(0,0,0,.97) !important;
+        padding-left: 10px;
+        margin-top: 5px;
+        text-align: center !important;
+    }
+
+    #menu ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
     .sanduiche {
@@ -8,11 +29,10 @@
         font-size: 36px;
         color: lightgray;
         width: auto;
-        float: right;
+        float: right !important;
+        padding-right: 10px;
     }
-}
 
-@media screen and (max-width: 425px) {
     .body {
         width: 100%;
         margin: 0;
@@ -22,10 +42,6 @@
     /* Pagina Inicial */
     .home {
         width: 100%;
-    }
-
-    .header {
-        height: 40px;
     }
 
     #titulo {
@@ -97,5 +113,15 @@
 
     .equipe {
         margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    #menu ul {
+        padding: 0;
+    }
+
+    #menu ul li {
+        padding: 38px;
     }
 }

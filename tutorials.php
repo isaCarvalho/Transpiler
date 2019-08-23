@@ -1,6 +1,6 @@
 <?php
 
-include "header.html";
+include "view/header.html";
 
 ?>
 
@@ -13,6 +13,6 @@ include "header.html";
 
 <?php
 
-include "footer.html";
+include "view/footer.html";
 
 ?>
