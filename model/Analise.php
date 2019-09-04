@@ -77,25 +77,44 @@ class Analise
         return $this->buscaTipo($aux[0], $aux[1], $prototipo);
     }
 
-    private function transpilaIF($codigo, $matches = [])
+    private function transpilaIF($regex, $codigo, $matches = [])
     {
-        // substitui a ocorrencia do if na linguagem de fonte para lingugagem de destino;
-        for ($i = 0; $i < sizeof($matches); $i++)
-        {
-            $aux = str_replace('<exp>', $matches[1][$i], $this->ling_destino->getIf());
-            $codigo = str_replace($matches[0][$i], $aux, $codigo);
+        if (preg_match_all($regex, $codigo, $matches)) {
+            // substitui a ocorrencia do if na linguagem de fonte para lingugagem de destino;
+            for ($i = 0; $i < sizeof($matches); $i++) {
+                $aux = str_replace('<exp>', $matches[1][$i], $this->ling_destino->getIf());
+                $codigo = str_replace($matches[0][$i], $aux, $codigo);
+            }
         }
         return $codigo;
     }
 
     // Transpila todos os elses para a linguagem de destino
-    private function transpilaElse($matches, $codigo)
+    private function transpilaElse($regex, $codigo)
     {
-        for ($i = 0; $i < sizeof($matches[0]); $i++)
+        if (preg_match_all($regex, $codigo, $matches))
         {
-            $aux = str_replace($matches[1][$i], $this->ling_destino->getElses(), $matches[1][$i]);
-            $codigo = str_replace($matches[0][$i], $aux, $codigo);
+            for ($i = 0; $i < sizeof($matches[0]); $i++)
+            {
+                $aux = str_replace($matches[1][$i], $this->ling_destino->getElses(), $matches[1][$i]);
+                $codigo = str_replace($matches[0][$i], $aux, $codigo);
+            }
         }
+
+        return $codigo;
+    }
+
+    private function transpilaIfElses($regex, $codigo)
+    {
+        if (preg_match_all($regex, $codigo, $matches))
+        {
+            for ($i = 0; $i < sizeof($matches[0]); $i++) {
+                $aux = str_replace('<exp>', $matches[1][$i], $this->ling_destino->getElseIfs());
+
+                $codigo = str_replace($matches[0][$i], $aux, $codigo);
+            }
+        }
+
         return $codigo;
     }
 
@@ -253,27 +272,6 @@ class Analise
         return 'O codigo não pode ser transpilado!';
     }
 
-    private function functionIf($codigo)
-    {
-        if (preg_match_all("/if\s?+\((.*?)\)\s?+\n?+\s?+\{/", $codigo, $matches))
-        {
-            for ($i = 0; $i < sizeof($matches[0]); $i++)
-            {
-                $codigo = $this->transpilaIF($codigo, $matches);
-            }
-        }
-        return $codigo;
-    }
-
-    private function functionElse($codigo)
-    {
-        if (preg_match_all("/(else)\s?+\n?+\s?+\{/", $codigo, $matches))
-        {
-            $codigo = $this->transpilaElse($matches, $codigo);
-        }
-        return $codigo;
-    }
-
     private function functionFor($codigo)
     {
         $regex = "/for\s?+\(\s?+([\w]+)\s\s?+([\w+])\s?+\=\s?+(.*)\s?+\;\s?+[\w]+\s?+([<>!=]+)\s?+(.*)\s?+\;\s?+[\w]+(.*)\)\s?+\{/";
@@ -342,30 +340,16 @@ class Analise
         return $codigo;
     }
 
-    private function functionIfElses($codigo)
-    {
-        if (preg_match_all("/else\s?+if\s?\((.*)\)\s?+\{/", $codigo, $matches))
-        {
-            for ($i = 0; $i < sizeof($matches[0]); $i++) {
-                $aux = str_replace('<exp>', $matches[1][$i], $this->ling_destino->getElseIfs());
-
-                $codigo = str_replace($matches[0][$i], $aux, $codigo);
-            }
-        }
-
-        return $codigo;
-    }
-
     private function analiseC($codigo)
     {
         // Transpila um else
-        $codigo = $this->functionElse($codigo);
+        $codigo = $this->transpilaElse("/(else)\s?+\n?+\s?+\{/", $codigo);
 
         // Transpila else if
-        $codigo = $this->functionIfElses($codigo);
+        $codigo = $this->transpilaIfElses("/else\s?+if\s?\((.*)\)\s?+\{/", $codigo);
 
         // Transpila um if
-        $codigo = $this->functionIf($codigo);
+        $codigo = $this->transpilaIf("/if\s?+\((.*?)\)\s?+\n?+\s?+\{/", $codigo);
 
         // Transpila uma funcao
         if (preg_match_all("/([\w]+[^else])\s([\w]+)\s?\((.*?)\)\s?+\{/", $codigo, $matches))
@@ -408,13 +392,13 @@ class Analise
     private function analiseJava($codigo)
     {
         /// Transpila um if
-        $codigo = $this->functionIf($codigo);
+        $codigo = $this->transpilaIF("/if\s?+\((.*?)\)\s?+\n?+\s?+\{/", $codigo);
 
         // Transpila um else
-        $codigo = $this->functionElse($codigo);
+        $codigo = $this->transpilaElse("/(else)\s?+\n?+\s?+\{/", $codigo);
 
         // Transpila else if
-        $codigo = $this->functionIfElses($codigo);
+        $codigo = $this->transpilaIfElses("/else\s?+if\s?\((.*)\)\s?+\{/", $codigo);
 
         // Transpila um metodo publico
         if (preg_match_all("/public\s+([\w]+)\s+([\w]+)\s?+\((.*?)\)\s?+\{/", $codigo, $matches))
@@ -444,13 +428,13 @@ class Analise
     private function analiseKotlin($codigo)
     {
         // Transpila um if
-        $codigo = $this->functionIf($codigo);
+        $codigo = $this->transpilaIF("/if\s?+\((.*?)\)\s?+\n?+\s?+\{/", $codigo);
 
         // Transpila um else
-        $codigo = $this->functionElse($codigo);
+        $codigo = $this->transpilaElse("/(else)\s?+\n?+\s?+\{/", $codigo);
 
         // Transpila else if
-        $codigo = $this->functionIfElses($codigo);
+        $codigo = $this->transpilaIfElses("/else\s?+if\s?\((.*)\)\s?+\{/", $codigo);
 
         // Transpila um metodo em Kotlin
         if (preg_match_all("/fun\s+([\w]+)\s?+\((.*?)\)\s?+\:?\s?+([\w]+)?\s?+\{/", $codigo, $matches))
