@@ -22,45 +22,45 @@ class Analise
         switch($this->ling_fonte->getId())
         {
             case 1:
-                return $this->analiseC($codigo, $this->ling_fonte, $this->ling_destino);
+                return $this->analiseC($codigo);
                 break;
 
             case 2:
-                return $this->analiseJava($codigo, $this->ling_fonte, $this->ling_destino);
+                return $this->analiseJava($codigo);
                 break;
 
             case 3:
-                return $this->analiseKotlin($codigo, $this->ling_fonte, $this->ling_destino);
+                return $this->analiseKotlin($codigo);
                 break;
 
             case 4:
-                $this->analisePython($codigo, $this->ling_fonte, $this->ling_destino);
+                $this->analisePython($codigo);
                 break;
 
             case 5:
-                $this->analiseHaskell($codigo, $this->ling_fonte, $this->ling_destino);
+                $this->analiseHaskell($codigo);
                 break;
         }
         return null;
     }
 
-    private function buscaTipo($tipos_fonte, $tipos_destino, $tipo, $nome, $prototipo)
+    private function buscaTipo($tipo, $nome, $prototipo)
     {
         // busca o tipo de retorno na linguagem de destino
-        for($i = 0; $i < sizeof($tipos_fonte); $i++)
-            if ($tipo == $tipos_fonte[$i]['tipo'])
+        for($i = 0; $i < sizeof($this->ling_fonte->getTipos()); $i++)
+            if ($tipo == $this->ling_fonte->getTipos()[$i]['tipo'])
                 // retorna os tipos primitivos na linguagem de destino
-                for ($j = 0; $j < sizeof($tipos_destino); $j++)
+                for ($j = 0; $j < sizeof($this->ling_destino->getTipos()); $j++)
                 {
-                    if ($tipos_fonte[$i]['tamanho'] == $tipos_destino[$j]['tamanho'] &&
-                        $tipos_fonte[$i]['descricao'] == $tipos_destino[$j]['descricao'])
+                    if ($this->ling_fonte->getTipos()[$i]['tamanho'] == $this->ling_destino->getTipos()[$j]['tamanho'] &&
+                        $this->ling_fonte->getTipos()[$i]['descricao'] == $this->ling_destino->getTipos()[$j]['descricao'])
                         // substitui o tipo e o nome no prototipo passado por parametro
-                        return str_replace(['<tipo>', '<nome>'], [$tipos_destino[$j]['tipo'], $nome], $prototipo);
+                        return str_replace(['<tipo>', '<nome>'], [$this->ling_destino->getTipos()[$j]['tipo'], $nome], $prototipo);
                 }
         return null;
     }
 
-    private function subParametro($ling_fonte, $ling_destino, $prototipo, $parametro, $delimitador = ' ')
+    private function subParametro($prototipo, $parametro, $delimitador = ' ')
     {
         // separa o tipo do nome do parametro
         $aux = explode($delimitador, trim($parametro));
@@ -71,38 +71,38 @@ class Analise
         }, $aux);
 
         // se a linguagem for kotlin, o nome e o tipo deve ser invertido
-        if ($ling_fonte->getId() == 3)
-            return $this->buscaTipo($ling_fonte->getTipos(), $ling_destino->getTipos(), $aux[1], $aux[0], $prototipo);
+        if ($this->ling_fonte->getId() == 3)
+            return $this->buscaTipo($aux[1], $aux[0], $prototipo);
 
-        return $this->buscaTipo($ling_fonte->getTipos(), $ling_destino->getTipos(), $aux[0], $aux[1], $prototipo);
+        return $this->buscaTipo($aux[0], $aux[1], $prototipo);
     }
 
-    private function transpilaIF($ling_destino, $codigo, $matches = [])
+    private function transpilaIF($codigo, $matches = [])
     {
         // substitui a ocorrencia do if na linguagem de fonte para lingugagem de destino;
         for ($i = 0; $i < sizeof($matches); $i++)
         {
-            $aux = str_replace('<exp>', $matches[1][$i], $ling_destino->getIf());
+            $aux = str_replace('<exp>', $matches[1][$i], $this->ling_destino->getIf());
             $codigo = str_replace($matches[0][$i], $aux, $codigo);
         }
         return $codigo;
     }
 
     // Transpila todos os elses para a linguagem de destino
-    private function transpilaElse($ling_destino, $matches, $codigo)
+    private function transpilaElse($matches, $codigo)
     {
         for ($i = 0; $i < sizeof($matches[0]); $i++)
         {
-            $aux = str_replace($matches[1][$i], $ling_destino->getElses(), $matches[1][$i]);
+            $aux = str_replace($matches[1][$i], $this->ling_destino->getElses(), $matches[1][$i]);
             $codigo = str_replace($matches[0][$i], $aux, $codigo);
         }
         return $codigo;
     }
 
-    private function transpilaFuncao($ling_fonte, $ling_destino, $tipo, $nome, $param, $delimitador = ' ')
+    private function transpilaFuncao($tipo, $nome, $param, $delimitador = ' ')
     {
         // verifica o tipo correspondente na linguagem de destino
-        $prototipo = $this->buscaTipo($ling_fonte->getTipos(), $ling_destino->getTipos(), $tipo, $nome, $ling_destino->getFuncoes());
+        $prototipo = $this->buscaTipo($tipo, $nome, $this->ling_destino->getFuncoes());
 
         $str = '';
 
@@ -113,47 +113,50 @@ class Analise
         // para cada parametro, substitui seu nome e tipo
         for ($i = 0; $i < $parLenght; $i++)
         {
-            switch ($ling_destino->getId())
+            switch ($this->ling_destino->getId())
             {
                 case 1:
-                    $str .= $this->subParametro($ling_fonte, $ling_destino, '<tipo> <nome>', $parametros[$i], $delimitador);
+                    $str .= $this->subParametro('<tipo> <nome>', $parametros[$i], $delimitador);
                     break;
 
                 case 2:
-                    $str .= $this->subParametro($ling_fonte, $ling_destino, '<tipo> <nome>', $parametros[$i], $delimitador);
+                    $str .= $this->subParametro('<tipo> <nome>', $parametros[$i], $delimitador);
                     break;
 
                 case 3:
-                    $str .= $this->subParametro($ling_fonte, $ling_destino, '<nome> : <tipo>', $parametros[$i], $delimitador);
+                    $str .= $this->subParametro('<nome> : <tipo>', $parametros[$i], $delimitador);
                     break;
 
                 case 4:
-                    $str .= $this->subParametro($ling_fonte, $ling_destino, '<nome>', $parametros[$i], $delimitador);
+                    $str .= $this->subParametro('<nome>', $parametros[$i], $delimitador);
                     break;
 
                 case 5:
-                    $str .= $this->subParametro($ling_fonte, $ling_destino, '<nome>', $parametros[$i], $delimitador);
+                    $str .= $this->subParametro('<nome>', $parametros[$i], $delimitador);
                     break;
             }
 
-            if ($ling_destino->getId() != 5 && $i != $parLenght-1)
+            if ($this->ling_destino->getId() != 5 && $i != $parLenght-1)
                 $str .= ', ';
-            else if ($ling_destino->getId() == 5 && $i != $parLenght-1)
+            else if ($this->ling_destino->getId() == 5 && $i != $parLenght-1)
                 $str .= ' ';
         }
         //substitui todos os parametros no prototipo
         return str_replace('<param>', $str, $prototipo);
     }
 
-    private function transpilaFor($ling_fonte, $ling_destino, $matches = [])
+    private function transpilaFor($matches = [])
     {
-        $for = $ling_destino->getFors();
+        $for = $this->ling_destino->getFors();
 
         // busca o tipo correspondente na linguagem de destino
-        $tipo = $this->buscaTipo($ling_fonte->getTipos(), $ling_destino->getTipos(), $matches['tipo'], $matches['var'], '<tipo>');
+        $tipo = $this->buscaTipo($matches['tipo'], $matches['var'], '<tipo>');
 
+        $novo = [];
+        $antigo = [];
+        $prototipo = '';
         // substitui os valores no prototipo de acordo com a linguagem de destino
-        switch ($ling_destino->getId())
+        switch ($this->ling_destino->getId())
         {
             case 1:
             case 2:
@@ -193,35 +196,34 @@ class Analise
         return str_replace($antigo, $novo, $prototipo);
     }
 
-    private function transpilaDeclaracao($ling_fonte, $ling_destino, $matches = [])
+    private function transpilaDeclaracao($matches = [])
     {
         // retorna o tipo na liguagem de destino
-        $prototipo = $this->buscaTipo($ling_fonte->getTipos(), $ling_destino->getTipos(), $matches['tipo'],
-            $matches['nome'], $ling_destino->getDeclaracao());
+        $prototipo = $this->buscaTipo($matches['tipo'], $matches['nome'], $this->ling_destino->getDeclaracao());
 
         return str_replace('<valor>', $matches['valor'], $prototipo);
     }
 
-    private function transpilaReturn($ling_destino, $valor)
+    private function transpilaReturn($valor)
     {
-        $str = str_replace('<valor>', $valor, $ling_destino->getRetornos());
+        $str = str_replace('<valor>', $valor, $this->ling_destino->getRetornos());
 
-        if ($ling_destino->getId() != 5 && $ling_destino->getId() != 4)
+        if ($this->ling_destino->getId() != 5 && $this->ling_destino->getId() != 4)
             $str .= "\n}";
-        else if ($ling_destino->getId() == 4)
+        else if ($this->ling_destino->getId() == 4)
             $str .= "\n";
 
         return $str;
     }
 
 // Transpila a atribuicao para a linguagem de destino
-    private function transpilaAtribuicao($ling_destino, $matches, $codigo)
+    private function transpilaAtribuicao($matches, $codigo)
     {
         foreach ($matches as $match)
         {
             $aux = $match[0];
 
-            if ($ling_destino->getId() != 1 && $ling_destino->getId() != 2)
+            if ($this->ling_destino->getId() != 1 && $this->ling_destino->getId() != 2)
                 $aux = str_replace(';', '', $match[0]);
 
             $codigo = str_replace($match[0], $aux,$codigo);
@@ -243,36 +245,36 @@ class Analise
         return trim($codigo);
     }
 
-    private function codigo_final($id_destino, $codigo_final)
+    private function codigo_final($codigo_final)
     {
         if (strlen($codigo_final))
-            return $this->format($id_destino, $codigo_final);
+            return $this->format($this->ling_destino->getId(), $codigo_final);
 
         return 'O codigo não pode ser transpilado!';
     }
 
-    private function functionIf($ling_destino, $codigo)
+    private function functionIf($codigo)
     {
         if (preg_match_all("/if\s?+\((.*?)\)\s?+\n?+\s?+\{/", $codigo, $matches))
         {
             for ($i = 0; $i < sizeof($matches[0]); $i++)
             {
-                $codigo = $this->transpilaIF($ling_destino, $codigo, $matches);
+                $codigo = $this->transpilaIF($codigo, $matches);
             }
         }
         return $codigo;
     }
 
-    private function functionElse($ling_destino, $codigo)
+    private function functionElse($codigo)
     {
         if (preg_match_all("/(else)\s?+\n?+\s?+\{/", $codigo, $matches))
         {
-            $codigo = $this->transpilaElse($ling_destino, $matches, $codigo);
+            $codigo = $this->transpilaElse($matches, $codigo);
         }
         return $codigo;
     }
 
-    private function functionFor($ling_fonte, $ling_destino, $codigo)
+    private function functionFor($codigo)
     {
         $regex = "/for\s?+\(\s?+([\w]+)\s\s?+([\w+])\s?+\=\s?+(.*)\s?+\;\s?+[\w]+\s?+([<>!=]+)\s?+(.*)\s?+\;\s?+[\w]+(.*)\)\s?+\{/";
         if (preg_match_all($regex, $codigo, $matches))
@@ -289,7 +291,7 @@ class Analise
                     'incr' => $matches[6][$i]
                 ];
 
-                $aux = $this->transpilaFor($ling_fonte, $ling_destino, $values);
+                $aux = $this->transpilaFor($values);
 
                 $codigo = str_replace($match, $aux, $codigo);
             }
@@ -297,14 +299,14 @@ class Analise
         return $codigo;
     }
 
-    private function functionReturn(Linguagem $ling_destino, $codigo)
+    private function functionReturn($codigo)
     {
 
         if (preg_match_all("/return\s+?(.*?)\;\s+?\}/", $codigo, $matches))
         {
             for ($i = 0; $i < sizeof($matches[0]); $i++)
             {
-                $aux= $this->transpilaReturn($ling_destino, $matches[1][$i]);
+                $aux= $this->transpilaReturn($matches[1][$i]);
 
                 $codigo = str_replace($matches[0][$i], $aux, $codigo);
             }
@@ -312,7 +314,7 @@ class Analise
         return $codigo;
     }
 
-    private function functionDeclaracao($ling_fonte, $ling_destino, $codigo)
+    private function functionDeclaracao($codigo)
     {
         if (preg_match_all("/([\w]+)\s\s?+([\w]?+)\s?+\=\s?+(.*)\;/", $codigo, $matches))
         {
@@ -324,7 +326,7 @@ class Analise
                     'valor' => $matches[3][$i]
                 ];
 
-                $aux = $this->transpilaDeclaracao($ling_fonte, $ling_destino, $values);
+                $aux = $this->transpilaDeclaracao($values);
 
                 $codigo = str_replace($matches[0][$i], $aux, $codigo);
             }
@@ -332,20 +334,20 @@ class Analise
         return $codigo;
     }
 
-    private function functionAtribuicao($ling_destino, $codigo)
+    private function functionAtribuicao($codigo)
     {
         if (preg_match_all("/([\w]+)\s?+([=\-+*\/]+)\s?+(.*)\;/", $codigo, $matches))
-            $codigo = $this->transpilaAtribuicao($ling_destino, $matches, $codigo);
+            $codigo = $this->transpilaAtribuicao($matches, $codigo);
 
         return $codigo;
     }
 
-    private function functionIfElses($ling_destino, $codigo)
+    private function functionIfElses($codigo)
     {
         if (preg_match_all("/else\s?+if\s?\((.*)\)\s?+\{/", $codigo, $matches))
         {
             for ($i = 0; $i < sizeof($matches[0]); $i++) {
-                $aux = str_replace('<exp>', $matches[1][$i], $ling_destino->getElseIfs());
+                $aux = str_replace('<exp>', $matches[1][$i], $this->ling_destino->getElseIfs());
 
                 $codigo = str_replace($matches[0][$i], $aux, $codigo);
             }
@@ -354,38 +356,38 @@ class Analise
         return $codigo;
     }
 
-    private function analiseC($codigo, Linguagem $ling_fonte, Linguagem $ling_destino)
+    private function analiseC($codigo)
     {
         // Transpila um else
-        $codigo = $this->functionElse($ling_destino, $codigo);
+        $codigo = $this->functionElse($codigo);
 
         // Transpila else if
-        $codigo = $this->functionIfElses($ling_destino, $codigo);
+        $codigo = $this->functionIfElses($codigo);
 
         // Transpila um if
-        $codigo = $this->functionIf($ling_destino, $codigo);
+        $codigo = $this->functionIf($codigo);
 
         // Transpila uma funcao
         if (preg_match_all("/([\w]+[^else])\s([\w]+)\s?\((.*?)\)\s?+\{/", $codigo, $matches))
         {
             for ($i = 0; $i < sizeof($matches[0]); $i++)
             {
-                $aux = $this->transpilaFuncao($ling_fonte, $ling_destino, $matches[1][$i], $matches[2][$i], $matches[3][$i]);
+                $aux = $this->transpilaFuncao($matches[1][$i], $matches[2][$i], $matches[3][$i]);
 
                 $codigo = str_replace($matches[0][$i], $aux, $codigo);
             }
         }
         // Transpila um for padrao
-        $codigo = $this->functionFor($ling_fonte, $ling_destino, $codigo);
+        $codigo = $this->functionFor($codigo);
 
         // Transpila uma declaracao de variavel
-        $codigo = $this->functionDeclaracao($ling_fonte, $ling_destino, $codigo);
+        $codigo = $this->functionDeclaracao($codigo);
 
         // Transpila return
-        $codigo = $this->functionReturn($ling_destino, $codigo);
+        $codigo = $this->functionReturn($codigo);
 
         // Transpila atribuicoes
-        $codigo = $this->functionAtribuicao($ling_destino, $codigo);
+        $codigo = $this->functionAtribuicao($codigo);
 
         if (preg_match_all("/printf\((.*?)\)\;/", $codigo, $matches))
         {
@@ -394,61 +396,61 @@ class Analise
                 $parametros = explode(',', $matches[1][$i]);
                 var_dump($parametros);
 
-                $aux = str_replace("<param>", $matches[1][$i], $ling_destino->getPrints());
+                $aux = str_replace("<param>", $matches[1][$i], $this->ling_destino->getPrints());
 
                 $codigo = str_replace($matches[0][$i], $aux, $codigo);
             }
         }
 
-        return $this->codigo_final($ling_destino->getId(), $codigo);
+        return $this->codigo_final($codigo);
     }
 
-    private function analiseJava($codigo, $ling_fonte, $ling_destino)
+    private function analiseJava($codigo)
     {
         /// Transpila um if
-        $codigo = $this->functionIf($ling_destino, $codigo);
+        $codigo = $this->functionIf($codigo);
 
         // Transpila um else
-        $codigo = $this->functionElse($ling_destino, $codigo);
+        $codigo = $this->functionElse($codigo);
 
         // Transpila else if
-        $codigo = $this->functionIfElses($ling_destino, $codigo);
+        $codigo = $this->functionIfElses($codigo);
 
         // Transpila um metodo publico
         if (preg_match_all("/public\s+([\w]+)\s+([\w]+)\s?+\((.*?)\)\s?+\{/", $codigo, $matches))
         {
             for ($i = 0; $i < sizeof($matches[0]); $i++)
             {
-                $aux = $this->transpilaFuncao($ling_fonte, $ling_destino, $matches[1][$i], $matches[2][$i], $matches[3][$i]);
+                $aux = $this->transpilaFuncao($matches[1][$i], $matches[2][$i], $matches[3][$i]);
 
                 $codigo = str_replace($matches[0][$i], $aux, $codigo);
             }
         }
         // Transpila um for padrao
-        $codigo = $this->functionFor($ling_fonte, $ling_destino, $codigo);
+        $codigo = $this->functionFor($codigo);
 
         // Transpila uma declaracao de variavel
-        $codigo = $this->functionDeclaracao($ling_fonte, $ling_destino, $codigo);
+        $codigo = $this->functionDeclaracao($codigo);
 
         // Transpila return
-        $codigo = $this->functionReturn($ling_destino, $codigo);
+        $codigo = $this->functionReturn($codigo);
 
         // Transpila atribuicoes
-        $codigo = $this->functionAtribuicao($ling_destino, $codigo);
+        $codigo = $this->functionAtribuicao($codigo);
 
-        return $this->codigo_final($ling_destino->getId(), $codigo);
+        return $this->codigo_final($codigo);
     }
 
-    private function analiseKotlin($codigo, $ling_fonte, $ling_destino)
+    private function analiseKotlin($codigo)
     {
         // Transpila um if
-        $codigo = $this->functionIf($ling_destino, $codigo);
+        $codigo = $this->functionIf($codigo);
 
         // Transpila um else
-        $codigo = $this->functionElse($ling_destino, $codigo);
+        $codigo = $this->functionElse($codigo);
 
         // Transpila else if
-        $codigo = $this->functionIfElses($ling_destino, $codigo);
+        $codigo = $this->functionIfElses($codigo);
 
         // Transpila um metodo em Kotlin
         if (preg_match_all("/fun\s+([\w]+)\s?+\((.*?)\)\s?+\:?\s?+([\w]+)?\s?+\{/", $codigo, $matches))
@@ -456,7 +458,7 @@ class Analise
             for ($i = 0; $i < sizeof($matches[0]); $i++)
             {
                 //O array de matches contém o tipo de retorno, nome da função e parametros, respectivamente.
-                $aux = $this->transpilaFuncao($ling_fonte, $ling_destino, $matches[3][$i], $matches[1][$i], $matches[2][$i], ':');
+                $aux = $this->transpilaFuncao($matches[3][$i], $matches[1][$i], $matches[2][$i], ':');
 
                 $codigo = str_replace($matches[0][$i], $aux, $codigo);
             }
@@ -476,7 +478,7 @@ class Analise
                     'incr' => '++'
                 ];
 
-                $aux = $this->transpilaFor($ling_fonte, $ling_destino, $values);
+                $aux = $this->transpilaFor($values);
 
                 $codigo = str_replace($match, $aux, $codigo);
             }
@@ -493,7 +495,7 @@ class Analise
                     'valor' => trim($matches[3][$i])
                 ];
 
-                $aux = $this->transpilaDeclaracao($ling_fonte, $ling_destino, $values);
+                $aux = $this->transpilaDeclaracao($values);
 
                 $codigo = str_replace($matches[0][$i], $aux, $codigo);
             }
@@ -503,20 +505,20 @@ class Analise
         {
             for ($i = 0; $i < sizeof($matches[0]); $i++)
             {
-                $aux = $this->transpilaReturn($ling_destino, $matches[1][$i]);
+                $aux = $this->transpilaReturn($matches[1][$i]);
 
                 $codigo = str_replace($matches[0][$i], $aux, $codigo);
             }
         }
-        return $this->codigo_final($ling_destino->getId(), $codigo);
+        return $this->codigo_final($codigo);
     }
 
-    private function analisePython($codigo, $ling_fonte, $ling_destino)
+    private function analisePython($codigo)
     {
 
     }
 
-    private function analiseHaskell($codigo, $ling_fonte, $ling_destino)
+    private function analiseHaskell($codigo)
     {
 
     }
