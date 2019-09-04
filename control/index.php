@@ -7,9 +7,10 @@ extract($_POST);
 switch ($action) 
 {
 	case 'enviarFonte':
-        require_once "../model/analise.php";
+        require_once "../model/Analise.php";
 
-        $result = analisar($cfonte, $lfonte, $ldestino);
+        $result = (new Analise($lfonte, $ldestino))->analisar($cfonte);
+
         echo json_encode(["prototipo" => $result]);
         break;
 	

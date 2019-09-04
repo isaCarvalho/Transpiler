@@ -23,10 +23,10 @@
 		</div>
 
 		<div class="sanduiche" onclick="menuResponsivo()">
-			<i class="fas fa-bars"></i>
+			<img src="../images/menu-sand.png" style="width: 30px; height: auto;">
 		</div>
 
-		<div id="menu">
+		<div id="menu" style="display: none">
 			<ul>
 				<a href="../index.php" class="links"><li>HOME</li></a>
 				<a href="../tutorials.php" class="links"><li>TUTORIAIS</li></a>
@@ -43,10 +43,10 @@
 	function menuResponsivo() {
 		let menu = document.getElementById('menu');
 
-		if (menu.style.visibility == 'hidden') {
-			menu.style.visibility = 'visible';
+		if (menu.style.display == 'none') {
+			menu.style.display = 'block';
 		} else {
-			menu.style.visibility = 'hidden';
+			menu.style.display = 'none';
 		}
 	}
 </script>

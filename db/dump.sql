@@ -164,6 +164,24 @@ id_linguagem int references linguagens(id)
 create sequence else_ifs_seq increment 1 minvalue 1 start 1;
 alter table else_ifs alter column id set default nextval('else_ifs_seq');
 
+create table prints (
+id serial primary key,
+descricao varchar(255) not null,
+id_linguagem int references linguagens(id) on delete cascade on update cascade
+);
+
+create sequence prints_seq increment 1 minvalue 1 start 1;
+alter table prints alter column id set default nextval('prints_seq');
+
+create table scans (
+id serial primary key,
+descricao varchar(255) not null,
+id_linguagem int references linguagens(id) on delete cascade on update cascade
+);
+
+create sequence scans_seq increment 1 minvalue 1 start 1;
+alter table scans alter column id set default nextval('scans_seq');
+
 /* Inserção de dados nas tabelas */
 
 -- Inserção dos paradigmas
@@ -301,6 +319,13 @@ insert into loops (descricao, id_linguagem) values
 ('while <exp>:', 4),
 ('não informado', 5);
 
+insert into prints (descricao, id_linguagem) values
+('printf(<param>)', 1),
+('System.out.println(<param>)', 2),
+('print(<param>)', 3),
+('print(<param>)', 4),
+('putStrLn <param>', 5);
+
 /* Modificações */
 
 update linguagens set descricao = 'C é uma linguagem de programação de paradigma procedural, estruturada e que serviu de ' ||
@@ -348,3 +373,11 @@ select linguagens.nome, functions.descricao from linguagens, functions where lin
 select linguagens.nome, tipos.tipo, tipos.descricao, tipos.tamanho from linguagens, tipos where linguagens.id = tipos.id_linguagem;
 
 select linguagens.nome, loops.descricao from linguagens, loops where linguagens.id = loops.id_linguagem;
+
+
+printf("string legal com %s", variavel);
+
+"string legal com <var>"
+nome = variavel
+
+print("string legal com %s".format(nome))

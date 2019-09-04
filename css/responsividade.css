@@ -4,18 +4,21 @@
         z-index: 1000 !important;
     }
 
-    .header nav {
-        position: absolute;
-    }
+    /*.header nav {*/
+        /*position: absolute;*/
+    /*}*/
 
     #menu {
-        visibility: hidden;
-        width: 100%;
+        display: none;
         z-index: 900;
         background-color: rgba(0,0,0,.97) !important;
         padding-left: 10px;
         margin-top: 5px;
         text-align: center !important;
+        position: absolute;
+        top: 56px;
+        width: 100%;
+        left: 0;
     }
 
     #menu ul {
