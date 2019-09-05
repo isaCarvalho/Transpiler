@@ -9,7 +9,7 @@ switch ($action)
 	case 'enviarFonte':
         require_once "../model/Analise.php";
 
-        $result = (new Analise($lfonte, $ldestino))->analisar($cfonte);
+        $result = Analise::analisar($cfonte, $lfonte, $ldestino);
 
         echo json_encode(["prototipo" => $result]);
         break;
