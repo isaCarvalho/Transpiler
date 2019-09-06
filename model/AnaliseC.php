@@ -2,7 +2,7 @@
 
 class AnaliseC extends Analise
 {
-    protected static function traduz($codigo)
+    public static function traduz($codigo)
     {
         // Transpila um else
         $codigo = self::transpilaElse("/(else)\s?+\n?+\s?+\{/", $codigo);

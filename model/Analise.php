@@ -341,5 +341,5 @@ abstract class Analise
         return $codigo;
     }
 
-    protected abstract static function traduz($codigo);
+    public abstract static function traduz($codigo);
 }

@@ -2,7 +2,7 @@
 
 class AnalisePython extends Analise
 {
-    protected static function traduz($codigo)
+    public static function traduz($codigo)
     {
 
     }

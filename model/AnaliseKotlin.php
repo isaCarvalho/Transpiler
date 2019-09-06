@@ -2,7 +2,7 @@
 
 class AnaliseKotlin extends Analise
 {
-    protected static function traduz($codigo)
+    public static function traduz($codigo)
     {
         // Transpila um if
         $codigo = self::transpilaIF("/if\s?+\((.*?)\)\s?+\n?+\s?+\{/", $codigo);
