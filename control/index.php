@@ -10,7 +10,6 @@ switch ($action)
         require_once "../model/Analise.php";
 
         $result = Analise::analisar($cfonte, $lfonte, $ldestino);
-
         echo json_encode(["prototipo" => $result]);
         break;
 	
