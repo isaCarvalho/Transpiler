@@ -78,8 +78,8 @@ class AnaliseC extends Analise
                         $string = $parametros[0];
                         for ($k = 0; $k < sizeof($matchesPrint[0]); $k++)
                         {
-                            $aux = str_replace("%", '{:', $matchesPrint[0][$k]);
-                            $string = str_replace($matchesPrint[0][$k], $aux.'}', $string);
+                            $aux = str_replace("%", '{:', $matchesPrint[0][$k]) . "}";
+                            $string = str_replace($matchesPrint[0][$k], $aux, $string);
                         }
 
                         $string .= ".format(";
@@ -91,6 +91,7 @@ class AnaliseC extends Analise
                         }
 
                         $string .= ")";
+//                        var_dump($string);
 
                         $print = $string;
                         break;

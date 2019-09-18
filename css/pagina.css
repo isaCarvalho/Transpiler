@@ -148,8 +148,8 @@ span {
 
 .button
 {
-	background-color: rgb(70, 129, 168);
-	/*background-color: rgb(104, 72, 160);*/
+	/*background-color: rgb(70, 129, 168);*/
+	background-color: rgb(104, 72, 160);
 	width: 405px;
 	height: 45px;
 	border: none;

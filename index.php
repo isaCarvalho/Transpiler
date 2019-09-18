@@ -11,8 +11,8 @@
 		<form id="formulario">			
 			
 			<p>
-				<label for="fonte" class="label">Origem</label>
-				<select class="select" name="lfonte">
+				<label for="lfonte" class="label">Origem</label>
+				<select class="select" name="lfonte" id="lfonte">
 					<option value="1">C</option>
 					<option value="2">Java</option>
 					<option value="3">Kotlin</option>
@@ -21,8 +21,8 @@
 				</select>
 				
 	
-				<label for="destino" class="label">Destino</label>
-				<select class="select" name="ldestino">
+				<label for="ldestino" class="label">Destino</label>
+				<select class="select" name="ldestino" id="ldestino">
 					<option value="1">C</option>
 					<option value="2">Java</option>
 					<option value="3">Kotlin</option>
