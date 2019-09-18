@@ -373,11 +373,3 @@ select linguagens.nome, functions.descricao from linguagens, functions where lin
 select linguagens.nome, tipos.tipo, tipos.descricao, tipos.tamanho from linguagens, tipos where linguagens.id = tipos.id_linguagem;
 
 select linguagens.nome, loops.descricao from linguagens, loops where linguagens.id = loops.id_linguagem;
-
-
-printf("string legal com %s", variavel);
-
-"string legal com <var>"
-nome = variavel
-
-print("string legal com %s".format(nome))

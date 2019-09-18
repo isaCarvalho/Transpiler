@@ -315,7 +315,7 @@ abstract class Analise
 
     protected static function functionDeclaracao($codigo)
     {
-        if (preg_match_all("/([\w]+)\s\s?+([\w]?+)\s?+\=\s?+(.*)\;/", $codigo, $matches))
+        if (preg_match_all("/(\w+)\s\s*(\w+)\s\s*\=\s\s*(.*)\;/", $codigo, $matches))
         {
             for ($i = 0; $i < sizeof($matches)-1; $i++)
             {
