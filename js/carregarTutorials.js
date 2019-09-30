@@ -67,56 +67,38 @@ function createTable(inner = ``)
 	return table;
 }
 
+function carregarDados(url, title)
+{
+	fetch(url)
+		.then(response => response.json())
+		.then(dado => {
+			let table = createTable(`<tr><th>${title}</th></tr>`);
+
+			let tr = document.createElement('tr');
+			tr.innerHTML = `<td>${dado.descricao}</td>`;
+
+			table.appendChild(tr);
+
+			navLing.appendChild(table);
+		})
+}
+
 // carrega o BNF de prints em cada linguagem
 function carregarPrints(id)
 {
-	fetch(`../control/?action=carregarPrints&id_linguagem=${id}`)
-		.then(response => response.json())
-		.then(print => {
-			let tablePrints = createTable(`<tr><th>Prints</th></tr>`);
-
-			let tr = document.createElement('tr');
-			tr.innerHTML = `<td>${print.descricao}</td>`;
-
-			tablePrints.appendChild(tr);
-
-			navLing.appendChild(tablePrints);
-		})
+	carregarDados(`../control/?action=carregarPrints&id_linguagem=${id}`, "Prints");
 }
 
 // carrega o BNF de retornos em cada linguagem
 function carregarReturns(id)
 {
-	fetch(`../control/?action=carregarReturns&id_linguagem=${id}`)
-		.then(response => response.json())
-		.then(retorno => {
-			let tableRetorno = createTable(`<tr><th>Returns</th></tr>`);
-
-			let tr = document.createElement('tr');
-			tr.innerHTML = `<td>${retorno.descricao}</td>`;
-
-			tableRetorno.appendChild(tr);
-
-			navLing.appendChild(tableRetorno);
-		})
+	carregarDados(`../control/?action=carregarReturns&id_linguagem=${id}`, "Returns");
 }
 
 // carrega o BNF das funcoes em cada linguagem
 function carregarFunctions(id)
 {
-	fetch(`../control/?action=carregarFunctions&id_linguagem=${id}`)
-		.then(response => response.json())
-		.then(functions => {
-
-			let tableFunctions = createTable(`<tr><th>Funções</th></tr>`);
-
-			var tr = document.createElement('tr');
-			tr.innerHTML = `<td>${functions.descricao}</td>`;
-
-			tableFunctions.appendChild(tr);
-
-			navLing.appendChild(tableFunctions);
-		})
+	carregarDados(`../control/?action=carregarFunctions&id_linguagem=${id}`, "Funções")
 }
 
 // Carrega os tipos primitivos de cada linguagem
@@ -133,10 +115,10 @@ function carregarTipos(id)
 							  		</tr>`)
 
 			tipos.forEach(tipo => {
-				var tr = document.createElement('tr');
+				let tr = document.createElement('tr');
 
-				var tamanho;
-				if (tipo.tamanho == 0)
+				let tamanho;
+				if (tipo.tamanho === 0)
 					tamanho = 'não informado';
 				else
 					tamanho = tipo.tamanho + ' bits';
@@ -156,21 +138,7 @@ function carregarTipos(id)
 // Carrega os ifs de cada linguagem
 function carregarIfs(id)
 {
-	fetch(`../control/?action=carregarIfs&id_linguagem=${id}`)
-		.then(response => response.json())
-		.then(ifs => {
-
-			let tableIfs = createTable(`<tr>
-								  	<th>Expressões Condicionais</th>
-							  	</tr>`);
-
-			var tr = document.createElement('tr');
-			tr.innerHTML = `<td>${ifs.descricao}</td>`;
-
-			tableIfs.appendChild(tr);
-
-			navLing.appendChild(tableIfs);
-		})
+	carregarDados(`../control/?action=carregarIfs&id_linguagem=${id}`, "Expressões Condicionais");
 }
 
 // carrega os loops de cada linguagem
@@ -185,7 +153,7 @@ function carregarLoops(id)
 									</tr>`);
 
 			loops.forEach(loop => {
-				var tr = document.createElement('tr');
+				let tr = document.createElement('tr');
 				tr.innerHTML = `<td>${loop.descricao}</td>`;
 
 				tableLoops.appendChild(tr)
@@ -197,19 +165,7 @@ function carregarLoops(id)
 
 function carregarDeclaracoes(id)
 {
-	fetch(`../control/?action=carregarDeclaracoes&id_linguagem=${id}`)
-		.then(response => response.json())
-		.then(declaracoes => {
-
-			let tableDecl = createTable(`<tr><th>Declaração</th></tr>`);
-
-			let tr = document.createElement('tr');
-			tr.innerHTML = `<td>${declaracoes.descricao}</td>`;
-
-			tableDecl.appendChild(tr);
-
-			navLing.appendChild(tableDecl);
-		})
+	carregarDados(`../control/?action=carregarDeclaracoes&id_linguagem=${id}`, "Declaração");
 }
 
 function carregarInformacoes(id)
