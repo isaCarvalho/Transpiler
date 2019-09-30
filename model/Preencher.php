@@ -25,6 +25,18 @@ class Preencher
         $this->encode_results($this->linguagens);
     }
 
+    public function preencherPrints()
+    {
+        $results = ["descricao" => $this->linguagem->getPrints()];
+        $this->encode_results($results);
+    }
+
+    public function preencherReturns()
+    {
+        $results = ["descricao" => $this->linguagem->getRetornos()];
+        $this->encode_results($results);
+    }
+
     public function preencherFunctions()
     {
         $results = ["descricao" => $this->linguagem->getFuncoes()];

@@ -53,6 +53,8 @@ function carregarTexto(id)
 	carregarIfs(id);
 	carregarLoops(id);
 	carregarDeclaracoes(id);
+	carregarPrints(id);
+	carregarReturns(id);
 
 	nav.appendChild(navLing);
 }
@@ -63,6 +65,40 @@ function createTable(inner = ``)
 	table.innerHTML = inner;
 
 	return table;
+}
+
+// carrega o BNF de prints em cada linguagem
+function carregarPrints(id)
+{
+	fetch(`../control/?action=carregarPrints&id_linguagem=${id}`)
+		.then(response => response.json())
+		.then(print => {
+			let tablePrints = createTable(`<tr><th>Prints</th></tr>`);
+
+			let tr = document.createElement('tr');
+			tr.innerHTML = `<td>${print.descricao}</td>`;
+
+			tablePrints.appendChild(tr);
+
+			navLing.appendChild(tablePrints);
+		})
+}
+
+// carrega o BNF de retornos em cada linguagem
+function carregarReturns(id)
+{
+	fetch(`../control/?action=carregarReturns&id_linguagem=${id}`)
+		.then(response => response.json())
+		.then(retorno => {
+			let tableRetorno = createTable(`<tr><th>Returns</th></tr>`);
+
+			let tr = document.createElement('tr');
+			tr.innerHTML = `<td>${retorno.descricao}</td>`;
+
+			tableRetorno.appendChild(tr);
+
+			navLing.appendChild(tableRetorno);
+		})
 }
 
 // carrega o BNF das funcoes em cada linguagem
