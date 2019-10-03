@@ -1,9 +1,11 @@
 let form = document.getElementById('formulario');
 
 form.addEventListener("submit", (event) => {
-    event.preventDefault()
+    event.preventDefault();
+    let botao = document.getElementById("buttonTranspilar");
+    botao.value = "Transpilando...";
     
-    let body = new FormData(event.target)
+    let body = new FormData(event.target);
 
     fetch('control/?action=enviarFonte', {method: "post", body})
     .then(response => response.json())
@@ -35,5 +37,7 @@ form.addEventListener("submit", (event) => {
 
             destino.appendChild(linha);
         });
+
+        botao.value = "Transpilar";
     })
 })

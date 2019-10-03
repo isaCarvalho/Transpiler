@@ -37,7 +37,7 @@
 
 			<p>
 				<input type="button" name="limpar" value="Limpar" class="button" onclick="limparCampos()">
-				<input type="submit" name="transpilar" value="Transpilar" class="button">	
+				<input type="submit" id="buttonTranspilar" name="transpilar" value="Transpilar" class="button">
 			</p>
 		</form>
 	</nav>
