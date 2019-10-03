@@ -18,9 +18,16 @@ class AnaliseC extends Analise
         {
             for ($i = 0; $i < sizeof($matches[0]); $i++)
             {
-                $aux = self::transpilaFuncao($matches[1][$i], $matches[2][$i], $matches[3][$i]);
+                if ($matches[2][$i] == "main" && self::$ling_destino->getId() == 2)
+                {
+                    $codigo = str_replace($matches[0][$i], "public static void main(String args[]) {", $codigo);
+                }
+                else
+                {
+                    $aux = self::transpilaFuncao($matches[1][$i], $matches[2][$i], $matches[3][$i]);
 
-                $codigo = str_replace($matches[0][$i], $aux, $codigo);
+                    $codigo = str_replace($matches[0][$i], $aux, $codigo);
+                }
             }
         }
         // Transpila um for padrao

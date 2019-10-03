@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09db7d0e-9863-47ee-96b6-63c6784756e4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/js/carregarTutorials.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/carregarTutorials.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/AnaliseC.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnaliseC.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,37 +14,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/carregarTutorials.js">
+        <entry file="file://$PROJECT_DIR$/model/AnaliseC.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2760">
-              <caret line="120" column="36" selection-start-line="120" selection-start-column="36" selection-end-line="120" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/dump.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3800">
-              <caret line="359" column="22" selection-start-line="359" selection-start-column="22" selection-end-line="359" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/control/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="805">
-              <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/Preencher.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="29" column="66" selection-start-line="29" selection-start-column="66" selection-end-line="29" selection-end-column="66" />
+            <state relative-caret-position="23">
+              <caret line="20" selection-start-line="20" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -91,6 +65,7 @@
       <replace>$this-&gt;ling_destino-&gt;getTipos()</replace>
       <replace>self::$</replace>
       <replace>self::</replace>
+      <replace>let</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -124,7 +99,6 @@
         <option value="$PROJECT_DIR$/model/Linguagem.php" />
         <option value="$PROJECT_DIR$/db/dump.sql" />
         <option value="$PROJECT_DIR$/model/Analise.php" />
-        <option value="$PROJECT_DIR$/model/AnaliseC.php" />
         <option value="$PROJECT_DIR$/model/Query.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/view/footer.html" />
@@ -133,6 +107,7 @@
         <option value="$PROJECT_DIR$/control/index.php" />
         <option value="$PROJECT_DIR$/model/Preencher.php" />
         <option value="$PROJECT_DIR$/js/carregarTutorials.js" />
+        <option value="$PROJECT_DIR$/model/AnaliseC.php" />
       </list>
     </option>
   </component>
@@ -284,12 +259,13 @@
       <workItem from="1569419456879" duration="1580000" />
       <workItem from="1569594827912" duration="313000" />
       <workItem from="1569595437230" duration="11000" />
-      <workItem from="1569864073514" duration="3933000" />
+      <workItem from="1569864073514" duration="5458000" />
+      <workItem from="1569967672271" duration="1196000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="196705000" />
+    <option name="totallyTimeSpent" value="199426000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -302,7 +278,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="701" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.23560606" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -317,7 +292,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32849365" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49926794" visible="true" weight="0.083484575" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49926794" visible="true" weight="0.37749547" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50073206" side_tool="true" weight="0.37108013" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -470,13 +445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/AnaliseC.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1057">
-          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -546,10 +514,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/dump.sql">
+    <entry file="file://$PROJECT_DIR$/model/Preencher.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3800">
-          <caret line="359" column="22" selection-start-line="359" selection-start-column="22" selection-end-line="359" selection-end-column="22" />
+        <state relative-caret-position="46">
+          <caret line="29" column="66" selection-start-line="29" selection-start-column="66" selection-end-line="29" selection-end-column="66" />
         </state>
       </provider>
     </entry>
@@ -560,17 +528,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/Preencher.php">
+    <entry file="file://$PROJECT_DIR$/db/dump.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="29" column="66" selection-start-line="29" selection-start-column="66" selection-end-line="29" selection-end-column="66" />
+        <state relative-caret-position="3800">
+          <caret line="359" column="22" selection-start-line="359" selection-start-column="22" selection-end-line="359" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/carregarTutorials.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2760">
-          <caret line="120" column="36" selection-start-line="120" selection-start-column="36" selection-end-line="120" selection-end-column="36" />
+        <state relative-caret-position="4025">
+          <caret line="175" selection-start-line="175" selection-end-line="175" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/AnaliseC.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="20" selection-start-line="20" selection-end-line="21" />
         </state>
       </provider>
     </entry>
