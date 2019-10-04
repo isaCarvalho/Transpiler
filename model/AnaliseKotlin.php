@@ -71,6 +71,9 @@ class AnaliseKotlin extends Analise
                 $codigo = str_replace($matches[0][$i], $aux, $codigo);
             }
         }
+
+        $codigo = self::transpilaClasse("/class\s+([\w]+)\s?\{/", $codigo);
+
         return self::codigo_final($codigo);
     }
 }

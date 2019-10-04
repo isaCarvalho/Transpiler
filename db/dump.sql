@@ -182,6 +182,15 @@ id_linguagem int references linguagens(id) on delete cascade on update cascade
 create sequence scans_seq increment 1 minvalue 1 start 1;
 alter table scans alter column id set default nextval('scans_seq');
 
+create table class_declarations (
+id serial primary key,
+descricao varchar(255) not null,
+id_linguagem int references linguagens(id) on delete cascade on update cascade
+);
+
+create sequence class_declarations_seq increment 1 minvalue 1 start 1;
+alter table class_declarations alter column id set default nextval('class_declarations_seq');
+
 /* Inserção de dados nas tabelas */
 
 -- Inserção dos paradigmas
@@ -325,6 +334,13 @@ insert into prints (descricao, id_linguagem) values
 ('print(<param>)', 3),
 ('print(<param>)', 4),
 ('putStrLn <param>', 5);
+
+insert into class_declarations (descricao, id_linguagem) values
+('', 1),
+('public class <nome> {', 2),
+('class <nome> {', 3),
+('class <nome>:', 4),
+('', 5);
 
 /* Modificações */
 

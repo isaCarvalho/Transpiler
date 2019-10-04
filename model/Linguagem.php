@@ -6,7 +6,7 @@ class Linguagem
 {
     private $id, $nome, $paradigma, $descricao, $documentacao;
     private $tipos, $funcoes, $fors, $ifs, $elses, $else_if;
-    private $declaracao, $retornos, $prints;
+    private $declaracao, $retornos, $prints, $class_dec;
 
     public function __construct($id)
     {
@@ -47,6 +47,9 @@ class Linguagem
 
         $results = Query::select("descricao", "prints", "id_linguagem = ?", [$this->id]);
         $this->prints = $results[0]['descricao'];
+
+        $results = Query::select("descricao", "class_declarations", "id_linguagem = ?", [$this->id]);
+        $this->class_dec = $results[0]["descricao"];
     }
 
     public function getId() { return $this->id; }
@@ -76,4 +79,6 @@ class Linguagem
     public function getElseIfs() { return $this->else_if; }
 
     public function getPrints() { return $this->prints; }
+
+    public function getClassDeclaration() { return $this->class_dec; }
 }

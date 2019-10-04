@@ -98,7 +98,6 @@ class AnaliseC extends Analise
                         }
 
                         $string .= ")";
-//                        var_dump($string);
 
                         $print = $string;
                         break;
@@ -130,6 +129,9 @@ class AnaliseC extends Analise
                 $codigo = str_replace($matches[0][$i], $aux, $codigo);
             }
         }
+
+        $aux = str_replace("<nome>", "ClasseExemplo", self::$ling_destino->getClassDeclaration());
+        $codigo = $aux . "\n" . $codigo . "\n}";
 
         return self::codigo_final($codigo);
     }

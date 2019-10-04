@@ -17,6 +17,9 @@ abstract class Analise
      */
     public static function analisar($codigo, $id_fonte, $id_destino)
     {
+        if ($id_fonte == $id_destino)
+            return $codigo;
+
         self::$ling_fonte = new Linguagem($id_fonte);
         self::$ling_destino = new Linguagem($id_destino);
 
@@ -35,11 +38,11 @@ abstract class Analise
                 break;
 
             case 4:
-                AnalisePython::traduz($codigo);
+                return AnalisePython::traduz($codigo);
                 break;
 
             case 5:
-                AnaliseHaskell::traduz($codigo);
+                return AnaliseHaskell::traduz($codigo);
                 break;
         }
         return null;
@@ -258,9 +261,16 @@ abstract class Analise
         {
             $codigo = str_replace('{', '', $codigo);
             $codigo = str_replace('}', '', $codigo);
+            $codigo = preg_replace("/\}$/s", "", $codigo);
         }
-        else if ($id_destino == 5)
+        if ($id_destino == 5)
+        {
             $codigo = str_replace("\n", '', $codigo);
+            $codigo = preg_replace('/\s+\=/sm', ' =', $codigo);
+        }
+
+        if ($id_destino == 1)
+            $codigo = preg_replace("/\}$/s", "", $codigo);
 
         return trim($codigo);
     }
@@ -337,6 +347,17 @@ abstract class Analise
     {
         if (preg_match_all("/([\w]+)\s?+([=\-+*\/]+)\s?+(.*)\;/", $codigo, $matches))
             $codigo = self::transpilaAtribuicao($matches, $codigo);
+
+        return $codigo;
+    }
+
+    public static function transpilaClasse($regex, $codigo)
+    {
+        if (preg_match($regex, $codigo, $matches))
+        {
+            $aux = str_replace("<nome>", $matches[1], self::$ling_destino->getClassDeclaration());
+            $codigo = str_replace($matches[0], $aux, $codigo);
+        }
 
         return $codigo;
     }

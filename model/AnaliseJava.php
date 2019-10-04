@@ -35,6 +35,8 @@ class AnaliseJava extends Analise
         // Transpila atribuicoes
         $codigo = self::functionAtribuicao($codigo);
 
+        $codigo = self::transpilaClasse("/public\s+class\s+([\w]+)\s?\{/", $codigo);
+
         return self::codigo_final($codigo);
     }
 }
