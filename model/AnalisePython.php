@@ -8,4 +8,14 @@ class AnalisePython extends Analise
 
         return self::codigo_final($codigo);
     }
+
+    public static function formatar($codigo)
+    {
+        $codigo = str_replace('{', '', $codigo);
+        $codigo = str_replace('}', '', $codigo);
+        $codigo = preg_replace("/\}$/s", "", $codigo);
+
+        return $codigo;
+    }
+
 }

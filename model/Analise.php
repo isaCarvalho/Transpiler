@@ -259,18 +259,22 @@ abstract class Analise
     {
         if ($id_destino == 4 || $id_destino == 5)
         {
-            $codigo = str_replace('{', '', $codigo);
-            $codigo = str_replace('}', '', $codigo);
-            $codigo = preg_replace("/\}$/s", "", $codigo);
+            $codigo = AnalisePython::formatar($codigo);
+//            $codigo = str_replace('{', '', $codigo);
+//            $codigo = str_replace('}', '', $codigo);
+//            $codigo = preg_replace("/\}$/s", "", $codigo);
         }
         if ($id_destino == 5)
         {
-            $codigo = str_replace("\n", '', $codigo);
-            $codigo = preg_replace('/\s+\=/sm', ' =', $codigo);
+//            $codigo = str_replace("\n", '', $codigo);
+//            $codigo = preg_replace('/\s+\=/sm', ' =', $codigo);
+            $codigo = AnaliseHaskell::formatar($codigo);
         }
 
-        if ($id_destino == 1)
-            $codigo = preg_replace("/\}$/s", "", $codigo);
+        if ($id_destino == 1) {
+            $codigo = AnaliseC::formatar($codigo);
+//            $codigo = preg_replace("/\}$/s", "", $codigo);
+        }
 
         return trim($codigo);
     }
@@ -355,8 +359,14 @@ abstract class Analise
     {
         if (preg_match($regex, $codigo, $matches))
         {
-            $aux = str_replace("<nome>", $matches[1], self::$ling_destino->getClassDeclaration());
-            $codigo = str_replace($matches[0], $aux, $codigo);
+            $classDec = self::$ling_destino->getClassDeclaration();
+
+            if ($classDec == "")
+                $codigo = str_replace($matches[0], "", $codigo);
+            else {
+                $aux = str_replace("<nome>", $matches[1], $classDec);
+                $codigo = str_replace($matches[0], $aux, $codigo);
+            }
         }
 
         return $codigo;

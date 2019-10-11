@@ -135,4 +135,11 @@ class AnaliseC extends Analise
 
         return self::codigo_final($codigo);
     }
+
+    public static function formatar($codigo)
+    {
+        $codigo = preg_replace("/\}$/s", "", $codigo);
+
+        return $codigo;
+    }
 }
