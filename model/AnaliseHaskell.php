@@ -4,7 +4,7 @@ class AnaliseHaskell extends Analise
 {
     public static function traduz($codigo)
     {
-        return $codigo;
+        return self::codigo_final($codigo);
     }
 
     public static function formatar($codigo)
@@ -14,6 +14,7 @@ class AnaliseHaskell extends Analise
         $codigo = preg_replace("/\}$/s", "", $codigo);
         $codigo = str_replace("\n", '', $codigo);
         $codigo = preg_replace('/\s+\=/sm', ' =', $codigo);
+        $codigo = preg_replace('/\s+\|/', "\n  |", $codigo);
 
         return $codigo;
     }
