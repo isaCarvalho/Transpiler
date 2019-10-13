@@ -46,16 +46,7 @@ function carregarSelect()
 function carregarTexto(id)
 {
 	navLing.innerHTML = '';
-
-	carregarInformacoes(id);
-	carregarFunctions(id);
-	carregarTipos(id);
-	carregarIfs(id);
-	carregarLoops(id);
-	carregarDeclaracoes(id);
-	carregarPrints(id);
-	carregarReturns(id);
-
+	carregarDados(id);
 	nav.appendChild(navLing);
 }
 
@@ -67,55 +58,40 @@ function createTable(inner = ``)
 	return table;
 }
 
-function carregarDados(url, title)
+function carregarDados(id)
 {
-	fetch(url)
+	fetch(`../control/?action=API&id=${id}`)
 		.then(response => response.json())
-		.then(dado => {
-			let table = createTable(`<tr><th>${title}</th></tr>`);
+		.then(dados => {
 
-			let tr = document.createElement('tr');
-			tr.innerHTML = `<td>${dado.descricao}</td>`;
+			// Primeiras informacoes
+			let tableInfo = createTable(`<tr>
+												<th>ID</th>
+												<th>Nome</th>
+												<th>Paradigma</th>
+											</tr>`);
+			let trInfo = document.createElement('tr');
+			trInfo.innerHTML = `<td>${dados.id}</td>
+								<td>${dados.nome}</td>
+								<td>${dados.paradigma}</td>`;
+			tableInfo.appendChild(trInfo);
+			navLing.appendChild(tableInfo);
 
-			table.appendChild(tr);
-
-			navLing.appendChild(table);
-		})
-}
-
-// carrega o BNF de prints em cada linguagem
-function carregarPrints(id)
-{
-	carregarDados(`../control/?action=carregarPrints&id_linguagem=${id}`, "Prints");
-}
-
-// carrega o BNF de retornos em cada linguagem
-function carregarReturns(id)
-{
-	carregarDados(`../control/?action=carregarReturns&id_linguagem=${id}`, "Returns");
-}
-
-// carrega o BNF das funcoes em cada linguagem
-function carregarFunctions(id)
-{
-	carregarDados(`../control/?action=carregarFunctions&id_linguagem=${id}`, "Funções")
-}
-
-// Carrega os tipos primitivos de cada linguagem
-function carregarTipos(id)
-{
-	fetch(`../control/?action=carregarTipos&id_linguagem=${id}`)
-		.then(response => response.json())
-		.then(tipos => {
+			// Descricao da Linguagem
+			let tableDesc = createTable(`<tr><th>Descricao</th></tr>`);
+			let trDesc = document.createElement('tr');
+			trDesc.innerHTML = `<td>${dados.descricao}. Documentação: <a href="${dados.documentacao}">${dados.documentacao}</a></td>`;
+			tableDesc.appendChild(trDesc);
+			navLing.appendChild(tableDesc);
 
 			let tableTipos = createTable(`<tr>
 										<th>Tipo</th>
 									  	<th>Descrição</th>
 									  	<th>Tamanho</th>
-							  		</tr>`)
+							  		</tr>`);
 
-			tipos.forEach(tipo => {
-				let tr = document.createElement('tr');
+			dados.tipos.forEach(tipo => {
+				let trTipo = document.createElement('tr');
 
 				let tamanho;
 				if (tipo.tamanho === 0)
@@ -123,61 +99,67 @@ function carregarTipos(id)
 				else
 					tamanho = tipo.tamanho + ' bits';
 
-				tr.innerHTML = `<td>${tipo.tipo}</td>
+				trTipo.innerHTML = `<td>${tipo.tipo}</td>
 								<td>${tipo.descricao}</td>
 								<td>${tamanho}</td>
 								`;
 
-				tableTipos.appendChild(tr);
+				tableTipos.appendChild(trTipo);
 			});
-
 			navLing.appendChild(tableTipos);
-		})
-}
-
-// Carrega os ifs de cada linguagem
-function carregarIfs(id)
-{
-	carregarDados(`../control/?action=carregarIfs&id_linguagem=${id}`, "Expressões Condicionais");
-}
-
-// carrega os loops de cada linguagem
-function carregarLoops(id)
-{
-	fetch(`../control/?action=carregarLoops&id_linguagem=${id}`)
-		.then(response => response.json())
-		.then(loops => {
 
 			let tableLoops = createTable(`<tr>
 										<th>Laços de Repetição</th>
 									</tr>`);
 
-			loops.forEach(loop => {
-				let tr = document.createElement('tr');
-				tr.innerHTML = `<td>${loop.descricao}</td>`;
+			dados.loops.forEach(loop => {
+				let trLoop = document.createElement('tr');
+				trLoop.innerHTML = `<td>${loop.descricao}</td>`;
 
-				tableLoops.appendChild(tr)
+				tableLoops.appendChild(trLoop)
 			});
 
 			navLing.appendChild(tableLoops);
-		})
-}
 
-function carregarDeclaracoes(id)
-{
-	carregarDados(`../control/?action=carregarDeclaracoes&id_linguagem=${id}`, "Declaração");
-}
+			// Constroi a tabela de condicionais
+			let tableCond = createTable(`<tr>
+											<th>If</th>
+											<th>Else</th>
+											<th>Else If</th>
+										</tr>`);
+			let trCond = document.createElement('tr');
+			trCond.innerHTML = `<td>${dados.if}</td>
+								<td>${dados.else}</td>
+								<td>${dados.elseif}</td>`;
+			tableCond.appendChild(trCond);
+			navLing.appendChild(tableCond);
 
-function carregarInformacoes(id)
-{
-	fetch(`../control/?action=carregarInformacoes&id_linguagem=${id}`)
-		.then(response => response.json())
-		.then(informacoes => {
+			// Constroi a tabela de bnf de funcao
+			let tableFunc = createTable(`<tr><th>Função</th></tr>`);
+			let trFunc = document.createElement('tr');
+			trFunc.innerHTML = `<td>${dados.funcao}</td>`;
+			tableFunc.appendChild(trFunc);
+			navLing.appendChild(tableFunc);
 
-			let tableDesc = createTable(`<tr><th>A linguagem ${informacoes.nome}</th></tr>
-				<tr><td class="desc">${informacoes.descricao}
-				Documentação: <a href="${informacoes.documentacao}" target="_blank">${informacoes.documentacao}</a></td></tr>`);
+			// Constroi a tabela de bnf de impressoes
+			let tableImp = createTable(`<tr><th>Impressão de dados na tela</th></tr>`);
+			let trImp = document.createElement('tr');
+			trImp.innerHTML = `<td>${dados.impressao}</td>`;
+			tableImp.appendChild(trImp);
+			navLing.appendChild(tableImp);
 
-			navLing.appendChild(tableDesc);
+			// Constroi a tabela de bnf de retornos
+			let tableRet = createTable(`<tr><th>Comando de retorno</th></tr>`);
+			let trRet = document.createElement('tr');
+			trRet.innerHTML = `<td>${dados.retorno}</td>`;
+			tableRet.appendChild(trRet);
+			navLing.appendChild(tableRet);
+
+			// tabela de declaracoes
+			let tableDec = createTable(`<tr><th>Declaracao</th></tr>`);
+			let tr = document.createElement('tr');
+			tr.innerHTML = `<td>${dados.declaracao}</td>`;
+			tableDec.appendChild(tr);
+			navLing.appendChild(tableDec);
 		})
 }

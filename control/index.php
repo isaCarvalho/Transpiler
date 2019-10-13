@@ -25,38 +25,6 @@ switch ($action)
         $p->preencherLinguagens();
         break;
 
-    case 'carregarPrints':
-        $p->preencherPrints();
-        break;
-
-    case 'carregarReturns':
-        $p->preencherReturns();
-        break;
-
-	case 'carregarFunctions':
-        $p->preencherFunctions();
-        break;
-
-	case 'carregarTipos':
-        $p->preencherTipos();
-        break;
-
-    case 'carregarIfs':
-        $p->preencherIfs();
-        break;
-
-	case 'carregarLoops':
-        $p->preencherLoops();
-        break;
-
-    case 'carregarDeclaracoes':
-        $p->preencherDeclaracoes();
-        break;
-
-    case 'carregarInformacoes':
-        $p->preencherInformacoes();
-        break;
-
 	case 'carregarLegendas':
         $p->preencherLegendas();
         break;

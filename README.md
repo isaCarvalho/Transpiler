@@ -28,6 +28,11 @@ A página de tutoriais conta com:
 - Link para a sua documentação;
 - BNF de ifs, elses, loops, funções, etc;
 
+## API
+
+Para utilizar a API: http://goto-transpiler.herokuapp.com/control/?action=API&id=ID_LINGUAGEM.
+Susbtitua "ID_LINGUAGEM" pelo id da lingugagem desejada ou por um '*' para retornar os dados de todas as linguagens.
+
 ## Ajuda
 
 A página de ajuda contém um pequeno manual dos simbolos usados nos BNFs das linguagens.
@@ -42,4 +47,3 @@ A página de ajuda contém um pequeno manual dos simbolos usados nos BNFs das li
 - Autoria
 
 Isabela Carvalho 
-
