@@ -15,6 +15,12 @@ switch ($action)
         echo json_encode(["prototipo" => $result]);
         break;
 
+    case 'API':
+        require_once "../api/API.php";
+
+        echo API::apiLoad($id);
+        break;
+
 	case 'carregarLinguagens':
         $p->preencherLinguagens();
         break;
