@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09db7d0e-9863-47ee-96b6-63c6784756e4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/responsividade.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/responsividade.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/github1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/github1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/carregarTutorials.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/carregarTutorials.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Analise.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Analise.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AnaliseC.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnaliseC.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AnaliseHaskell.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnaliseHaskell.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AnaliseJava.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnaliseJava.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AnaliseKotlin.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnaliseKotlin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AnalisePython.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnalisePython.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Query.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Query.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uml/transpiladorModelo.asta" beforeDir="false" afterPath="$PROJECT_DIR$/uml/transpiladorModelo.asta" afterDir="false" />
-    </list>
+    <list default="true" id="09db7d0e-9863-47ee-96b6-63c6784756e4" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,14 +10,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/AnaliseC.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="736">
-              <caret line="135" column="22" lean-forward="true" selection-start-line="135" selection-start-column="22" selection-end-line="135" selection-end-column="22" />
+            <state relative-caret-position="23">
+              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="45" selection-end-column="16" />
               <folding>
                 <element signature="e#459#1116#0#PHP" />
                 <element signature="e#1501#5102#0#PHP" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/model/Analise.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-208">
+              <caret line="302" column="130" selection-start-line="302" selection-start-column="130" selection-end-line="302" selection-end-column="130" />
+              <folding>
+                <element signature="n#analisar#0;n#Analise#0;n#!!top" />
+                <element signature="n#buscaTipo#0;n#Analise#0;n#!!top" />
+                <element signature="n#subParametro#0;n#Analise#0;n#!!top" />
+                <element signature="n#transpilaIF#0;n#Analise#0;n#!!top" />
+                <element signature="n#transpilaElse#0;n#Analise#0;n#!!top" />
+                <element signature="n#transpilaIfElses#0;n#Analise#0;n#!!top" />
+                <element signature="n#transpilaFuncao#0;n#Analise#0;n#!!top" />
+                <element signature="n#transpilaFor#0;n#Analise#0;n#!!top" />
+                <element signature="n#transpilaDeclaracao#0;n#Analise#0;n#!!top" />
+                <element signature="n#transpilaReturn#0;n#Analise#0;n#!!top" />
+                <element signature="n#transpilaAtribuicao#0;n#Analise#0;n#!!top" />
+                <element signature="n#transpilaClasse#0;n#Analise#0;n#!!top" />
+                <element signature="n#codigo_final#0;n#Analise#0;n#!!top" />
+                <element signature="n#functionReturn#0;n#Analise#0;n#!!top" />
+                <element signature="n#functionDeclaracao#0;n#Analise#0;n#!!top" />
+                <element signature="n#functionAtribuicao#0;n#Analise#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -117,13 +131,13 @@
         <option value="$PROJECT_DIR$/control/index.php" />
         <option value="$PROJECT_DIR$/model/AnaliseJava.php" />
         <option value="$PROJECT_DIR$/model/AnaliseKotlin.php" />
-        <option value="$PROJECT_DIR$/model/Analise.php" />
         <option value="$PROJECT_DIR$/model/AnalisePython.php" />
         <option value="$PROJECT_DIR$/model/AnaliseHaskell.php" />
-        <option value="$PROJECT_DIR$/model/AnaliseC.php" />
         <option value="$PROJECT_DIR$/model/Query.php" />
         <option value="$PROJECT_DIR$/css/responsividade.css" />
         <option value="$PROJECT_DIR$/js/carregarTutorials.js" />
+        <option value="$PROJECT_DIR$/model/AnaliseC.php" />
+        <option value="$PROJECT_DIR$/model/Analise.php" />
       </list>
     </option>
   </component>
@@ -296,12 +310,12 @@
       <workItem from="1570962515433" duration="3127000" />
       <workItem from="1570981881443" duration="3904000" />
       <workItem from="1571065758421" duration="1228000" />
-      <workItem from="1571143125280" duration="2523000" />
+      <workItem from="1571143125280" duration="2802000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="233108000" />
+    <option name="totallyTimeSpent" value="233387000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -314,9 +328,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="701" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2469697" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2469697" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -329,7 +342,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32849365" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49926794" visible="true" weight="0.054446463" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49926794" visible="true" weight="0.3212341" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50073206" side_tool="true" weight="0.37108013" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -544,32 +557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/Analise.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-319">
-          <caret line="271" column="5" selection-start-line="271" selection-start-column="5" selection-end-line="271" selection-end-column="5" />
-          <folding>
-            <element signature="n#analisar#0;n#Analise#0;n#!!top" />
-            <element signature="n#buscaTipo#0;n#Analise#0;n#!!top" />
-            <element signature="n#subParametro#0;n#Analise#0;n#!!top" />
-            <element signature="n#transpilaIF#0;n#Analise#0;n#!!top" />
-            <element signature="n#transpilaElse#0;n#Analise#0;n#!!top" />
-            <element signature="n#transpilaIfElses#0;n#Analise#0;n#!!top" />
-            <element signature="n#transpilaFuncao#0;n#Analise#0;n#!!top" />
-            <element signature="n#transpilaFor#0;n#Analise#0;n#!!top" />
-            <element signature="n#transpilaDeclaracao#0;n#Analise#0;n#!!top" />
-            <element signature="n#transpilaReturn#0;n#Analise#0;n#!!top" />
-            <element signature="n#transpilaAtribuicao#0;n#Analise#0;n#!!top" />
-            <element signature="n#transpilaClasse#0;n#Analise#0;n#!!top" />
-            <element signature="n#codigo_final#0;n#Analise#0;n#!!top" />
-            <element signature="n#functionFor#0;n#Analise#0;n#!!top" />
-            <element signature="n#functionReturn#0;n#Analise#0;n#!!top" />
-            <element signature="n#functionDeclaracao#0;n#Analise#0;n#!!top" />
-            <element signature="n#functionAtribuicao#0;n#Analise#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/carregarTutorials.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
@@ -607,11 +594,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/AnaliseC.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="135" column="22" lean-forward="true" selection-start-line="135" selection-start-column="22" selection-end-line="135" selection-end-column="22" />
+        <state relative-caret-position="23">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="45" selection-end-column="16" />
           <folding>
             <element signature="e#459#1116#0#PHP" />
             <element signature="e#1501#5102#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Analise.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-208">
+          <caret line="302" column="130" selection-start-line="302" selection-start-column="130" selection-end-line="302" selection-end-column="130" />
+          <folding>
+            <element signature="n#analisar#0;n#Analise#0;n#!!top" />
+            <element signature="n#buscaTipo#0;n#Analise#0;n#!!top" />
+            <element signature="n#subParametro#0;n#Analise#0;n#!!top" />
+            <element signature="n#transpilaIF#0;n#Analise#0;n#!!top" />
+            <element signature="n#transpilaElse#0;n#Analise#0;n#!!top" />
+            <element signature="n#transpilaIfElses#0;n#Analise#0;n#!!top" />
+            <element signature="n#transpilaFuncao#0;n#Analise#0;n#!!top" />
+            <element signature="n#transpilaFor#0;n#Analise#0;n#!!top" />
+            <element signature="n#transpilaDeclaracao#0;n#Analise#0;n#!!top" />
+            <element signature="n#transpilaReturn#0;n#Analise#0;n#!!top" />
+            <element signature="n#transpilaAtribuicao#0;n#Analise#0;n#!!top" />
+            <element signature="n#transpilaClasse#0;n#Analise#0;n#!!top" />
+            <element signature="n#codigo_final#0;n#Analise#0;n#!!top" />
+            <element signature="n#functionReturn#0;n#Analise#0;n#!!top" />
+            <element signature="n#functionDeclaracao#0;n#Analise#0;n#!!top" />
+            <element signature="n#functionAtribuicao#0;n#Analise#0;n#!!top" />
           </folding>
         </state>
       </provider>
