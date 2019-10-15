@@ -254,6 +254,23 @@ abstract class Analise
         return $codigo;
     }
 
+    protected static function transpilaClasse($regex, $codigo)
+    {
+        if (preg_match($regex, $codigo, $matches))
+        {
+            $classDec = self::$ling_destino->getClassDeclaration();
+
+            if ($classDec == "")
+                $codigo = str_replace($matches[0], "", $codigo);
+            else {
+                $aux = str_replace("<nome>", $matches[1], $classDec);
+                $codigo = str_replace($matches[0], $aux, $codigo);
+            }
+        }
+
+        return $codigo;
+    }
+
 // Formata o código final tirando espaços desnecessários e chaves, quando necessário
     protected static function format($id_destino, $codigo)
     {
@@ -349,22 +366,5 @@ abstract class Analise
         return $codigo;
     }
 
-    public static function transpilaClasse($regex, $codigo)
-    {
-        if (preg_match($regex, $codigo, $matches))
-        {
-            $classDec = self::$ling_destino->getClassDeclaration();
-
-            if ($classDec == "")
-                $codigo = str_replace($matches[0], "", $codigo);
-            else {
-                $aux = str_replace("<nome>", $matches[1], $classDec);
-                $codigo = str_replace($matches[0], $aux, $codigo);
-            }
-        }
-
-        return $codigo;
-    }
-
-    public abstract static function traduz($codigo);
+    protected abstract static function traduz($codigo);
 }

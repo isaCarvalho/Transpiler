@@ -80,7 +80,7 @@ function carregarDados(id)
 			// Descricao da Linguagem
 			let tableDesc = createTable(`<tr><th>Descricao</th></tr>`);
 			let trDesc = document.createElement('tr');
-			trDesc.innerHTML = `<td>${dados.descricao}. Documentação: <a href="${dados.documentacao}">${dados.documentacao}</a></td>`;
+			trDesc.innerHTML = `<td>${dados.descricao}. Documentação: <a href="${dados.documentacao}" target="_blank">${dados.documentacao}</a></td>`;
 			tableDesc.appendChild(trDesc);
 			navLing.appendChild(tableDesc);
 

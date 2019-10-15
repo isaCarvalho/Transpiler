@@ -2,7 +2,7 @@
 
 class AnaliseHaskell extends Analise
 {
-    public static function traduz($codigo)
+    protected static function traduz($codigo)
     {
         return self::codigo_final($codigo);
     }
