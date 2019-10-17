@@ -1,0 +1,53 @@
+[{
+  "nome": "&ltcommands&gt",
+  "descricao": "Bloco de comandos"
+}, 
+{
+  "nome": "&ltvar&gt",
+  "descricao": "Variável"
+},
+{
+  "nome": "&ltexp&gt",
+  "descricao": "Expressão condicional"
+},
+{
+  "nome": "&ltparam&gt",
+  "descricao": "Parametros"
+},
+{
+  "nome": "&ltcollections&gt",
+  "descricao": "Coleções de Dados"
+},
+{
+  "nome": "&ltstep&gt",
+  "descricao": "Passo do loop"
+},
+{
+  "nome": "&lttipo&gt",
+  "descricao": "Tipo de dados"
+},
+{
+  "nome": "&ltincr&gt",
+  "descricao": "Incremento"
+},
+{
+  "nome": "&ltdecr&gt",
+  "descricao": "Decremento"
+},
+{
+  "nome": "&ltcond&gt",
+  "descricao": "Condição"
+},
+{
+  "nome": "&ltinicio&gt",
+  "descricao": "Limite inferior ou inicio de um loop"
+},
+{
+  "nome": "&ltfim&gt",
+  "descricao": "Limite superior ou fim de um loop"
+},
+{
+  "nome":"&ltnome&gt",
+  "descricao": "Nome de função ou variável"
+}
+]

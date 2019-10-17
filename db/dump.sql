@@ -104,15 +104,6 @@ alter table loops alter column id set default nextval('loops_seq');
 drop table if exists legendas;
 drop sequence if exists legendas_seq;
 
-create table legendas (
-id int primary key,
-nome varchar(255) not null,
-descricao varchar(500)
-);
-
-create sequence legendas_seq increment 1 minvalue 1 start 1;
-alter table legendas alter column id set default nextval('legendas_seq');
-
 -- Tabela de declaracoes
 drop table if exists declaracoes;
 drop sequence if exists declaracoes_seq;
@@ -291,23 +282,6 @@ insert into tipos (tipo, descricao, tamanho, id_linguagem) values
 ('Float', 'Ponto flutuante',32, 5),
 ('Int', 'Inteiro',32, 5),
 ('String', 'Caracter',16, 5);
-
--- Inserção de legendas
-
-insert into legendas (nome, descricao) values
-('<commands>', 'Bloco de comandos'),
-('<var>', 'Variável'),
-('<exp>', 'Expressão condicional'),
-('<param>', 'Parametros'),
-('<collections>', 'Coleções de Dados'),
-('<step>', 'Passo do loop'),
-('<tipo>', 'Tipo de dados'),
-('<incr>', 'Incremento'),
-('<decr>', 'Decremento'),
-('<cond>', 'Condição'),
-('<inicio>', 'Limite inferior ou inicio de um loop'),
-('<fim>', 'Limite superior ou fim de um loop'),
-('<nome>', 'Nome de função ou variável');
 
 -- Inserção de loops
 

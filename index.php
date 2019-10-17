@@ -46,5 +46,19 @@
 
 <script src="js/carregarResultado.js"></script>
 
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(function () {
+                    console.log('service worker registered');
+                })
+                .catch(function () {
+                    console.warn('service worker failed');
+                });
+        }
+    </script>
+
+    <script src="/sw.js"></script>
+
 <?php
 	include_once "view/footer.html";

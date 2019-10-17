@@ -23,6 +23,7 @@ function carregarSelect()
 			let select = document.createElement('select');
 			select.className = "selectT";
 			select.name = "linguagem";
+			select.id = "linguagem";
 
 			linguagens.forEach(linguagem => {
 				let option = document.createElement('option');
@@ -34,7 +35,7 @@ function carregarSelect()
 
 			select.addEventListener('click', event => {
 				carregarTexto(select.selectedIndex+1);
-			})
+			});
 
 			p.appendChild(select);		
 

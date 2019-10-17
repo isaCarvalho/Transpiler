@@ -25,10 +25,6 @@ switch ($action)
         $p->preencherLinguagens();
         break;
 
-	case 'carregarLegendas':
-        $p->preencherLegendas();
-        break;
-
 	default:
         break;
 }
