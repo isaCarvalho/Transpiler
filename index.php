@@ -44,13 +44,13 @@
 	
 </body>
 
-<script src="js/carregarResultado.js"></script>
-
+    <script src="js/carregarResultado.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js')
                 .then(function () {
                     console.log('service worker registered');
+                    writeFile();
                 })
                 .catch(function () {
                     console.warn('service worker failed');
@@ -59,6 +59,7 @@
     </script>
 
     <script src="/sw.js"></script>
+    <script src="/js/writeFile.js">writeFile()</script>
 
 <?php
 	include_once "view/footer.html";

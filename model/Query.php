@@ -9,8 +9,8 @@ class Query
 	{
 		try
 		{
-//			self::$conn = new PDO("pgsql:host=ec2-23-23-228-132.compute-1.amazonaws.com;dbname=dc386mrb3o0ucn;user=moovthhsothwbg;password=39efea7b8b62cd7ecfd980e462aaf8c6a4731ed96f9dcfabfc0ed09f8c7b4dd1");
-			self::$conn = new PDO("pgsql:host=localhost;dbname=transpiler;user=postgres;password=123456");
+			self::$conn = new PDO("pgsql:host=ec2-23-23-228-132.compute-1.amazonaws.com;dbname=dc386mrb3o0ucn;user=moovthhsothwbg;password=39efea7b8b62cd7ecfd980e462aaf8c6a4731ed96f9dcfabfc0ed09f8c7b4dd1");
+//			self::$conn = new PDO("pgsql:host=localhost;dbname=transpiler;user=postgres;password=123456");
 
 			self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

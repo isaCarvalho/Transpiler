@@ -1,10 +1,7 @@
 <?php
-require_once "../model/Preencher.php";
 
 extract($_GET);
 extract($_POST);
-
-$p = new Preencher($id_linguagem);
 
 switch ($action) 
 {
@@ -21,8 +18,10 @@ switch ($action)
         echo API::apiLoad($id);
         break;
 
-	case 'carregarLinguagens':
-        $p->preencherLinguagens();
+    case 'saveFile':
+        require_once '../util/WriteFile.php';
+        var_dump($_POST);
+        echo WriteFile::saveFile('../files/linguagens.json', $content);
         break;
 
 	default:

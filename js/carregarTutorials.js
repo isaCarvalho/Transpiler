@@ -14,9 +14,11 @@ body.appendChild(nav);
 // Carrega o componente select e o preenche com os dados vindos do banco de dados
 function carregarSelect()
 {
-	fetch("../control/?action=carregarLinguagens")
+	fetch("../files/linguagens.json")
 		.then(response => response.json())
 		.then(linguagens => {
+			linguagens = JSON.parse(linguagens);
+
 			let p = document.createElement('p');
 			 p.innerHTML = `<label for="linguagem" class="label">Selecione a linguagem </label>`;
 
@@ -26,6 +28,9 @@ function carregarSelect()
 			select.id = "linguagem";
 
 			linguagens.forEach(linguagem => {
+				// faz o parse da linguagem para o objeto
+				linguagem = JSON.parse(linguagem);
+
 				let option = document.createElement('option');
 				option.innerHTML = `${linguagem.nome}`;
 				option.value=`${linguagem.id}`;
@@ -34,10 +39,10 @@ function carregarSelect()
 			});
 
 			select.addEventListener('click', event => {
-				carregarTexto(select.selectedIndex+1);
+				carregarTexto(JSON.parse(linguagens[select.selectedIndex]));
 			});
 
-			p.appendChild(select);		
+			p.appendChild(select);
 
 			nav.appendChild(p);
 		})
@@ -59,108 +64,103 @@ function createTable(inner = ``)
 	return table;
 }
 
-function carregarDados(id)
+function carregarDados(ling)
 {
-	fetch(`../control/?action=API&id=${id}`)
-		.then(response => response.json())
-		.then(dados => {
-
-			// Primeiras informacoes
-			let tableInfo = createTable(`<tr>
-												<th>ID</th>
-												<th>Nome</th>
-												<th>Paradigma</th>
-											</tr>`);
-			let trInfo = document.createElement('tr');
-			trInfo.innerHTML = `<td>${dados.id}</td>
-								<td>${dados.nome}</td>
-								<td>${dados.paradigma}</td>`;
-			tableInfo.appendChild(trInfo);
-			navLing.appendChild(tableInfo);
-
-			// Descricao da Linguagem
-			let tableDesc = createTable(`<tr><th>Descricao</th></tr>`);
-			let trDesc = document.createElement('tr');
-			trDesc.innerHTML = `<td>${dados.descricao}. Documentação: <a href="${dados.documentacao}" target="_blank">${dados.documentacao}</a></td>`;
-			tableDesc.appendChild(trDesc);
-			navLing.appendChild(tableDesc);
-
-			let tableTipos = createTable(`<tr>
-										<th>Tipo</th>
-									  	<th>Descrição</th>
-									  	<th>Tamanho</th>
-							  		</tr>`);
-
-			dados.tipos.forEach(tipo => {
-				let trTipo = document.createElement('tr');
-
-				let tamanho;
-				if (tipo.tamanho === 0)
-					tamanho = 'não informado';
-				else
-					tamanho = tipo.tamanho + ' bits';
-
-				trTipo.innerHTML = `<td>${tipo.tipo}</td>
-								<td>${tipo.descricao}</td>
-								<td>${tamanho}</td>
-								`;
-
-				tableTipos.appendChild(trTipo);
-			});
-			navLing.appendChild(tableTipos);
-
-			let tableLoops = createTable(`<tr>
-										<th>Laços de Repetição</th>
+	// Primeiras informacoes
+	let tableInfo = createTable(`<tr>
+										<th>ID</th>
+										<th>Nome</th>
+										<th>Paradigma</th>
 									</tr>`);
+	let trInfo = document.createElement('tr');
+	trInfo.innerHTML = `<td>${ling.id}</td>
+						<td>${ling.nome}</td>
+						<td>${ling.paradigma}</td>`;
+	tableInfo.appendChild(trInfo);
+	navLing.appendChild(tableInfo);
 
-			dados.loops.forEach(loop => {
-				let trLoop = document.createElement('tr');
-				trLoop.innerHTML = `<td>${loop.descricao}</td>`;
+	// Descricao da Linguagem
+	let tableDesc = createTable(`<tr><th>Descricao</th></tr>`);
+	let trDesc = document.createElement('tr');
+	trDesc.innerHTML = `<td>${ling.descricao}. Documentação: <a href="${ling.documentacao}" target="_blank">${ling.documentacao}</a></td>`;
+	tableDesc.appendChild(trDesc);
+	navLing.appendChild(tableDesc);
 
-				tableLoops.appendChild(trLoop)
-			});
+	let tableTipos = createTable(`<tr>
+								<th>Tipo</th>
+								<th>Descrição</th>
+								<th>Tamanho</th>
+							</tr>`);
 
-			navLing.appendChild(tableLoops);
+	ling.tipos.forEach(tipo => {
+		let trTipo = document.createElement('tr');
 
-			// Constroi a tabela de condicionais
-			let tableCond = createTable(`<tr>
-											<th>If</th>
-											<th>Else</th>
-											<th>Else If</th>
-										</tr>`);
-			let trCond = document.createElement('tr');
-			trCond.innerHTML = `<td>${dados.if}</td>
-								<td>${dados.else}</td>
-								<td>${dados.elseif}</td>`;
-			tableCond.appendChild(trCond);
-			navLing.appendChild(tableCond);
+		let tamanho;
+		if (tipo.tamanho === 0)
+			tamanho = 'não informado';
+		else
+			tamanho = tipo.tamanho + ' bits';
 
-			// Constroi a tabela de bnf de funcao
-			let tableFunc = createTable(`<tr><th>Função</th></tr>`);
-			let trFunc = document.createElement('tr');
-			trFunc.innerHTML = `<td>${dados.funcao}</td>`;
-			tableFunc.appendChild(trFunc);
-			navLing.appendChild(tableFunc);
+		trTipo.innerHTML = `<td>${tipo.tipo}</td>
+						<td>${tipo.descricao}</td>
+						<td>${tamanho}</td>
+						`;
 
-			// Constroi a tabela de bnf de impressoes
-			let tableImp = createTable(`<tr><th>Impressão de dados na tela</th></tr>`);
-			let trImp = document.createElement('tr');
-			trImp.innerHTML = `<td>${dados.impressao}</td>`;
-			tableImp.appendChild(trImp);
-			navLing.appendChild(tableImp);
+		tableTipos.appendChild(trTipo);
+	});
+	navLing.appendChild(tableTipos);
 
-			// Constroi a tabela de bnf de retornos
-			let tableRet = createTable(`<tr><th>Comando de retorno</th></tr>`);
-			let trRet = document.createElement('tr');
-			trRet.innerHTML = `<td>${dados.retorno}</td>`;
-			tableRet.appendChild(trRet);
-			navLing.appendChild(tableRet);
+	let tableLoops = createTable(`<tr>
+								<th>Laços de Repetição</th>
+							</tr>`);
 
-			// tabela de declaracoes
-			let tableDec = createTable(`<tr><th>Declaracao</th></tr>`);
-			let tr = document.createElement('tr');
-			tr.innerHTML = `<td>${dados.declaracao}</td>`;
-			tableDec.appendChild(tr);
-			navLing.appendChild(tableDec);
-		})
+	ling.loops.forEach(loop => {
+		let trLoop = document.createElement('tr');
+		trLoop.innerHTML = `<td>${loop.descricao.replace(['<', '>'], ['&lt', '&gt'])}</td>`;
+
+		tableLoops.appendChild(trLoop)
+	});
+
+	navLing.appendChild(tableLoops);
+
+	// Constroi a tabela de condicionais
+	let tableCond = createTable(`<tr>
+									<th>If</th>
+									<th>Else</th>
+									<th>Else If</th>
+								</tr>`);
+	let trCond = document.createElement('tr');
+	trCond.innerHTML = `<td>${ling.if.replace(['<', '>'], ['&lt', '&gt'])}</td>
+						<td>${ling.else.replace(['<', '>'], ['&lt', '&gt'])}</td>
+						<td>${ling.elseif.replace(['<', '>'], ['&lt', '&gt'])}</td>`;
+	tableCond.appendChild(trCond);
+	navLing.appendChild(tableCond);
+
+	// Constroi a tabela de bnf de funcao
+	let tableFunc = createTable(`<tr><th>Função</th></tr>`);
+	let trFunc = document.createElement('tr');
+	trFunc.innerHTML = `<td>${ling.funcao.replace(['<', '>'], ['&lt', '&gt'])}</td>`;
+	tableFunc.appendChild(trFunc);
+	navLing.appendChild(tableFunc);
+
+	// Constroi a tabela de bnf de impressoes
+	let tableImp = createTable(`<tr><th>Impressão de ling na tela</th></tr>`);
+	let trImp = document.createElement('tr');
+	trImp.innerHTML = `<td>${ling.impressao.replace(['<', '>'], ['&lt', '&gt'])}</td>`;
+	tableImp.appendChild(trImp);
+	navLing.appendChild(tableImp);
+
+	// Constroi a tabela de bnf de retornos
+	let tableRet = createTable(`<tr><th>Comando de retorno</th></tr>`);
+	let trRet = document.createElement('tr');
+	trRet.innerHTML = `<td>${ling.retorno.replace(['<', '>'], ['&lt', '&gt'])}</td>`;
+	tableRet.appendChild(trRet);
+	navLing.appendChild(tableRet);
+
+	// tabela de declaracoes
+	let tableDec = createTable(`<tr><th>Declaracao</th></tr>`);
+	let tr = document.createElement('tr');
+	tr.innerHTML = `<td>${ling.declaracao.replace(['<', '>'], ['&lt', '&gt'])}</td>`;
+	tableDec.appendChild(tr);
+	navLing.appendChild(tableDec);
 }

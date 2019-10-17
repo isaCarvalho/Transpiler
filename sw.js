@@ -29,6 +29,10 @@ self.addEventListener('install', function (event) {
                 '/images/membro2.jpg',
                 '/images/menu-sand.png',
                 '/files/legendas.json',
+                '/files/linguagens.json',
+                '/js/carregarAjuda.js',
+                '/js/carregarTutorials.js',
+                '/js/limpar.js',
             ]);
         })
     )
