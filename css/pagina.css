@@ -33,7 +33,6 @@ a
 
 .home
 {
-	/*width: 1000px;*/
 	height: auto;
 	display: inline-block;
 	margin: 0 auto;
@@ -45,7 +44,6 @@ a
 	font-family: 'Share Tech Mono', monospace;
 	font-weight: bold;
 	font-size: 20px;
-	/*color:rgb(70, 129, 168);*/
 	color: rgb(247, 164, 10);
 	padding: 5px;
 }
@@ -109,7 +107,6 @@ pre {
 }
 
 span {
-	/*display: block;*/
 	line-height: 1.5rem;
 	width: 100px;
     float: right;
@@ -122,7 +119,6 @@ span {
 	padding: 0px 2px 0px 0px;
 	margin-right: 3px;
 	float: left;
-	/*box-shadow: .2em .2em .5em rgba(0,0,0,.45);*/
 }
 
 .line
@@ -148,7 +144,6 @@ span {
 
 .button
 {
-	/*background-color: rgb(70, 129, 168);*/
 	background-color: rgb(104, 72, 160);
 	width: 405px;
 	height: 45px;
@@ -167,10 +162,9 @@ span {
 
 .selecao 
 {
-	padding-top: 20px;
 	margin: 0 auto;
 	margin-bottom: 5px;
-	height: 465px;
+	height: 500px;
 	width: 100%;
 	overflow: auto scroll;
 	position: relative;
@@ -269,4 +263,5 @@ table tr:hover
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
+	padding-top: 30px;
 }

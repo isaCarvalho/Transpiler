@@ -274,7 +274,7 @@ abstract class Analise
 // Formata o código final tirando espaços desnecessários e chaves, quando necessário
     protected static function format($id_destino, $codigo)
     {
-        if ($id_destino == 4 || $id_destino == 5)
+        if ($id_destino == 4)
         {
             $codigo = AnalisePython::formatar($codigo);
         }
