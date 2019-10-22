@@ -38,7 +38,7 @@ function carregarSelect()
 				select.appendChild(option)
 			});
 
-			select.addEventListener('click', event => {
+			select.addEventListener('change', event => {
 				carregarTexto(JSON.parse(linguagens[select.selectedIndex]));
 			});
 
@@ -82,7 +82,7 @@ function carregarDados(ling)
 	// Descricao da Linguagem
 	let tableDesc = createTable(`<tr><th>Descricao</th></tr>`);
 	let trDesc = document.createElement('tr');
-	trDesc.innerHTML = `<td>${ling.descricao}. Documentação: <a href="${ling.documentacao}" target="_blank">${ling.documentacao}</a></td>`;
+	trDesc.innerHTML = `<td>${ling.descricao} <a href="${ling.documentacao}" target="_blank">Documentação</a></td>`;
 	tableDesc.appendChild(trDesc);
 	navLing.appendChild(tableDesc);
 
