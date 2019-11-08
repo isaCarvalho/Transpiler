@@ -4,9 +4,9 @@ class Controller
 {
     public function enviarFonte()
     {
-        $cfonte   = $_GET['cfonte'];
-        $lfonte   = $_GET['lfonte'];
-        $ldestino = $_GET['ldestino'];
+        $cfonte   = $_POST['cfonte'];
+        $lfonte   = $_POST['lfonte'];
+        $ldestino = $_POST['ldestino'];
 
         require_once "../model/Analise.php";
 
@@ -33,7 +33,7 @@ class Controller
     }
 }
 
-extract($_GET);
-
 $c = new Controller();
+
+$action = $_GET['action'];
 $c->$action();
