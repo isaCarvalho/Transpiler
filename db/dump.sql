@@ -100,10 +100,6 @@ id_linguagem int not null references linguagens(id) on delete cascade on update 
 create sequence loops_seq increment 1 minvalue 1 start 1;
 alter table loops alter column id set default nextval('loops_seq');
 
--- Tabela legendas
-drop table if exists legendas;
-drop sequence if exists legendas_seq;
-
 -- Tabela de declaracoes
 drop table if exists declaracoes;
 drop sequence if exists declaracoes_seq;
@@ -143,6 +139,7 @@ id_linguagem int references linguagens(id)
 create sequence elses_seq increment 1 minvalue 1 start 1;
 alter table elses alter column id set default nextval('elses_seq');
 
+-- Tabela de else_ifs
 drop table if exists else_ifs;
 drop sequence if exists else_ifs_seq;
 
@@ -155,6 +152,10 @@ id_linguagem int references linguagens(id)
 create sequence else_ifs_seq increment 1 minvalue 1 start 1;
 alter table else_ifs alter column id set default nextval('else_ifs_seq');
 
+-- Tabela de prints
+drop table if exists prints;
+drop sequence if exists prints_seq;
+
 create table prints (
 id serial primary key,
 descricao varchar(255) not null,
@@ -164,6 +165,10 @@ id_linguagem int references linguagens(id) on delete cascade on update cascade
 create sequence prints_seq increment 1 minvalue 1 start 1;
 alter table prints alter column id set default nextval('prints_seq');
 
+-- Tabela de scans
+drop table if exists scans;
+drop sequence if exists scans_seq;
+
 create table scans (
 id serial primary key,
 descricao varchar(255) not null,
@@ -172,6 +177,10 @@ id_linguagem int references linguagens(id) on delete cascade on update cascade
 
 create sequence scans_seq increment 1 minvalue 1 start 1;
 alter table scans alter column id set default nextval('scans_seq');
+
+-- Tabela de declaração de Classes
+drop table if exists class_declarations;
+drop sequence if exists class_declarations_seq;
 
 create table class_declarations (
 id serial primary key,
@@ -230,6 +239,7 @@ insert into elses (descricao, id_linguagem) values
 ('else:', 4),
 ('| otherwise ', 5);
 
+-- inserção de else_ifs
 insert into else_ifs (descricao, id_linguagem) values
 ('else if (<exp>) {', 1),
 ('else if (<exp>) {', 2),
@@ -302,6 +312,7 @@ insert into loops (descricao, id_linguagem) values
 ('while <exp>:', 4),
 ('não informado', 5);
 
+-- inserção de prints
 insert into prints (descricao, id_linguagem) values
 ('printf(<param>)', 1),
 ('System.out.println(<param>)', 2),
@@ -309,6 +320,15 @@ insert into prints (descricao, id_linguagem) values
 ('print(<param>)', 4),
 ('putStrLn <param>', 5);
 
+-- insercao de scans
+insert into scans (descricao, id_linguagem) values
+('NA', 1),
+('NA', 2),
+('NA', 3),
+('NA', 4),
+('NA', 5);
+
+-- insercao de declaracao de classes
 insert into class_declarations (descricao, id_linguagem) values
 ('', 1),
 ('public class <nome> {', 2),
@@ -363,3 +383,43 @@ select linguagens.nome, functions.descricao from linguagens, functions where lin
 select linguagens.nome, tipos.tipo, tipos.descricao, tipos.tamanho from linguagens, tipos where linguagens.id = tipos.id_linguagem;
 
 select linguagens.nome, loops.descricao from linguagens, loops where linguagens.id = loops.id_linguagem;
+
+
+/* Criação da view */
+
+create view vw_linguagens as
+select
+	linguagens.id as id,
+	linguagens.nome as nome,
+	linguagens.descricao as descricao,
+	linguagens.documentacao as documentacao,
+	paradigmas.nome as paradigma,
+	ifs.descricao as if_bnf,
+	elses.descricao as else_bnf,
+	functions.descricao as function_bnf,
+	declaracoes.descricao as declaration_bnf,
+	returns.descricao as return_bnf,
+	else_ifs.descricao as else_if_bnf,
+	prints.descricao as print_bnf,
+	class_declarations.descricao as class_declaration_bnf
+from
+	linguagens,
+	paradigmas,
+	ifs,
+	elses,
+	functions,
+	declaracoes,
+	returns,
+	else_ifs,
+	prints,
+	class_declarations
+where
+	linguagens.id_paradigma = paradigmas.id and
+	linguagens.id = ifs.id_linguagem and
+	linguagens.id = elses.id_linguagem and
+	linguagens.id = functions.id_linguagem and
+	linguagens.id = declaracoes.id_linguagem and
+	linguagens.id = returns.id_linguagem and
+	linguagens.id = else_ifs.id_linguagem and
+	linguagens.id = prints.id_linguagem and
+	linguagens.id = class_declarations.id_linguagem;

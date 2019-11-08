@@ -10,46 +10,26 @@ class Linguagem
 
     public function __construct($id)
     {
-        $results = Query::select("linguagens.id, linguagens.nome as nome, linguagens.descricao, " .
-            "linguagens.documentacao, paradigmas.nome as paradigma",
-            "linguagens, paradigmas",
-            "linguagens.id_paradigma = paradigmas.id AND linguagens.id = ?",
-            [$id]);
+        $results = Query::select("*", "vw_linguagens", "id = ?", [$id]);
 
         $this->id = $results[0]['id'];
         $this->nome = $results[0]['nome'];
         $this->paradigma = $results[0]['paradigma'];
         $this->descricao = $results[0]['descricao'];
         $this->documentacao = $results[0]['documentacao'];
+        $this->ifs = $results[0]['if_bnf'];
+        $this->elses = $results[0]['else_bnf'];
+        $this->funcoes = $results[0]['function_bnf'];
+        $this->declaracao = $results[0]['declaration_bnf'];
+        $this->retornos = $results[0]['return_bnf'];
+        $this->else_if = $results[0]['else_if_bnf'];
+        $this->prints = $results[0]['print_bnf'];
+        $this->class_dec = $results[0]["class_declaration_bnf"];
 
         $this->tipos = Query::select("tipo, descricao, tamanho",
             "tipos", "id_linguagem = ?", [$this->id]);
 
         $this->fors = Query::select("descricao", "loops", "id_linguagem = ?", [$this->id]);
-
-        $results = Query::select("descricao", "ifs", "id_linguagem = ?", [$this->id]);
-        $this->ifs = $results[0]['descricao'];
-
-        $results = Query::select("descricao", "elses", "id_linguagem = ?", [$this->id]);
-        $this->elses = $results[0]['descricao'];
-
-        $results = Query::select("descricao", "functions", "id_linguagem = ?", [$this->id]);
-        $this->funcoes = $results[0]['descricao'];
-
-        $results = Query::select("descricao", "declaracoes","id_linguagem = ?", [$this->id]);
-        $this->declaracao = $results[0]['descricao'];
-
-        $results = Query::select("descricao", "returns", "id_linguagem = ?", [$this->id]);
-        $this->retornos = $results[0]['descricao'];
-
-        $results = Query::select("descricao", "else_ifs", "id_linguagem = ?", [$this->id]);
-        $this->else_if = $results[0]['descricao'];
-
-        $results = Query::select("descricao", "prints", "id_linguagem = ?", [$this->id]);
-        $this->prints = $results[0]['descricao'];
-
-        $results = Query::select("descricao", "class_declarations", "id_linguagem = ?", [$this->id]);
-        $this->class_dec = $results[0]["descricao"];
     }
 
     public function getId() { return $this->id; }
