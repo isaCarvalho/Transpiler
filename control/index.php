@@ -2,6 +2,33 @@
 
 class Controller
 {
+    private function setAnalise($fonte): Analise
+    {
+        switch($fonte)
+        {
+            case 1:
+                return new AnaliseC();
+                break;
+
+            case 2:
+                return new AnaliseJava();
+                break;
+
+            case 3:
+                return new AnaliseKotlin();
+                break;
+
+            case 4:
+                return new AnalisePython();
+                break;
+
+            case 5:
+                return new AnaliseHaskell();
+                break;
+        }
+        return null;
+    }
+
     public function enviarFonte()
     {
         $cfonte   = $_POST['cfonte'];
@@ -9,8 +36,16 @@ class Controller
         $ldestino = $_POST['ldestino'];
 
         require_once "../model/Analise.php";
+        require_once "../model/Tradutor.php";
 
-        $result = Analise::analisar($cfonte, $lfonte, $ldestino);
+        $analise = $this->setAnalise($lfonte);
+        $analise->setLinguagem(new Linguagem($lfonte));
+
+        $ling_destino = new Linguagem($ldestino);
+
+        $tradutor = new Tradutor($analise, $ling_destino, $cfonte);
+
+        $result = $tradutor->traduz();
         echo json_encode(["prototipo" => $result]);
     }
 

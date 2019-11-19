@@ -2,41 +2,93 @@
 
 class AnaliseJava extends Analise
 {
-    protected static function traduz($codigo)
+    public function getRegexFor()
     {
-        /// Transpila um if
-        $codigo = self::transpilaIF("/if\s?+\((.*?)\)\s?+\n?+\s?+\{/", $codigo);
+        return "/for\s?+\(\s?+([\w]+)\s\s?+([\w+])\s?+\=\s?+(.*)\s?+\;\s?+[\w]+\s?+([<>!=]+)\s?+(.*)\s?+\;\s?+[\w]+(.*)\)\s?+\{/";
+    }
 
-        // Transpila um else
-        $codigo = self::transpilaElse("/(else)\s?+\n?+\s?+\{/", $codigo);
+    public function getValuesFor($matches, $pos)
+    {
+        return [
+            'tipo' => $matches[1][$pos],
+            'var' => $matches[2][$pos],
+            'inicio' => $matches[3][$pos],
+            'cond' => $matches[4][$pos],
+            'fim' => $matches[5][$pos],
+            'incr' => $matches[6][$pos]
+        ];
+    }
 
-        // Transpila else if
-        $codigo = self::transpilaIfElses("/else\s?+if\s?\((.*)\)\s?+\{/", $codigo);
+    public function getRegexIf()
+    {
+        return "/if\s?+\((.*?)\)\s?+\n?+\s?+\{/";
+    }
 
-        // Transpila um metodo publico
-        if (preg_match_all("/public\s+([\w]+)\s+([\w]+)\s?+\((.*?)\)\s?+\{/", $codigo, $matches))
-        {
-            for ($i = 0; $i < sizeof($matches[0]); $i++)
-            {
-                $aux = self::transpilaFuncao($matches[1][$i], $matches[2][$i], $matches[3][$i]);
+    public function getRegexReturn()
+    {
+        return "/return\s+?(.*?)\;\s+?\}/";
+    }
 
-                $codigo = str_replace($matches[0][$i], $aux, $codigo);
-            }
-        }
-        // Transpila um for padrao
-        $codigo = self::functionFor($codigo);
+    public function getRegexElse()
+    {
+        return "/(else)\s?+\n?+\s?+\{/";
+    }
 
-        // Transpila uma declaracao de variavel
-        $codigo = self::functionDeclaracao($codigo);
+    public function getRegexElseIf()
+    {
+        return "/else\s?+if\s?\((.*)\)\s?+\{/";
+    }
 
-        // Transpila return
-        $codigo = self::functionReturn($codigo);
+    public function getRegexDeclaration()
+    {
+        return "/(\w+)\s\s*(\w+)\s\s*\=\s\s*(.*)\;/";
+    }
 
-        // Transpila atribuicoes
-        $codigo = self::functionAtribuicao($codigo);
+    public function getValuesDeclaration($matches, $pos)
+    {
+        return [
+            'tipo' => $matches[1][$pos],
+            'nome' => $matches[2][$pos],
+            'valor' => $matches[3][$pos]
+        ];
+    }
 
-        $codigo = self::transpilaClasse("/public\s+class\s+([\w]+)\s?\{/", $codigo);
+    public function getRegexAtribuition()
+    {
+        return "/([\w]+)\s?+([=\-+*\/]+)\s?+(.*)\;/";
+    }
 
-        return self::codigo_final($codigo);
+    public function getRegexClass()
+    {
+        return "/public\s+class\s+([\w]+)\s?\{/";
+    }
+
+    public function getRegexFunction()
+    {
+        return "/public\s+([\w]+)\s+([\w]+)\s?+\((.*?)\)\s?+\{/";
+    }
+
+    public function getDelimitador()
+    {
+        return " ";
+    }
+
+    public function getValuesFunction($matches, $pos)
+    {
+        return [
+            'tipo' => $matches[1][$pos],
+            'nome' => $matches[2][$pos],
+            'param' => $matches[3][$pos]
+        ];
+    }
+
+    public function getRegexPrint()
+    {
+        return "/System.out.println\((.*?)\)\;/";
+    }
+
+    public function formatar($codigo)
+    {
+        return $codigo;
     }
 }
