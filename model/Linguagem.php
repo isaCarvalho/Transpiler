@@ -2,6 +2,10 @@
 
 require_once "Query.php";
 
+/**
+ * Class Linguagem
+ * Esta classe possui todas as informações que vem do banco de dados.
+ */
 class Linguagem
 {
     private $id, $nome, $paradigma, $descricao, $documentacao;

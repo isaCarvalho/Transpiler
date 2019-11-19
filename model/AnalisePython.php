@@ -87,7 +87,7 @@ class AnalisePython extends Analise
         return "/print\((.*?)\)\/";
     }
 
-    public function formatar($codigo)
+    public static function formatar($codigo)
     {
         $codigo = str_replace('{', '', $codigo);
         $codigo = str_replace('}', '', $codigo);

@@ -87,7 +87,7 @@ class AnaliseC extends Analise
         return "/printf\((.*?)\)\;/";
     }
 
-    public function formatar($codigo)
+    public static function formatar($codigo)
     {
         $codigo = preg_replace("/\}$/s", "", $codigo);
 

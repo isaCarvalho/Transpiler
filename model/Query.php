@@ -1,6 +1,9 @@
 <?php
 
-// Classe de conexão do PHP com o PostgreSQL;
+/**
+ * Class Query
+ * Classe de conexão com a base de dados do PostgreSQL
+ */
 class Query
 {
 	private static $conn;

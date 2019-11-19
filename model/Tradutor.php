@@ -1,12 +1,22 @@
 <?php
 
-// Classe que realiza a tradução
+/**
+ * Class Tradutor
+ * Esta classe realiza a tradução do código
+ */
 class Tradutor
 {
-    private $linguagem;
-    private $analise;
-    private $codigo;
+    private $linguagem; // Linguagem de destino
+    private $analise; // analise da linguagem de fonte
+    private $codigo; // código fonte a ser traduzido
 
+    /**
+     * Tradutor constructor.
+     * @param Analise $analise
+     * @param Linguagem $linguagem
+     * @param $codigo
+     *
+     */
     public function __construct(Analise $analise, Linguagem $linguagem, $codigo)
     {
         $this->codigo = $codigo;
@@ -14,7 +24,15 @@ class Tradutor
         $this->analise = $analise;
     }
 
-    protected function buscaTipo($tipo, $nome, $prototipo)
+    /**
+     * Método que busca o tipo correspondente da linguagem de origem para a linguagem de destino.
+     * Ele substitui o tipo e retorna o parametro já com o tipo correto
+     * @param $tipo
+     * @param $nome
+     * @param $prototipo
+     * @return mixed|null
+     */
+    private function buscaTipo($tipo, $nome, $prototipo)
     {
         // busca o tipo de retorno na linguagem de destino
         $ling_fonte = $this->analise->getLinguagem();
@@ -31,7 +49,15 @@ class Tradutor
         return null;
     }
 
-    protected function subParametro($prototipo, $parametro, $delimitador = ' ')
+    /**
+     * Método que faz a substituição de todos os parametros na linguagem de destino.
+     * Ele utiliza o método acima para fazer a tradução de cada um dos parametros
+     * @param $prototipo
+     * @param $parametro
+     * @param string $delimitador
+     * @return mixed|null
+     */
+    private function subParametro($prototipo, $parametro, $delimitador = ' ')
     {
         // separa o tipo do nome do parametro
         $aux = explode($delimitador, trim($parametro));
@@ -49,7 +75,10 @@ class Tradutor
         return $this->buscaTipo($aux[0], $aux[1], $prototipo);
     }
 
-    protected function transpilaIF()
+    /**
+     * Método que realiza a tradução de ifs
+     */
+    private function transpilaIF()
     {
         $regex = $this->analise->getRegexIf();
         if (preg_match_all($regex, $this->codigo, $matches)) {
@@ -61,7 +90,10 @@ class Tradutor
         }
     }
 
-    protected function transpilaElse()
+    /**
+     * Método que realiza a tradução de elses
+     */
+    private function transpilaElse()
     {
         $regex = $this->analise->getRegexElse();
         if (preg_match_all($regex, $this->codigo, $matches))
@@ -74,7 +106,10 @@ class Tradutor
         }
     }
 
-    protected function transpilaIfElses()
+    /**
+     * Método que realiza a tradução de if-elses
+     */
+    private function transpilaIfElses()
     {
         $regex = $this->analise->getRegexElseIf();
         if (preg_match_all($regex, $this->codigo, $matches))
@@ -87,10 +122,18 @@ class Tradutor
         }
     }
 
-    protected function transpilaFuncao($tipo, $nome, $param, $delimitador = ' ')
+    /**
+     * Método que realiza a tradução dos protótipos de função presentes no código.
+     * @param $tipo
+     * @param $nome
+     * @param $param
+     * @param string $delimitador
+     * @return mixed
+     */
+    private function transpilaFuncao($tipo, $nome, $param, $delimitador = ' ')
     {
-        // verifica o tipo correspondente na linguagem de destino
-        $prototipo = self::buscaTipo($tipo, $nome, $this->linguagem->getFuncoes());
+        // verifica o tipo de retorno correspondente na linguagem de destino
+        $prototipo = $this->buscaTipo($tipo, $nome, $this->linguagem->getFuncoes());
 
         $str = '';
 
@@ -104,23 +147,23 @@ class Tradutor
             switch ($this->linguagem->getId())
             {
                 case 1:
-                    $str .= self::subParametro('<tipo> <nome>', $parametros[$i], $delimitador);
+                    $str .= $this->subParametro('<tipo> <nome>', $parametros[$i], $delimitador);
                     break;
 
                 case 2:
-                    $str .= self::subParametro('<tipo> <nome>', $parametros[$i], $delimitador);
+                    $str .= $this->subParametro('<tipo> <nome>', $parametros[$i], $delimitador);
                     break;
 
                 case 3:
-                    $str .= self::subParametro('<nome> : <tipo>', $parametros[$i], $delimitador);
+                    $str .= $this->subParametro('<nome> : <tipo>', $parametros[$i], $delimitador);
                     break;
 
                 case 4:
-                    $str .= self::subParametro('<nome>', $parametros[$i], $delimitador);
+                    $str .= $this->subParametro('<nome>', $parametros[$i], $delimitador);
                     break;
 
                 case 5:
-                    $str .= self::subParametro('<nome>', $parametros[$i], $delimitador);
+                    $str .= $this->subParametro('<nome>', $parametros[$i], $delimitador);
                     break;
             }
 
@@ -133,12 +176,17 @@ class Tradutor
         return str_replace('<param>', $str, $prototipo);
     }
 
-    protected function transpilaFor($matches = [])
+    /**
+     * Método que realiza a tradução de laços for
+     * @param array $matches
+     * @return mixed
+     */
+    private function transpilaFor($matches = [])
     {
         $for = $this->linguagem->getFors();
 
         // busca o tipo correspondente na linguagem de destino
-        $tipo = self::buscaTipo($matches['tipo'], $matches['var'], '<tipo>');
+        $tipo = $this->buscaTipo($matches['tipo'], $matches['var'], '<tipo>');
 
         $novo = [];
         $antigo = [];
@@ -184,7 +232,12 @@ class Tradutor
         return str_replace($antigo, $novo, $prototipo);
     }
 
-    protected function transpilaDeclaracao($matches = [])
+    /**
+     * Método que realiza a tradução de declarações de variáveis
+     * @param array $matches
+     * @return mixed
+     */
+    private function transpilaDeclaracao($matches = [])
     {
         // retorna o tipo na liguagem de destino
         $prototipo = $this->buscaTipo($matches['tipo'], $matches['nome'], $this->linguagem->getDeclaracao());
@@ -192,7 +245,12 @@ class Tradutor
         return str_replace('<valor>', $matches['valor'], $prototipo);
     }
 
-    protected function transpilaReturn($valor)
+    /**
+     * Método que realiza a tradução de comandos de retorno
+     * @param $valor
+     * @return mixed|string
+     */
+    private function transpilaReturn($valor)
     {
         $str = str_replace('<valor>', $valor, $this->linguagem->getRetornos());
 
@@ -204,8 +262,11 @@ class Tradutor
         return $str;
     }
 
-// Transpila a atribuicao para a linguagem de destino
-    protected function transpilaAtribuicao($matches)
+    /**
+     * Método que realiza a tradução de atribuições de variaveis
+     * @param $matches
+     */
+    private function transpilaAtribuicao($matches)
     {
         foreach ($matches as $match)
         {
@@ -218,7 +279,10 @@ class Tradutor
         }
     }
 
-    protected function transpilaClasse()
+    /**
+     * Método que realiza a tradução de classes
+     */
+    private function transpilaClasse()
     {
         $regex = $this->analise->getRegexClass();
         if ($regex == "")
@@ -239,7 +303,10 @@ class Tradutor
         }
     }
 
-    protected function transpilaPrint()
+    /**
+     * Método que realiza a tradução de impressoes na tela
+     */
+    private function transpilaPrint()
     {
         $regex = $this->analise->getRegexPrint();
         // Transpila print
@@ -333,7 +400,10 @@ class Tradutor
 
     }
 
-    public function functionFor()
+    /**
+     * Este método prepara os laços para a tradução, passando para o metodo transpilaFor os valores a serem traduzidos
+     */
+    private function functionFor()
     {
         $regex = $this->analise->getRegexFor();
         if (preg_match_all($regex, $this->codigo, $matches))
@@ -343,14 +413,17 @@ class Tradutor
                 $match = $matches[0][$i];
                 $values = $this->analise->getValuesFor($matches, $i);
 
-                $aux = self::transpilaFor($values);
+                $aux = $this->transpilaFor($values);
 
                 $this->codigo = str_replace($match, $aux, $this->codigo);
             }
         }
     }
 
-    protected function functionReturn()
+    /**
+     * Este método chama a tradução para todos os comandos de retorno presentes no código
+     */
+    private function functionReturn()
     {
         $regex = $this->analise->getRegexReturn();
         if (preg_match_all($regex, $this->codigo, $matches))
@@ -364,7 +437,10 @@ class Tradutor
         }
     }
 
-    protected function functionDeclaracao()
+    /**
+     * Este método chama a tradução de todas as declarações de variaveis presentes no código
+     */
+    private function functionDeclaracao()
     {
         $regex = $this->analise->getRegexDeclaration();
         if (preg_match_all($regex, $this->codigo, $matches))
@@ -373,20 +449,27 @@ class Tradutor
             {
                 $values = $this->analise->getValuesDeclaration($matches, $i);
 
-                $aux = self::transpilaDeclaracao($values);
+                $aux = $this->transpilaDeclaracao($values);
 
                 $this->codigo = str_replace($matches[0][$i], $aux, $this->codigo);
             }
         }
     }
 
-    protected function functionAtribuicao()
+    /**
+     * Este metódo realiza a tradução de todas as atribuições presentes no código
+     */
+    private function functionAtribuicao()
     {
         if (preg_match_all("/([\w]+)\s?+([=\-+*\/]+)\s?+(.*)\;/", $this->codigo, $matches))
             $this->transpilaAtribuicao($matches);
     }
 
-    protected function functionFuncao()
+    /**
+     * Este método prepara os valores a serem passados para o método transpilaFuncao() e traduz todos os prototipos
+     * presentes no codigo
+     */
+    private function functionFuncao()
     {
         $regex = $this->analise->getRegexFunction();
         $delim = $this->analise->getDelimitador();
@@ -395,18 +478,42 @@ class Tradutor
             for ($i = 0; $i < sizeof($matches[0]); $i++)
             {
                 $values = $this->analise->getValuesFunction($matches, $i);
-                $aux = self::transpilaFuncao($values['tipo'], $values['nome'], $values['param'], $delim);
+                $aux = $this->transpilaFuncao($values['tipo'], $values['nome'], $values['param'], $delim);
 
                 $this->codigo = str_replace($matches[0][$i], $aux, $this->codigo);
             }
         }
     }
 
-    protected function codigo_final()
+    /**
+     * Este método formata o código final
+     */
+    private function codigo_final()
     {
-        $this->codigo =  trim($this->analise->formatar($this->codigo));
+        switch ($this->linguagem->getId())
+        {
+            case 1:
+                $this->codigo = trim(AnaliseC::formatar($this->codigo));
+                break;
+            case 2:
+                $this->codigo = trim(AnaliseJava::formatar($this->codigo));
+                break;
+            case 3:
+                $this->codigo = trim(AnaliseKotlin::formatar($this->codigo));
+                break;
+            case 4:
+                $this->codigo = trim(AnalisePython::formatar($this->codigo));
+                break;
+            case 5:
+                $this->codigo = trim(AnaliseHaskell::formatar($this->codigo));
+                break;
+        }
     }
 
+    /**
+     * Este método é o que chama todos os métodos de tradução acima e retorna o código traduzido
+     * @return mixed
+     */
     public function traduz()
     {
         $this->functionFor();

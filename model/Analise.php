@@ -7,6 +7,10 @@ require_once "AnaliseKotlin.php";
 require_once "AnalisePython.php";
 require_once "AnaliseHaskell.php";
 
+/**
+ * Class Analise
+ * Esta classe é a que contem a linguagem de fonte e a sua respectiva regra gramatical
+ */
 abstract class Analise
 {
     /** A análise a linguagem de origem */
@@ -50,5 +54,5 @@ abstract class Analise
 
     public abstract function getValuesFunction($matches, $pos);
 
-    public abstract function formatar($codigo);
+    public abstract static function formatar($codigo);
 }

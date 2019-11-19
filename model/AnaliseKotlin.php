@@ -87,7 +87,7 @@ class AnaliseKotlin extends Analise
         return "/print\((.*?)\)\;/";
     }
 
-    public function formatar($codigo)
+    public static function formatar($codigo)
     {
         return $codigo;
     }
