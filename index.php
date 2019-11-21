@@ -3,6 +3,9 @@ include "control/index.php";
 
 class View
 {
+    /*
+     * Metodo que renderiza a pagina
+     */
     public function render(String $pagina)
     {
         include_once "view/header.html";
