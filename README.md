@@ -38,7 +38,7 @@ A página de tutoriais conta com:
 
 ## API
 
-Para utilizar a API: https://goto-transpiler.herokuapp.com/API/id=ID_LINGUAGEM.
+Para utilizar a API: https://goto-transpiler.herokuapp.com/API/ID_LINGUAGEM.
 Susbtitua "ID_LINGUAGEM" pelo id da lingugagem desejada ou por um '*' para retornar os dados de todas as linguagens.
 
 ## Ajuda
