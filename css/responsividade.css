@@ -1,3 +1,10 @@
+@media screen and (max-width: 1024px) {
+    .gif
+    {
+        margin: 140px 0 !important;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .header {
         height: 40px;
@@ -102,13 +109,6 @@
         width: 90%;
     }
 
-    table a {
-        display: flex;
-        flex-wrap: wrap;
-        word-wrap: normal;
-        overflow-wrap: break-word;
-    }
-
     /* Contato */
     #contato {
         width: 100%;
@@ -119,6 +119,11 @@
     .equipe {
         margin-bottom: 30px;
     }
+
+    .gif
+    {
+        margin: 50px 0 !important;
+    }
 }
 
 @media screen and (max-width: 425px) {
@@ -127,5 +132,26 @@
     }
 
     #menu ul li {
+    }
+
+    .gif
+    {
+        width: 100%;
+        height: auto;
+        margin: 70px 0 !important;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .gif
+    {
+        margin: 85px 0 !important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .gif
+    {
+        margin: 105px 0 !important;
     }
 }

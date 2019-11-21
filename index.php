@@ -3,16 +3,13 @@ include "control/index.php";
 
 class View
 {
-    public function render(String $pagina, $header = true, $footer = true)
+    public function render(String $pagina)
     {
-        if ($header)
-            include "view/header.html";
+        include_once "view/header.html";
 
         $path = "view/" . $pagina . '.html';
-        include "$path";
+        include_once $path;
 
-        if ($footer)
-            include "view/footer.html";
-
+        include_once "view/footer.html";
     }
 }

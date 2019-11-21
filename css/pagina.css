@@ -210,8 +210,6 @@ table tr
 
 table tr th
 {
-	/*background-color: #630529;*/
-	/*background-color: rgb(70, 129, 168);*/
 	background-color: rgb(104, 72, 160);
 	color: white;
 	border: 1px solid rgb(104, 72, 160);
@@ -224,6 +222,7 @@ table tr td
 	border-right: 1px solid white;
 	border-bottom: 1px solid white;
 	font-size: 16px;
+	padding: 6px;
 }
 
 table tr:hover
@@ -246,7 +245,6 @@ table tr:hover
 {
 	width: 300px;
 	height: 350px;
-	/*background-color: rgba(255, 255, 255, 0.5);*/
 	background-color: rgba(18,22,25,.9);
 	margin: 0 auto;
 	padding-top: 20px;
@@ -264,4 +262,10 @@ table tr:hover
 	display: flex;
 	align-items: center;
 	padding-top: 30px;
+}
+
+/* PAGINA NAO ENCONTRADA */
+.gif
+{
+	margin: 70px 0;
 }

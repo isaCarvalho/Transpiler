@@ -22,7 +22,7 @@ class Controller
                 break;
 
             default:
-                $this->renderizar($array[1]);
+                $this->redirect($array[1]);
                 break;
         }
     }
@@ -91,15 +91,14 @@ class Controller
         echo WriteFile::saveFile('files/linguagens.json', $content);
     }
 
-    public function renderizar($pagina)
+    public function redirect($pagina)
     {
         $v = new View();
         $paginas = ['index', '', 'tradutor', 'tutorials', 'ajuda', 'contato', 'referencias', 'API'];
 
         if (!in_array($pagina, $paginas))
-            $v->render('404', false, false);
-        else if ($pagina == 'referencias')
-            $v->render($pagina, false, false);
+            $v->render('404');
+
         else if ($pagina == 'index' || $pagina == '' || $pagina == 'tradutor')
             $pagina = 'tradutor';
 
