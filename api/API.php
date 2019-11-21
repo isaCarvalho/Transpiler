@@ -1,6 +1,6 @@
 <?php
 
-require_once "../model/Linguagem.php";
+require_once "model/Linguagem.php";
 
 // API que permite carregar todos os dados de linguagens ou os dados de uma linguagem por id
 class API

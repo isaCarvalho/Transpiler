@@ -2,6 +2,31 @@
 
 class Controller
 {
+    public function route()
+    {
+        $url = $_SERVER['REQUEST_URI'];
+        $array = explode("/", $url);
+
+        switch ($array[1])
+        {
+            case 'enviarFonte':
+                $this->enviarFonte();
+                break;
+
+            case 'API':
+                $this->API($array[2]);
+                break;
+
+            case 'saveFile':
+                $this->saveFile();
+                break;
+
+            default:
+                $this->renderizar($array[1]);
+                break;
+        }
+    }
+
     private function setAnalise($fonte): Analise
     {
         switch($fonte)
@@ -35,8 +60,8 @@ class Controller
         $lfonte   = $_POST['lfonte'];
         $ldestino = $_POST['ldestino'];
 
-        require_once "../model/Analise.php";
-        require_once "../model/Tradutor.php";
+        require_once "model/Analise.php";
+        require_once "model/Tradutor.php";
 
         $analise = $this->setAnalise($lfonte);
         $analise->setLinguagem(new Linguagem($lfonte));
@@ -49,10 +74,9 @@ class Controller
         echo json_encode(["prototipo" => $result]);
     }
 
-    public function API()
+    public function API($id)
     {
-        $id = $_GET['id'];
-        require_once "../api/API.php";
+        include "api/API.php";
 
         echo API::apiLoad($id);
     }
@@ -61,14 +85,27 @@ class Controller
     {
         $content = $_POST['content'];
 
-        require_once '../util/WriteFile.php';
+        require_once 'util/WriteFile.php';
 
         var_dump($_POST);
-        echo WriteFile::saveFile('../files/linguagens.json', $content);
+        echo WriteFile::saveFile('files/linguagens.json', $content);
+    }
+
+    public function renderizar($pagina)
+    {
+        $v = new View();
+        $paginas = ['index', '', 'tradutor', 'tutorials', 'ajuda', 'contato', 'referencias', 'API'];
+
+        if (!in_array($pagina, $paginas))
+            $v->render('404', false, false);
+        else if ($pagina == 'referencias')
+            $v->render($pagina, false, false);
+        else if ($pagina == 'index' || $pagina == '' || $pagina == 'tradutor')
+            $pagina = 'tradutor';
+
+        $v->render($pagina);
     }
 }
 
 $c = new Controller();
-
-$action = $_GET['action'];
-$c->$action();
+$c->route();

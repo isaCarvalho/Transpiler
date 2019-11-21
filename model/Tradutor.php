@@ -461,7 +461,8 @@ class Tradutor
      */
     private function functionAtribuicao()
     {
-        if (preg_match_all("/([\w]+)\s?+([=\-+*\/]+)\s?+(.*)\;/", $this->codigo, $matches))
+        $regex = $this->analise->getRegexAtribuition();
+        if (preg_match_all($regex, $this->codigo, $matches))
             $this->transpilaAtribuicao($matches);
     }
 
@@ -522,8 +523,8 @@ class Tradutor
         $this->transpilaElse();
         $this->functionFuncao();
         $this->functionReturn();
-        $this->functionDeclaracao();
         $this->functionAtribuicao();
+        $this->functionDeclaracao();
         $this->transpilaClasse();
         $this->transpilaPrint();
         $this->codigo_final();

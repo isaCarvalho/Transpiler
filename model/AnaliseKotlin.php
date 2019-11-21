@@ -55,7 +55,7 @@ class AnaliseKotlin extends Analise
 
     public function getRegexAtribuition()
     {
-        return "/([\w]+)\s?+([=\-+*\/]+)\s?+(.*)\/";
+        return "/(\w+)\s+([=*+-\/]+)(.*)/";
     }
 
     public function getRegexClass()

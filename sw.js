@@ -1,15 +1,19 @@
-var CACHE_NAME = 'static-v1';
+let CACHE_NAME = 'static-v1';
 
 self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
             return cache.addAll([
                 '/',
-                '/index.php',
-                '/tutorials.php',
-                '/referencias.php',
-                '/ajuda.php',
-                '/contato.php',
+                'index',
+                'tradutor',
+                'referencias',
+                'ajuda',
+                'tutorials',
+                'contato',
+                '404',
+                '/view/header.html',
+                '/view/footer.html',
                 '/css/footer.css',
                 '/css/header.css',
                 '/css/pagina.css',

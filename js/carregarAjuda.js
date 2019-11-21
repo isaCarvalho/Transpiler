@@ -1,5 +1,3 @@
-// LEMBRAR DE CORRIGIR ISSO AQUI
-
 let body = document.querySelector('body')
 
 let nav = document.getElementById('ajuda')

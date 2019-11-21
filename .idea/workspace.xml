@@ -2,18 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09db7d0e-9863-47ee-96b6-63c6784756e4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/view/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/ajuda.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/contato.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/referencias.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/tradutor.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/tutorials.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Analise.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Analise.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AnaliseC.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnaliseC.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AnaliseHaskell.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnaliseHaskell.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AnaliseJava.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnaliseJava.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ajuda.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/API.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/API.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contato.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/control/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/carregarAjuda.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/carregarAjuda.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/carregarResultado.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/carregarResultado.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/writeFile.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/writeFile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/AnaliseKotlin.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnaliseKotlin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AnalisePython.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnalisePython.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Linguagem.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Linguagem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Query.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Query.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/Tradutor.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Tradutor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uml/transpiladorModelo.asta" beforeDir="false" afterPath="$PROJECT_DIR$/uml/transpiladorModelo.asta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/referencias.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sw.js" beforeDir="false" afterPath="$PROJECT_DIR$/sw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorials.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uml/transpiladorModelo.asta.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/view/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/view/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/view/header.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,47 +36,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/Analise.php">
+        <entry file="file://$PROJECT_DIR$/view/referencias.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="56" column="27" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/model/Tradutor.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="508" column="2" selection-start-line="508" selection-start-column="2" selection-end-line="508" selection-end-column="2" />
-              <folding>
-                <element signature="n#buscaTipo#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#subParametro#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#transpilaIF#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#transpilaElse#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#transpilaIfElses#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#transpilaFuncao#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#transpilaFor#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#transpilaDeclaracao#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#transpilaReturn#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#transpilaAtribuicao#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#transpilaClasse#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#transpilaPrint#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#functionFor#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#functionReturn#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#functionAtribuicao#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#functionFuncao#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#traduz#0;n#Tradutor#0;n#!!top" />
-              </folding>
+            <state relative-caret-position="874">
+              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/Query.php">
+        <entry file="file://$PROJECT_DIR$/js/writeFile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+            <state relative-caret-position="23">
+              <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sw.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -72,11 +74,57 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/footer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+            <state>
+              <caret column="1" selection-start-column="1" selection-end-line="12" selection-end-column="30" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#p#0;n#footer#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/tradutor.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-437">
+              <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/header.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="598">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#div#1;n#nav#0;n#header#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/control/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="95" selection-start-line="95" selection-end-line="95" />
+              <folding>
+                <element signature="n#setValues#0;n#Controller#0;n#!!top" />
+                <element signature="n#setAnalise#0;n#Controller#0;n#!!top" />
+                <element signature="n#enviarFonte#0;n#Controller#0;n#!!top" />
+                <element signature="n#API#0;n#Controller#0;n#!!top" />
+                <element signature="n#saveFile#0;n#Controller#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/tutorials.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="7" column="67" selection-start-line="7" selection-start-column="67" selection-end-line="7" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -88,6 +136,7 @@
       <list>
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -144,52 +193,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js/carregarCodigo.js" />
         <option value="$PROJECT_DIR$/js/carregaResultado.js" />
         <option value="$PROJECT_DIR$/footer.html" />
         <option value="$PROJECT_DIR$/model/linguagem.php" />
         <option value="$PROJECT_DIR$/control/controler.php" />
-        <option value="$PROJECT_DIR$/referencias.php" />
         <option value="$PROJECT_DIR$/css/referencias.css" />
         <option value="$PROJECT_DIR$/header.html" />
-        <option value="$PROJECT_DIR$/ajuda.php" />
         <option value="$PROJECT_DIR$/css/header.css" />
         <option value="$PROJECT_DIR$/model/analise.php" />
         <option value="$PROJECT_DIR$/model/buscar.php" />
-        <option value="$PROJECT_DIR$/js/carregarResultado.js" />
-        <option value="$PROJECT_DIR$/api/API.php" />
-        <option value="$PROJECT_DIR$/tutorials.php" />
         <option value="$PROJECT_DIR$/css/footer.css" />
-        <option value="$PROJECT_DIR$/view/header.html" />
-        <option value="$PROJECT_DIR$/js/carregarAjuda.js" />
         <option value="$PROJECT_DIR$/files/legendas.json" />
         <option value="$PROJECT_DIR$/model/Preencher.php" />
         <option value="$PROJECT_DIR$/js/sw.js" />
         <option value="$PROJECT_DIR$/files/liguagens.json" />
         <option value="$PROJECT_DIR$/util/WriteFile.php" />
-        <option value="$PROJECT_DIR$/sw.js" />
         <option value="$PROJECT_DIR$/files/linguagens.json" />
-        <option value="$PROJECT_DIR$/js/writeFile.js" />
         <option value="$PROJECT_DIR$/css/responsividade.css" />
         <option value="$PROJECT_DIR$/css/pagina.css" />
-        <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/contato.php" />
         <option value="$PROJECT_DIR$/manifest.json" />
         <option value="$PROJECT_DIR$/js/carregarTutorials.js" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/db/dump.sql" />
         <option value="$PROJECT_DIR$/model/Model.php" />
-        <option value="$PROJECT_DIR$/control/index.php" />
-        <option value="$PROJECT_DIR$/view/footer.html" />
         <option value="$PROJECT_DIR$/model/Linguagem.php" />
         <option value="$PROJECT_DIR$/model/Query.php" />
         <option value="$PROJECT_DIR$/model/Analise.php" />
         <option value="$PROJECT_DIR$/model/AnaliseC.php" />
         <option value="$PROJECT_DIR$/model/AnaliseHaskell.php" />
         <option value="$PROJECT_DIR$/model/AnaliseJava.php" />
-        <option value="$PROJECT_DIR$/model/AnaliseKotlin.php" />
         <option value="$PROJECT_DIR$/model/AnalisePython.php" />
+        <option value="$PROJECT_DIR$/model/AnaliseKotlin.php" />
         <option value="$PROJECT_DIR$/model/Tradutor.php" />
+        <option value="$PROJECT_DIR$/js/carregarAjuda.js" />
+        <option value="$PROJECT_DIR$/ajuda.php" />
+        <option value="$PROJECT_DIR$/view/ajuda.html" />
+        <option value="$PROJECT_DIR$/contato.php" />
+        <option value="$PROJECT_DIR$/view/contato.html" />
+        <option value="$PROJECT_DIR$/referencias.php" />
+        <option value="$PROJECT_DIR$/tutorials.php" />
+        <option value="$PROJECT_DIR$/view/referencias.html" />
+        <option value="$PROJECT_DIR$/view/404.html" />
+        <option value="$PROJECT_DIR$/js/carregarResultado.js" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/api/API.php" />
+        <option value="$PROJECT_DIR$/control/index.php" />
+        <option value="$PROJECT_DIR$/js/writeFile.js" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/view/tutorials.html" />
+        <option value="$PROJECT_DIR$/view/header.html" />
+        <option value="$PROJECT_DIR$/view/tradutor.html" />
+        <option value="$PROJECT_DIR$/view/footer.html" />
+        <option value="$PROJECT_DIR$/sw.js" />
       </list>
     </option>
   </component>
@@ -215,7 +269,7 @@
             <path>
               <item name="Transpiler" type="b2602c69:ProjectViewProjectNode" />
               <item name="Transpiler" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Transpiler" type="b2602c69:ProjectViewProjectNode" />
@@ -229,6 +283,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -360,12 +415,14 @@
       <workItem from="1573242345553" duration="5268000" />
       <workItem from="1573494573700" duration="1194000" />
       <workItem from="1574165844703" duration="14324000" />
-      <workItem from="1574184638737" duration="4097000" />
+      <workItem from="1574184638737" duration="4476000" />
+      <workItem from="1574261700236" duration="1201000" />
+      <workItem from="1574343853845" duration="13988000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="288023000" />
+    <option name="totallyTimeSpent" value="303591000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -378,9 +435,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="701" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24545455" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2530303" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -393,7 +449,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32849365" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49926794" weight="0.23049001" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49926794" visible="true" weight="0.5009074" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50073206" side_tool="true" weight="0.37108013" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -454,32 +510,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/limpar.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/images/fundo.jpg" />
     <entry file="file://$PROJECT_DIR$/images/fundo2.jpeg" />
-    <entry file="file://$PROJECT_DIR$/ajuda.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/footer.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
           <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="14" column="68" lean-forward="true" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#1;n#nav#0;n#header#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -498,38 +534,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/carregarAjuda.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorials.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/pagina.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="34" column="1" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="51" column="24" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/contato.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="18" column="93" selection-start-line="18" selection-start-column="93" selection-end-line="18" selection-end-column="93" />
         </state>
       </provider>
     </entry>
@@ -540,13 +548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sw.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -554,39 +555,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/carregarTutorials.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="920">
-          <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/linguagens.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="141" lean-forward="true" selection-start-column="141" selection-end-column="141" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/files/legendas.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/referencias.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="42" column="67" selection-start-line="42" selection-start-column="67" selection-end-line="42" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -604,73 +576,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/carregarResultado.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-137">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/writeFile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/API.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="38" column="73" selection-start-line="38" selection-start-column="73" selection-end-line="38" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="n#setAnalise#0;n#Controller#0;n#!!top" />
-            <element signature="n#enviarFonte#0;n#Controller#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/Linguagem.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/Analise.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="56" column="27" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/AnaliseC.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="89" column="18" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
-          <folding>
-            <element signature="n#getRegexFor#0;n#AnaliseC#0;n#!!top" />
-            <element signature="n#getValuesFor#0;n#AnaliseC#0;n#!!top" />
-            <element signature="n#getRegexIf#0;n#AnaliseC#0;n#!!top" />
-            <element signature="n#getRegexReturn#0;n#AnaliseC#0;n#!!top" />
-            <element signature="n#getRegexElse#0;n#AnaliseC#0;n#!!top" />
-            <element signature="n#getRegexElseIf#0;n#AnaliseC#0;n#!!top" />
-            <element signature="n#getRegexDeclaration#0;n#AnaliseC#0;n#!!top" />
-            <element signature="n#getValuesDeclaration#0;n#AnaliseC#0;n#!!top" />
-            <element signature="n#getRegexAtribuition#0;n#AnaliseC#0;n#!!top" />
-            <element signature="n#getRegexClass#0;n#AnaliseC#0;n#!!top" />
-            <element signature="n#getRegexFunction#0;n#AnaliseC#0;n#!!top" />
-            <element signature="n#getDelimitador#0;n#AnaliseC#0;n#!!top" />
-            <element signature="n#getValuesFunction#0;n#AnaliseC#0;n#!!top" />
-            <element signature="n#getRegexPrint#0;n#AnaliseC#0;n#!!top" />
-            <element signature="n#formatar#0;n#AnaliseC#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -705,27 +614,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/AnaliseKotlin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="89" column="18" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/AnalisePython.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
           <caret line="89" column="18" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#p#0;n#footer#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -736,10 +628,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model/AnaliseC.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="89" column="27" selection-start-line="89" selection-start-column="27" selection-end-line="89" selection-end-column="27" />
+          <folding>
+            <element signature="n#getRegexFor#0;n#AnaliseC#0;n#!!top" />
+            <element signature="n#getValuesFor#0;n#AnaliseC#0;n#!!top" />
+            <element signature="n#getRegexIf#0;n#AnaliseC#0;n#!!top" />
+            <element signature="n#getRegexReturn#0;n#AnaliseC#0;n#!!top" />
+            <element signature="n#getRegexElse#0;n#AnaliseC#0;n#!!top" />
+            <element signature="n#getRegexElseIf#0;n#AnaliseC#0;n#!!top" />
+            <element signature="n#getRegexDeclaration#0;n#AnaliseC#0;n#!!top" />
+            <element signature="n#getValuesDeclaration#0;n#AnaliseC#0;n#!!top" />
+            <element signature="n#getRegexAtribuition#0;n#AnaliseC#0;n#!!top" />
+            <element signature="n#getRegexClass#0;n#AnaliseC#0;n#!!top" />
+            <element signature="n#getRegexFunction#0;n#AnaliseC#0;n#!!top" />
+            <element signature="n#getDelimitador#0;n#AnaliseC#0;n#!!top" />
+            <element signature="n#getValuesFunction#0;n#AnaliseC#0;n#!!top" />
+            <element signature="n#getRegexPrint#0;n#AnaliseC#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Analise.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1288">
+          <caret line="56" column="27" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/AnaliseKotlin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="55" column="32" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/Tradutor.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="508" column="2" selection-start-line="508" selection-start-column="2" selection-end-line="508" selection-end-column="2" />
+        <state relative-caret-position="1874">
+          <caret line="526" column="36" lean-forward="true" selection-start-line="526" selection-start-column="36" selection-end-line="526" selection-end-column="36" />
           <folding>
             <element signature="n#buscaTipo#0;n#Tradutor#0;n#!!top" />
             <element signature="n#subParametro#0;n#Tradutor#0;n#!!top" />
@@ -750,15 +679,179 @@
             <element signature="n#transpilaFor#0;n#Tradutor#0;n#!!top" />
             <element signature="n#transpilaDeclaracao#0;n#Tradutor#0;n#!!top" />
             <element signature="n#transpilaReturn#0;n#Tradutor#0;n#!!top" />
-            <element signature="n#transpilaAtribuicao#0;n#Tradutor#0;n#!!top" />
             <element signature="n#transpilaClasse#0;n#Tradutor#0;n#!!top" />
             <element signature="n#transpilaPrint#0;n#Tradutor#0;n#!!top" />
             <element signature="n#functionFor#0;n#Tradutor#0;n#!!top" />
             <element signature="n#functionReturn#0;n#Tradutor#0;n#!!top" />
-            <element signature="n#functionAtribuicao#0;n#Tradutor#0;n#!!top" />
             <element signature="n#functionFuncao#0;n#Tradutor#0;n#!!top" />
-            <element signature="n#traduz#0;n#Tradutor#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/ajuda.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajuda.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/contato.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="52" column="7" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contato.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/referencias.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tutorials.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/carregarAjuda.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-332" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/limpar.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/API.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/carregarTutorials.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="713">
+          <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/carregarResultado.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-23">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/linguagens.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="141" selection-start-column="141" selection-end-column="141" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="161">
+            <caret line="40" column="63" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/tutorials.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="67" selection-start-line="7" selection-start-column="67" selection-end-line="7" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/writeFile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/referencias.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="874">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="95" selection-start-line="95" selection-end-line="95" />
+          <folding>
+            <element signature="n#setValues#0;n#Controller#0;n#!!top" />
+            <element signature="n#setAnalise#0;n#Controller#0;n#!!top" />
+            <element signature="n#enviarFonte#0;n#Controller#0;n#!!top" />
+            <element signature="n#API#0;n#Controller#0;n#!!top" />
+            <element signature="n#saveFile#0;n#Controller#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#1;n#nav#0;n#header#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/tradutor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-437">
+          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-line="12" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#p#0;n#footer#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sw.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>

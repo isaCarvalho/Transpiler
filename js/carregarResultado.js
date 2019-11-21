@@ -7,7 +7,7 @@ form.addEventListener("submit", (event) => {
     
     let body = new FormData(event.target);
 
-    fetch('control/?action=enviarFonte', {method: "post", body})
+    fetch('enviarFonte', {method: "post", body})
     .then(response => response.json())
     .then(response => {
         let destino = document.querySelector("pre[name=cdestino]");
