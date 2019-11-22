@@ -1,18 +1,7 @@
 <?php
-include "control/index.php";
 
-class View
-{
-    /*
-     * Metodo que renderiza a pagina
-     */
-    public function render(String $pagina)
-    {
-        include_once "view/header.html";
+include "control/Controller.php";
+include "view/View.php";
 
-        $path = "view/" . $pagina . '.html';
-        include_once $path;
-
-        include_once "view/footer.html";
-    }
-}
+$c = new Controller();
+$c->route();

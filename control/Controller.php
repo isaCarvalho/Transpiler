@@ -126,6 +126,3 @@ class Controller
         $v->render($pagina);
     }
 }
-
-$c = new Controller();
-$c->route();
