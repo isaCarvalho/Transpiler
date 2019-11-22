@@ -1,16 +1,16 @@
-    <!--<script>-->
-        <!--if ('serviceWorker' in navigator) {-->
-            <!--navigator.serviceWorker.register('sw.js')-->
-                <!--.then(function () {-->
-                    <!--console.log('service worker registered');-->
-                <!--})-->
-                <!--.catch(function () {-->
-                    <!--console.warn('service worker failed');-->
-                <!--});-->
-        <!--}-->
-    <!--</script>-->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(function () {
+                    console.log('service worker registered');
+                })
+                .catch(function () {
+                    console.warn('service worker failed');
+                });
+        }
+    </script>
 
-<!--<script src="/sw.js"></script>-->
+<script src="/sw.js"></script>
 
 <footer class="footer">
 	<img src="../../images/copyright.png" class="imgFooter" alt="Copyrights">
