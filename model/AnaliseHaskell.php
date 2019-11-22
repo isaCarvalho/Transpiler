@@ -80,7 +80,7 @@ class AnaliseHaskell extends Analise
         return "/putStr\s+?(.*?)/";
     }
 
-    public static function formatar($codigo)
+    public function formatar($codigo)
     {
         $codigo = str_replace('{', '', $codigo);
         $codigo = str_replace('}', '', $codigo);

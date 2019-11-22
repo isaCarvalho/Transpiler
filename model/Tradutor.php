@@ -491,24 +491,7 @@ class Tradutor
      */
     private function codigo_final()
     {
-        switch ($this->linguagem->getId())
-        {
-            case 1:
-                $this->codigo = trim(AnaliseC::formatar($this->codigo));
-                break;
-            case 2:
-                $this->codigo = trim(AnaliseJava::formatar($this->codigo));
-                break;
-            case 3:
-                $this->codigo = trim(AnaliseKotlin::formatar($this->codigo));
-                break;
-            case 4:
-                $this->codigo = trim(AnalisePython::formatar($this->codigo));
-                break;
-            case 5:
-                $this->codigo = trim(AnaliseHaskell::formatar($this->codigo));
-                break;
-        }
+        $this->codigo = Analise::analiseFactory($this->linguagem->getId())->formatar($this->codigo);
     }
 
     /**

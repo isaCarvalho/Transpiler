@@ -16,6 +16,19 @@ abstract class Analise
     /** A análise a linguagem de origem */
     private $linguagem;
 
+    public static function analiseFactory($fonte): Analise
+    {
+        $array = [
+            "1" => new AnaliseC(),
+            "2" => new AnaliseJava(),
+            "3" => new AnaliseKotlin(),
+            "4" => new AnalisePython(),
+            "5" => new AnaliseHaskell()
+        ];
+
+        return $array["$fonte"];
+    }
+
     public function getLinguagem()
     {
         return $this->linguagem;
@@ -54,5 +67,5 @@ abstract class Analise
 
     public abstract function getValuesFunction($matches, $pos);
 
-    public abstract static function formatar($codigo);
+    public abstract function formatar($codigo);
 }

@@ -87,7 +87,7 @@ class AnaliseJava extends Analise
         return "/System.out.println\((.*?)\)\;/";
     }
 
-    public static function formatar($codigo)
+    public function formatar($codigo)
     {
         return $codigo;
     }

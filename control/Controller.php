@@ -34,36 +34,6 @@ class Controller
     }
 
     /*
-     * Método que inicializa o objeto de analise da linguagem de fonte que sera utilizado
-     */
-    private function setAnalise($fonte): Analise
-    {
-        switch($fonte)
-        {
-            case 1:
-                return new AnaliseC();
-                break;
-
-            case 2:
-                return new AnaliseJava();
-                break;
-
-            case 3:
-                return new AnaliseKotlin();
-                break;
-
-            case 4:
-                return new AnalisePython();
-                break;
-
-            case 5:
-                return new AnaliseHaskell();
-                break;
-        }
-        return null;
-    }
-
-    /*
      * Metodo que envia o codigo fonte para traducao
      */
     private function enviarFonte()
@@ -75,7 +45,7 @@ class Controller
         require_once "model/Analise.php";
         require_once "model/Tradutor.php";
 
-        $analise = $this->setAnalise($lfonte);
+        $analise = Analise::analiseFactory($lfonte);
         $analise->setLinguagem(new Linguagem($lfonte));
 
         $ling_destino = new Linguagem($ldestino);
