@@ -45,7 +45,7 @@ class Controller
         require_once "model/Analise.php";
         require_once "model/Tradutor.php";
 
-        $analise = Analise::analiseFactory($lfonte);
+        $analise = Analise::analiseAbstractFactory($lfonte);
         $analise->setLinguagem(new Linguagem($lfonte));
 
         $ling_destino = new Linguagem($ldestino);

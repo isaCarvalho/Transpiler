@@ -2,6 +2,11 @@
 
 class AnaliseJava extends Analise
 {
+    public static function analiseJavaFactory()
+    {
+        return new AnaliseJava();
+    }
+
     public function getRegexFor()
     {
         return "/for\s?+\(\s?+([\w]+)\s\s?+([\w+])\s?+\=\s?+(.*)\s?+\;\s?+[\w]+\s?+([<>!=]+)\s?+(.*)\s?+\;\s?+[\w]+(.*)\)\s?+\{/";

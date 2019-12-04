@@ -11,7 +11,9 @@
       <change beforePath="$PROJECT_DIR$/model/AnaliseKotlin.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnaliseKotlin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/AnalisePython.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnalisePython.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/Tradutor.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Tradutor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/paginas/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/view/paginas/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uml/transpiladorModelo.asta" beforeDir="false" afterPath="$PROJECT_DIR$/uml/transpiladorModelo.asta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uml/transpiladorModelo.asta.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uml/transpilerModel.png" beforeDir="false" afterPath="$PROJECT_DIR$/uml/transpilerModel.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,12 +26,12 @@
     <executablePath>composer</executablePath>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/control/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="989">
-              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
               <folding>
                 <element signature="n#API#0;n#Controller#0;n#!!top" />
                 <element signature="n#saveFile#0;n#Controller#0;n#!!top" />
@@ -39,32 +41,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/Analise.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1222">
-              <caret line="69" column="19" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
+            <state relative-caret-position="417">
+              <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view/paginas/footer.html">
+        <entry file="file://$PROJECT_DIR$/model/AnalisePython.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#p#0;n#footer#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="138">
+              <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/Tradutor.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2786">
-              <caret line="496" column="7" lean-forward="true" selection-start-line="496" selection-start-column="7" selection-end-line="496" selection-end-column="7" />
+            <state relative-caret-position="3266">
+              <caret line="496" column="7" selection-start-line="496" selection-start-column="7" selection-end-line="496" selection-end-column="7" />
               <folding>
                 <element signature="n#buscaTipo#0;n#Tradutor#0;n#!!top" />
                 <element signature="n#subParametro#0;n#Tradutor#0;n#!!top" />
@@ -83,7 +82,6 @@
                 <element signature="n#functionDeclaracao#0;n#Tradutor#0;n#!!top" />
                 <element signature="n#functionAtribuicao#0;n#Tradutor#0;n#!!top" />
                 <element signature="n#functionFuncao#0;n#Tradutor#0;n#!!top" />
-                <element signature="n#codigo_final#0;n#Tradutor#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -195,15 +193,15 @@
         <option value="$PROJECT_DIR$/view/View.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/sw.js" />
-        <option value="$PROJECT_DIR$/view/paginas/footer.html" />
         <option value="$PROJECT_DIR$/control/Controller.php" />
-        <option value="$PROJECT_DIR$/model/Analise.php" />
-        <option value="$PROJECT_DIR$/model/AnaliseHaskell.php" />
+        <option value="$PROJECT_DIR$/model/Tradutor.php" />
+        <option value="$PROJECT_DIR$/view/paginas/footer.html" />
         <option value="$PROJECT_DIR$/model/AnaliseC.php" />
+        <option value="$PROJECT_DIR$/model/AnaliseHaskell.php" />
         <option value="$PROJECT_DIR$/model/AnaliseJava.php" />
         <option value="$PROJECT_DIR$/model/AnaliseKotlin.php" />
         <option value="$PROJECT_DIR$/model/AnalisePython.php" />
-        <option value="$PROJECT_DIR$/model/Tradutor.php" />
+        <option value="$PROJECT_DIR$/model/Analise.php" />
       </list>
     </option>
   </component>
@@ -400,12 +398,14 @@
       <workItem from="1574343853845" duration="20515000" />
       <workItem from="1574372407376" duration="356000" />
       <workItem from="1574381442550" duration="1465000" />
-      <workItem from="1574449146016" duration="1526000" />
+      <workItem from="1574449146016" duration="2110000" />
+      <workItem from="1575117653141" duration="28000" />
+      <workItem from="1575462713152" duration="717000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="313465000" />
+    <option name="totallyTimeSpent" value="314794000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -419,7 +419,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="701" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26439393" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.27348486" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -432,7 +432,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32849365" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49926794" visible="true" weight="0.48094374" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49926794" visible="true" weight="0.6188748" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50073206" side_tool="true" weight="0.37108013" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -717,27 +717,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/control/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="989">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+          <folding>
+            <element signature="n#API#0;n#Controller#0;n#!!top" />
+            <element signature="n#saveFile#0;n#Controller#0;n#!!top" />
+            <element signature="n#redirect#0;n#Controller#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/view/paginas/footer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        <state relative-caret-position="-46">
+          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
           <folding>
             <element signature="n#style#0;n#a#0;n#p#0;n#footer#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/AnaliseHaskell.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="82" column="10" selection-start-line="82" selection-start-column="10" selection-end-line="82" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/AnaliseC.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="89" column="10" selection-start-line="89" selection-start-column="10" selection-end-line="89" selection-end-column="10" />
+        <state relative-caret-position="92">
+          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
           <folding>
             <element signature="n#getRegexFor#0;n#AnaliseC#0;n#!!top" />
             <element signature="n#getValuesFor#0;n#AnaliseC#0;n#!!top" />
@@ -757,10 +762,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model/AnaliseHaskell.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/AnaliseJava.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="89" column="10" selection-start-line="89" selection-start-column="10" selection-end-line="89" selection-end-column="10" />
+        <state relative-caret-position="138">
+          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
           <folding>
             <element signature="n#getRegexFor#0;n#AnaliseJava#0;n#!!top" />
             <element signature="n#getValuesFor#0;n#AnaliseJava#0;n#!!top" />
@@ -776,41 +788,35 @@
             <element signature="n#getDelimitador#0;n#AnaliseJava#0;n#!!top" />
             <element signature="n#getValuesFunction#0;n#AnaliseJava#0;n#!!top" />
             <element signature="n#getRegexPrint#0;n#AnaliseJava#0;n#!!top" />
-            <element signature="n#formatar#0;n#AnaliseJava#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/AnaliseKotlin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="89" column="10" selection-start-line="89" selection-start-column="10" selection-end-line="89" selection-end-column="10" />
+        <state relative-caret-position="138">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/AnalisePython.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="89" column="10" selection-start-line="89" selection-start-column="10" selection-end-line="89" selection-end-column="10" />
+        <state relative-caret-position="138">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/control/Controller.php">
+    <entry file="file://$PROJECT_DIR$/model/Analise.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="989">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
-          <folding>
-            <element signature="n#API#0;n#Controller#0;n#!!top" />
-            <element signature="n#saveFile#0;n#Controller#0;n#!!top" />
-            <element signature="n#redirect#0;n#Controller#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="417">
+          <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/Tradutor.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2786">
-          <caret line="496" column="7" lean-forward="true" selection-start-line="496" selection-start-column="7" selection-end-line="496" selection-end-column="7" />
+        <state relative-caret-position="3266">
+          <caret line="496" column="7" selection-start-line="496" selection-start-column="7" selection-end-line="496" selection-end-column="7" />
           <folding>
             <element signature="n#buscaTipo#0;n#Tradutor#0;n#!!top" />
             <element signature="n#subParametro#0;n#Tradutor#0;n#!!top" />
@@ -829,15 +835,7 @@
             <element signature="n#functionDeclaracao#0;n#Tradutor#0;n#!!top" />
             <element signature="n#functionAtribuicao#0;n#Tradutor#0;n#!!top" />
             <element signature="n#functionFuncao#0;n#Tradutor#0;n#!!top" />
-            <element signature="n#codigo_final#0;n#Tradutor#0;n#!!top" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/Analise.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1222">
-          <caret line="69" column="19" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
         </state>
       </provider>
     </entry>

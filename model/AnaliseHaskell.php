@@ -2,6 +2,11 @@
 
 class AnaliseHaskell extends Analise
 {
+    public static function analiseHaskellFactory()
+    {
+        return new AnaliseHaskell();
+    }
+
     public function getRegexFor()
     {
         return "";

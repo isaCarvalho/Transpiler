@@ -15,15 +15,20 @@ abstract class Analise
 {
     /** A análise a linguagem de origem */
     private $linguagem;
+    private const C = "1";
+    private const JAVA = "2";
+    private const KOTLIN = "3";
+    private const PYTHON = "4";
+    private const HASKELL = "5";
 
-    public static function analiseFactory($fonte): Analise
+    public static function analiseAbstractFactory($fonte): Analise
     {
         $array = [
-            "1" => new AnaliseC(),
-            "2" => new AnaliseJava(),
-            "3" => new AnaliseKotlin(),
-            "4" => new AnalisePython(),
-            "5" => new AnaliseHaskell()
+            self::C => AnaliseC::analiseCFactory(),
+            self::JAVA => AnaliseJava::analiseJavaFactory(),
+            self::KOTLIN => AnaliseKotlin::analiseKotlinFactory(),
+            self::PYTHON => AnalisePython::analisePythonFactory(),
+            self::HASKELL => AnaliseHaskell::analiseHaskellFactory()
         ];
 
         return $array["$fonte"];

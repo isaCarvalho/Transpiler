@@ -2,6 +2,11 @@
 
 class AnalisePython extends Analise
 {
+    public static function analisePythonFactory()
+    {
+        return new AnalisePython();
+    }
+
     public function getRegexFor()
     {
         return "/for\s+(\w+)\s+in\s+range\((\d+),\s+(\d+),\s+(\d+)\)\:/";

@@ -491,7 +491,7 @@ class Tradutor
      */
     private function codigo_final()
     {
-        $this->codigo = Analise::analiseFactory($this->linguagem->getId())->formatar($this->codigo);
+        $this->codigo = Analise::analiseAbstractFactory($this->linguagem->getId())->formatar($this->codigo);
     }
 
     /**

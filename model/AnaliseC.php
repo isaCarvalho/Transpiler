@@ -2,6 +2,11 @@
 
 class AnaliseC extends Analise
 {
+    public static function analiseCFactory()
+    {
+        return new AnaliseC();
+    }
+
     public function getRegexFor()
     {
         return "/for\s?+\(\s?+([\w]+)\s\s?+([\w+])\s?+\=\s?+(.*)\s?+\;\s?+[\w]+\s?+([<>!=]+)\s?+(.*)\s?+\;\s?+[\w]+(.*)\)\s?+\{/";

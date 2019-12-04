@@ -2,6 +2,11 @@
 
 class AnaliseKotlin extends Analise
 {
+    public static function analiseKotlinFactory()
+    {
+        return new AnaliseKotlin();
+    }
+
     public function getRegexFor()
     {
         return "/for\s?+\(([\w]+)\s?+\:\s?+([\w]+)\s?+in\s?+([\d]+)..([\d]+)\s?+\)\s?+\{/";
