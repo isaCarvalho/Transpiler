@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09db7d0e-9863-47ee-96b6-63c6784756e4" name="Default Changelist" comment="" />
+    <list default="true" id="09db7d0e-9863-47ee-96b6-63c6784756e4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/control/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Tradutor.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Tradutor.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/control/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="989">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="1084">
+              <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
               <folding>
                 <element signature="n#API#0;n#Controller#0;n#!!top" />
                 <element signature="n#saveFile#0;n#Controller#0;n#!!top" />
@@ -28,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/Analise.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+            <state relative-caret-position="-1009">
+              <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -46,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/Tradutor.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3266">
-              <caret line="496" column="7" selection-start-line="496" selection-start-column="7" selection-end-line="496" selection-end-column="7" />
+            <state relative-caret-position="-2757">
+              <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
               <folding>
                 <element signature="n#buscaTipo#0;n#Tradutor#0;n#!!top" />
                 <element signature="n#subParametro#0;n#Tradutor#0;n#!!top" />
@@ -180,8 +183,6 @@
         <option value="$PROJECT_DIR$/view/View.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/sw.js" />
-        <option value="$PROJECT_DIR$/control/Controller.php" />
-        <option value="$PROJECT_DIR$/model/Tradutor.php" />
         <option value="$PROJECT_DIR$/view/paginas/footer.html" />
         <option value="$PROJECT_DIR$/model/AnaliseC.php" />
         <option value="$PROJECT_DIR$/model/AnaliseHaskell.php" />
@@ -189,6 +190,8 @@
         <option value="$PROJECT_DIR$/model/AnaliseKotlin.php" />
         <option value="$PROJECT_DIR$/model/AnalisePython.php" />
         <option value="$PROJECT_DIR$/model/Analise.php" />
+        <option value="$PROJECT_DIR$/model/Tradutor.php" />
+        <option value="$PROJECT_DIR$/control/Controller.php" />
       </list>
     </option>
   </component>
@@ -388,11 +391,12 @@
       <workItem from="1574449146016" duration="2110000" />
       <workItem from="1575117653141" duration="28000" />
       <workItem from="1575462713152" duration="1328000" />
+      <workItem from="1575569019389" duration="842000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="315405000" />
+    <option name="totallyTimeSpent" value="316247000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -705,18 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/control/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="989">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-          <folding>
-            <element signature="n#API#0;n#Controller#0;n#!!top" />
-            <element signature="n#saveFile#0;n#Controller#0;n#!!top" />
-            <element signature="n#redirect#0;n#Controller#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/paginas/footer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-46">
@@ -787,24 +779,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/AnalisePython.php">
+    <entry file="file://$PROJECT_DIR$/control/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/Analise.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+        <state relative-caret-position="1084">
+          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="n#API#0;n#Controller#0;n#!!top" />
+            <element signature="n#saveFile#0;n#Controller#0;n#!!top" />
+            <element signature="n#redirect#0;n#Controller#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/Tradutor.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3266">
-          <caret line="496" column="7" selection-start-line="496" selection-start-column="7" selection-end-line="496" selection-end-column="7" />
+        <state relative-caret-position="-2757">
+          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
           <folding>
             <element signature="n#buscaTipo#0;n#Tradutor#0;n#!!top" />
             <element signature="n#subParametro#0;n#Tradutor#0;n#!!top" />
@@ -824,6 +814,20 @@
             <element signature="n#functionAtribuicao#0;n#Tradutor#0;n#!!top" />
             <element signature="n#functionFuncao#0;n#Tradutor#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/AnalisePython.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/Analise.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1009">
+          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
         </state>
       </provider>
     </entry>

@@ -50,7 +50,7 @@ class Controller
 
         $ling_destino = new Linguagem($ldestino);
 
-        $tradutor = new Tradutor($analise, $ling_destino, $cfonte);
+        $tradutor = Tradutor::getInstancia($analise, $ling_destino, $cfonte);
 
         $result = $tradutor->traduz();
         echo json_encode(["prototipo" => $result]);

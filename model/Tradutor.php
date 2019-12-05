@@ -9,6 +9,7 @@ class Tradutor
     private $linguagem; // Linguagem de destino
     private $analise; // analise da linguagem de fonte
     private $codigo; // código fonte a ser traduzido
+    private static $instancia = null; // Instancia do tradutor
 
     /**
      * Tradutor constructor.
@@ -17,11 +18,19 @@ class Tradutor
      * @param $codigo
      *
      */
-    public function __construct(Analise $analise, Linguagem $linguagem, $codigo)
+    private function __construct(Analise $analise, Linguagem $linguagem, $codigo)
     {
         $this->codigo = $codigo;
         $this->linguagem = $linguagem;
         $this->analise = $analise;
+    }
+
+    public static function getInstancia(Analise $analise, Linguagem $linguagem, $codigo)
+    {
+        if (self::$instancia == null)
+            self::$instancia = new Tradutor($analise, $linguagem, $codigo);
+
+        return self::$instancia;
     }
 
     /**
