@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09db7d0e-9863-47ee-96b6-63c6784756e4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/control/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/control/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Analise.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Analise.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AnaliseC.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnaliseC.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AnaliseHaskell.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnaliseHaskell.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AnaliseJava.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnaliseJava.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AnaliseKotlin.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnaliseKotlin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AnalisePython.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AnalisePython.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Tradutor.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Tradutor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uml/transpiladorModelo.asta" beforeDir="false" afterPath="$PROJECT_DIR$/uml/transpiladorModelo.asta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uml/transpiladorModelo.asta.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uml/transpilerModel.png" beforeDir="false" afterPath="$PROJECT_DIR$/uml/transpilerModel.png" afterDir="false" />
-    </list>
+    <list default="true" id="09db7d0e-9863-47ee-96b6-63c6784756e4" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -400,12 +387,12 @@
       <workItem from="1574381442550" duration="1465000" />
       <workItem from="1574449146016" duration="2110000" />
       <workItem from="1575117653141" duration="28000" />
-      <workItem from="1575462713152" duration="717000" />
+      <workItem from="1575462713152" duration="1328000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="314794000" />
+    <option name="totallyTimeSpent" value="315405000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -418,6 +405,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="701" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.27348486" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -432,7 +420,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32849365" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49926794" visible="true" weight="0.6188748" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49926794" weight="0.6188748" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50073206" side_tool="true" weight="0.37108013" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
