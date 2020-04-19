@@ -18,7 +18,7 @@ a
 
 .body
 {
-	background-image: url(../images/fundo9.jpeg);
+	background-image: url(../images/fundo.jpeg);
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -253,6 +253,11 @@ table tr:hover
 	box-shadow: .3em .3em .5em rgba(0,0,0,.45);
 	font-family: 'Fira Code', monospace;
 	color: white;
+}
+
+.email
+{
+	font-size: 14px;
 }
 
 #contato
